@@ -6,14 +6,14 @@ package Interfaces;
  */
 public interface AboutOficer {
 
-    void getName();
+    void setName();
 
-    void getAge();
+    void setAge();
 
-    void getHeight();
+    void setHeight();
 
-    void getExperience();
+    void setExperience();
 
-    void getPasportData();
+    void setPasportData();
 
 }

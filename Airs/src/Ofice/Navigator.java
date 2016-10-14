@@ -16,16 +16,15 @@ public class Navigator implements AboutOficer {
     private String pasporData;
 
     public Navigator(){
+        setAge();
 
-        getAge();
+        setName();
 
-        getName();
+        setHeight();
 
-        getHeight();
+        setExperience();
 
-        getExperience();
-
-        getPasportData();
+        setPasportData();
 
     }
 
@@ -37,35 +36,35 @@ public class Navigator implements AboutOficer {
     }
 
     @Override
-    public void getName() {
+    public void setName() {
         System.out.println("Add name");
         Scanner in = new Scanner(System.in);
         this.name = in.nextLine();
     }
 
     @Override
-    public void getAge() {
+    public void setAge() {
         System.out.println("Add age");
         Scanner in = new Scanner(System.in);
         this.age = in.nextInt();
     }
 
     @Override
-    public void getHeight() {
+    public void setHeight() {
         System.out.println("Add Height");
         Scanner in = new Scanner(System.in);
         this.height = in.nextInt();
     }
 
     @Override
-    public void getExperience() {
+    public void setExperience() {
         System.out.println("Add Expirience");
         Scanner in = new Scanner(System.in);
         this.expirience = in.nextInt();
     }
 
     @Override
-    public void getPasportData() {
+    public void setPasportData() {
         System.out.println("Add Pasport Data");
         Scanner in = new Scanner(System.in);
         this.pasporData = in.nextLine();
