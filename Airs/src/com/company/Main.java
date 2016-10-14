@@ -1,10 +1,12 @@
 package com.company;
-import Administrator.Admin;
+
+import Company.Flights;
+
 public class Main {
     public static void main(String[] args) {
-	// write your code here
-        Admin fst = new Admin();
-        fst.AddFlight();
-        fst.Info();
+       Runer run = new Runer();
+
+
+
     }
 }
