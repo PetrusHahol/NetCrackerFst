@@ -21,7 +21,6 @@ public class Admin extends Airline {
         Flights tmp = new Flights(namefrom,nameto,namedate);
         flights.add(tmp);
         System.out.println(tmp+" was added");
-
     }
 
     public static void DeleteFlight(){
@@ -52,7 +51,12 @@ public class Admin extends Airline {
         //Find + delete+ Edit
     }
     public static void Info(){
-        for (Flights iter:flights)System.out.println(iter);
+        int pos=0;
+        for (Flights iter:flights){
+            pos++;
+            System.out.print(pos);
+            System.out.println(" "+iter);
         }
+    }
 
 }

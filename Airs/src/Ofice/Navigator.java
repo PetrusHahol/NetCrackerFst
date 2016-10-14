@@ -6,28 +6,30 @@ import Interfaces.AboutOficer;
  * Created by Asus on 14.10.2016.
  */
 public class Navigator implements AboutOficer {
+
+
     @Override
-    public String getName() {
-        return null;
+    public void getName() {
+
     }
 
     @Override
-    public int getAge() {
-        return 0;
+    public void getAge() {
+
     }
 
     @Override
-    public int getHeight() {
-        return 0;
+    public void getHeight() {
+
     }
 
     @Override
-    public double getExperience() {
-        return 0;
+    public void getExperience() {
+
     }
 
     @Override
-    public String getPasportData() {
-        return null;
+    public void getPasportData() {
+
     }
 }
