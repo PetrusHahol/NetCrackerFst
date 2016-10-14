@@ -1,52 +1,50 @@
 package Administrator;
 
-import Company.Flights;
 import Ofice.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Created by Asus on 14.10.2016.
  */
-public class Dispatcher extends Brigade {
-    public static void AddPilotFlight(){
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter index flight");
-        Integer flightIndex = in.nextInt();
-        System.out.println("Set index of brigade");
-        Integer BrigadeIndex = in.nextInt();;
+public class Dispatcher  {
+
+    public  void AddBrigade(){
+        Oficers.brigade.add(new Brigades());
     }
 
-
-    public static void AddNewRadioman(){
-        radiomens.add(new Radiomen());
+    public  void AddNewRadioman(){
+        Oficers.radiomens.add(new Radiomen());
     }
 
-    public static void AddNewStewardess(){
-        stewardess.add(new Stewardess());
+    public  void AddNewStewardess(){
+        Oficers.stewardess.add(new Stewardess());
     }
 
-    public static void AddNewNavigator(){
-        navigators.add(new Navigator());
+    public  void AddNewNavigator(){
+        Oficers.navigators.add(new Navigator());
     }
 
-    public static void AddNewPilot(){
-        pilots.add(new Pilot());
+    public  void AddNewPilot(){
+        Oficers.pilots.add(new Pilot());
     }
 
-    public static void Info(){
-        for (Radiomen iter:radiomens){
+    public  void Info(){
+        for (Radiomen iter:Oficers.radiomens){
             System.out.print(iter);
         }
-        for (Pilot iter:pilots){
+        for (Pilot iter:Oficers.pilots){
             System.out.print(iter);
         }
-        for (Navigator iter:navigators){
+        for (Navigator iter:Oficers.navigators){
             System.out.print(iter);
         }
-        for (Stewardess iter:stewardess){
+        for (Stewardess iter:Oficers.stewardess){
+            System.out.print(iter);
+        }
+
+        for (Brigades iter:Oficers.brigade){
             System.out.print(iter);
         }
 

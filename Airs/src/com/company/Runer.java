@@ -29,9 +29,10 @@ public  class Runer {
                 if (tmp == 3) {
                     fst.Info();
                 }
-            }
+            } else
             if (tmp == 2){
-                System.out.println("Enter number:\n1 - Add new pilot\n2 - Add new Radiomen\n3 - Add new Navigator\n4 - Add new Stewardess\n5 - Info\n-1 - Exit");
+                System.out.println(" Enter number:\n1 - Add new pilot\n2 - Add new Radiomen\n3 - Add new Navigator\n4 - " +
+                        "Add new Stewardess\n5- Add new brigade\n6 - Info\n-1 - Exit");
                 tmp = input.nextInt();
                 if (tmp == 1){
                     snd.AddNewPilot();
@@ -45,7 +46,10 @@ public  class Runer {
                 if (tmp == 4){
                     snd.AddNewStewardess();
                 }
-                if (tmp == 5){
+                if (tmp == 5 ){
+                    snd.AddBrigade();
+                }
+                if (tmp == 6){
                     snd.Info();
                 }
             }

@@ -9,7 +9,7 @@ import Company.Flights;
  * Created by Asus on 13.10.2016.
  */
 public class Admin extends Airline {
-    public static void AddFlight(){
+    public  void AddFlight(){
         Scanner in = new Scanner(System.in);
         System.out.println("AddNewFlite");
         System.out.println("From");
@@ -23,7 +23,7 @@ public class Admin extends Airline {
         System.out.println(tmp+" was added");
     }
 
-    public static void DeleteFlight(){
+    public  void DeleteFlight(){
         Scanner in = new Scanner(System.in);
         System.out.println("AddNewFlite");
         System.out.println("From");
@@ -37,7 +37,6 @@ public class Admin extends Airline {
         for (Flights iter:flights) {
             if (tmp.equels((iter))){
                 pos++;
-                System.out.println("TRUE"+iter+"\n\n");
                 delete_pos=pos;
             }
         }
@@ -47,15 +46,13 @@ public class Admin extends Airline {
 
     }
 
-    public static void EditFlight(){
-        //Find + delete+ Edit
-    }
-    public static void Info(){
+    public  void Info(){
         int pos=0;
         for (Flights iter:flights){
             pos++;
             System.out.print(pos);
             System.out.println(" "+iter);
+
         }
     }
 
