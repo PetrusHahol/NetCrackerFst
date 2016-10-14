@@ -15,6 +15,16 @@ public class Flights {
         this.date=date;
     }
 
+    public String getFrom(){
+        return this.from;
+    }
+    public String getTo(){
+        return this.to;
+    }
+    public String getDate(){
+        return this.to;
+    }
+
     public String toString(){
         return ("From " +from + " - to - " + to+ " - in - " + date);
     }
