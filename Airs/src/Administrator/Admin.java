@@ -34,10 +34,16 @@ public class Admin extends Airline {
         System.out.println("date");
         String namedate = in.nextLine();
         Flights tmp = new Flights(namefrom,nameto,namedate);
+        int pos = -1,delete_pos=-1;
         for (Flights iter:flights) {
             if (tmp.equels((iter))){
+                pos++;
                 System.out.println("TRUE"+iter+"\n\n");
+                delete_pos=pos;
             }
+        }
+        if (delete_pos!=-1){
+            flights.remove(delete_pos);
         }
 
     }
