@@ -31,15 +31,19 @@ public class Dispatcher  {
     }
 
     public  void Info(){
+
         for (Radiomen iter:Oficers.radiomens){
             System.out.print(iter);
         }
+
         for (Pilot iter:Oficers.pilots){
             System.out.print(iter);
         }
+
         for (Navigator iter:Oficers.navigators){
             System.out.print(iter);
         }
+
         for (Stewardess iter:Oficers.stewardess){
             System.out.print(iter);
         }

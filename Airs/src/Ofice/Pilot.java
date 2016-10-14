@@ -16,16 +16,24 @@ public class Pilot implements AboutOficer {
     private String pasporData;
 
     public Pilot(){
+
         getAge();
+
         getName();
+
         getHeight();
+
         getExperience();
+
         getPasportData();
+
     }
 
     public String toString(){
-        return ("PILOT Name " + name + " - Age - " + Integer.toString(age)+ " - Height - " + Integer.toString(height)
-                + " - Expirience - " + Integer.toString(expirience) + " - Pasport Data - "+pasporData+"\n");
+        return ("PILOT Name " + name + " - Age - " + Integer.toString(age)
+                + " - Height - " + Integer.toString(height)
+                + " - Expirience - " + Integer.toString(expirience)
+                + " - Pasport Data - "+pasporData + "\n");
     }
 
     @Override
@@ -53,7 +61,7 @@ public class Pilot implements AboutOficer {
     public void getExperience() {
         System.out.println("Add Expirience");
         Scanner in = new Scanner(System.in);
-        this.expirience= in.nextInt();
+        this.expirience = in.nextInt();
     }
 
     @Override

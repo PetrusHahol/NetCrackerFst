@@ -8,6 +8,7 @@ import java.util.Scanner;
  * Created by Asus on 14.10.2016.
  */
 public class Stewardess implements AboutOficer {
+
     private String name;
     private int age;
     private int height;
@@ -15,16 +16,25 @@ public class Stewardess implements AboutOficer {
     private String pasporData;
 
     public Stewardess(){
+
         getAge();
+
         getName();
+
         getHeight();
+
+
         getExperience();
+
         getPasportData();
+
     }
 
     public String toString(){
-        return ("STEWARDESS Name " + name + " - Age - " + Integer.toString(age)+ " - Height - " + Integer.toString(height)
-                + " - Expirience - " + Integer.toString(expirience) + " - Pasport Data - "+pasporData+"\n");
+        return ("STEWARDESS Name " + name + " - Age - " + Integer.toString(age)
+                +" - Height - " + Integer.toString(height)
+                + " - Expirience - " + Integer.toString(expirience)
+                +" - Pasport Data - "+pasporData+"\n");
     }
 
     @Override
@@ -52,7 +62,7 @@ public class Stewardess implements AboutOficer {
     public void getExperience() {
         System.out.println("Add Expirience");
         Scanner in = new Scanner(System.in);
-        this.expirience= in.nextInt();
+        this.expirience = in.nextInt();
     }
 
     @Override
