@@ -33,8 +33,17 @@ public  class Runer {
             if (tmp == 2){
                 System.out.println("Enter number:\n1 - Add new pilot\n2 - Add new Radiomen\n3 - Add new Navigator\n4 - Add new Stewardess\n5 - Info\n-1 - Exit");
                 tmp = input.nextInt();
+                if (tmp == 1){
+                    snd.AddNewPilot();
+                }
                 if (tmp == 2 ){
                     snd.AddNewRadioman();
+                }
+                if (tmp == 3){
+                    snd.AddNewNavigator();
+                }
+                if (tmp == 4){
+                    snd.AddNewStewardess();
                 }
                 if (tmp == 5){
                     snd.Info();

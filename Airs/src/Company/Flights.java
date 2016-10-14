@@ -29,7 +29,6 @@ public class Flights {
         for (int i=0; i<to.length(); i++){
             result=result*prime+ to.charAt(i);
             result%=mod;
-
         }
         for (int i=0; i<date.length(); i++){
             result=result * prime+ date.charAt(i);
