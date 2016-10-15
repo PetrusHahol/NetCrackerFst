@@ -1,13 +1,13 @@
-package Ofice;
+package com.ofice;
 
-import Interfaces.AboutOficer;
+import com.interfaces.EmploysInterface;
 
 import java.util.Scanner;
 
 /**
  * Created by Asus on 14.10.2016.
  */
-public class Stewardess implements AboutOficer {
+public class Stewardess implements EmploysInterface {
 
     private String name;
     private int age;
@@ -16,18 +16,15 @@ public class Stewardess implements AboutOficer {
     private String pasporData;
 
     public Stewardess(){
-
         setAge();
 
         setName();
 
         setHeight();
 
-
         setExperience();
 
         setPasportData();
-
     }
 
     public String toString(){
@@ -70,5 +67,53 @@ public class Stewardess implements AboutOficer {
         System.out.println("Add Pasport Data");
         Scanner in = new Scanner(System.in);
         this.pasporData = in.nextLine();
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getAge() {
+        return this.age;
+    }
+
+    public int getHeight() {
+        return this.height;
+    }
+
+    public int getExpirience() {
+        return this.expirience;
+    }
+
+    public String getPasporData() {
+        return this.pasporData;
+    }
+    public int hashCode() {
+        final int PRIME = 43;
+        int result = 1;
+        int MOD = 1000000007;
+
+        for (int i = 0; i < name.length(); i++){
+            result = PRIME * result + name.charAt(i);
+            result %= MOD;
+        }
+
+        for (int i = 0; i < pasporData.length(); i++){
+            result = result * PRIME + pasporData.charAt(i);
+            result %= MOD;
+        }
+        result = result * age+PRIME;
+        result = result * expirience+PRIME;
+        result = result * height+PRIME;
+        return result;
+    }
+
+    public boolean equels(Object obj){
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        return true;
     }
 }

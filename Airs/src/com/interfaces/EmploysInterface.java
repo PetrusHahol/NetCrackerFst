@@ -1,10 +1,10 @@
-package Interfaces;
+package com.interfaces;
 
 
 /**
  * Created by Asus on 14.10.2016.
  */
-public interface AboutOficer {
+public interface EmploysInterface {
 
     void setName();
 
