@@ -4,6 +4,10 @@ import com.administrators.Admin;
 import com.administrators.Dispatcher;
 import com.flights.Flight;
 import com.ofice.*;
+import com.ofice.personality.profesions.Navigator;
+import com.ofice.personality.profesions.Pilot;
+import com.ofice.personality.profesions.Radiomen;
+import com.ofice.personality.profesions.Stewardess;
 
 import java.util.Scanner;
 

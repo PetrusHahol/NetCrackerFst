@@ -1,38 +1,19 @@
-package com.ofice;
+package com.ofice.personality;
 
 import com.interfaces.EmploysInterface;
 
 import java.util.Scanner;
 
 /**
- * Created by Asus on 14.10.2016.
+ * Created by Asus on 16.10.2016.
  */
-public class Stewardess implements EmploysInterface {
+public class Employ implements EmploysInterface {
 
-    private String name;
-    private int age;
-    private int height;
-    private int expirience;
-    private String pasporData;
-
-    public Stewardess(){
-        setAge();
-
-        setName();
-
-        setHeight();
-
-        setExperience();
-
-        setPasportData();
-    }
-
-    public String toString(){
-        return ("STEWARDESS Name " + name + " - Age - " + Integer.toString(age)
-                +" - Height - " + Integer.toString(height)
-                + " - Expirience - " + Integer.toString(expirience)
-                +" - Pasport Data - "+pasporData+"\n");
-    }
+    protected String name;
+    protected int age;
+    protected int height;
+    protected int expirience;
+    protected String pasporData;
 
     @Override
     public void setName() {
@@ -62,13 +43,14 @@ public class Stewardess implements EmploysInterface {
         this.expirience = in.nextInt();
     }
 
+
     @Override
     public void setPasportData() {
         System.out.println("Add Pasport Data");
         Scanner in = new Scanner(System.in);
         this.pasporData = in.nextLine();
-    }
 
+    }
     public String getName() {
         return this.name;
     }
@@ -88,6 +70,7 @@ public class Stewardess implements EmploysInterface {
     public String getPasporData() {
         return this.pasporData;
     }
+
     public int hashCode() {
         final int PRIME = 43;
         int result = 1;
@@ -116,4 +99,12 @@ public class Stewardess implements EmploysInterface {
         }
         return true;
     }
+
+    public String toString(){
+        return ("STEWARDESS Name " + name + " - Age - " + Integer.toString(age)
+                +" - Height - " + Integer.toString(height)
+                + " - Expirience - " + Integer.toString(expirience)
+                + " - Pasport Data - " + pasporData + "\n");
+    }
+
 }

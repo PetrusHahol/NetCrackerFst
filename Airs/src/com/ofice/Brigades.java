@@ -1,6 +1,10 @@
 package com.ofice;
 
 import com.flights.Flight;
+import com.ofice.personality.profesions.Navigator;
+import com.ofice.personality.profesions.Pilot;
+import com.ofice.personality.profesions.Radiomen;
+import com.ofice.personality.profesions.Stewardess;
 
 /**
  * Created by Asus on 14.10.2016.

@@ -1,9 +1,14 @@
 1)убрать наследование(сделать правильное)
+true
 
 2)Добавить get set
+true
 
 3)pull стрингов(доп)
 
+
 4)к каждому классу hashcode equels tostring
+true
 
 5)OOP
+true
