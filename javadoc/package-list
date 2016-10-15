@@ -1,5 +1,7 @@
-Administrator
-Company
-Interfaces
-Ofice
+com.administrators
 com.company
+com.flights
+com.interfaces
+com.ofice
+com.ofice.personality
+com.ofice.personality.profesions
