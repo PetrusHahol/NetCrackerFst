@@ -60,7 +60,7 @@ public  class Runer {
                         snd.AddNewStewardess();
                     }
                     if (tmp == 5 ){
-                        this.AddBrigade();
+                        snd.AddBrigade(fst);
                     }
                     if (tmp == 6){
                         snd.Info();
@@ -69,101 +69,6 @@ public  class Runer {
         }
     }
 
-
-    protected void AddBrigade(){
-        int pos = 0;
-        Brigades newBrigade = new Brigades();
-        for (Pilot iter:snd.getPilots())
-        {   pos++;
-            System.out.println(Integer.toString(pos)+" "+ iter);
-        }
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter numb first pilot");
-        int index_first_pilot = in.nextInt();
-
-        pos = 0;
-        for (Pilot iter:snd.getPilots())
-        {   pos++;
-            if (pos == index_first_pilot) {
-                 newBrigade.setFirstPilot(iter);
-            }
-        }
-
-        System.out.println("Enter numb second pilot");
-        int index_second_pilot = in.nextInt();
-        pos = 0;
-        for (Pilot iter:snd.getPilots())
-        {   pos++;
-            if (pos == index_second_pilot) {
-                newBrigade.setSecondPilot(iter);
-            }
-        }
-        pos = 0;
-
-        for (Stewardess iter:snd.getStewardess())
-        {   pos++;
-            System.out.println(Integer.toString(pos)+" "+ iter);
-        }
-        System.out.println("Enter numb stewardes");
-
-        int index_stewardes = in.nextInt();
-        pos = 0;
-
-        for (Stewardess iter:snd.getStewardess())
-        {   pos++;
-            if (pos == index_stewardes) {
-                newBrigade.setStewardes(iter);
-            }
-        }
-
-        pos = 0;
-        for (Navigator iter:snd.getNavigators())
-        {   pos++;
-            System.out.println(Integer.toString(pos)+" "+ iter);
-        }
-        System.out.println("Enter numb navigator");
-        int index_navigator = in.nextInt();
-        pos = 0;
-        for (Navigator iter:snd.getNavigators())
-        {   pos++;
-            if (pos == index_navigator) {
-                newBrigade.setNavigator(iter);
-            }
-        }
-
-        pos = 0;
-        for (Radiomen iter:snd.getRadiomens())
-        {   pos++;
-            System.out.println(Integer.toString(pos) + " " + iter);
-        }
-        System.out.println("Enter numb radiomen");
-        int index_radiomen = in.nextInt();
-        pos = 0;
-        for (Radiomen iter:snd.getRadiomens())
-        {   pos++;
-            if (pos == index_radiomen) {
-                newBrigade.setRadiomen(iter);
-            }
-        }
-        pos = 0;
-        for (Flight iter:fst.getFlights() )
-        {   pos++;
-            if (pos == index_radiomen) {
-                System.out.println(Integer.toString(pos) + " " + iter + "\n");
-            }
-        }
-        System.out.println("Enter flight index");
-        int indexObj = in.nextInt();
-
-        pos=0;
-        for (Flight iter:fst.getFlights() )
-        {   pos++;
-            if (pos == indexObj) {
-                newBrigade.setFlightsObject(iter);
-            }
-        }
-        snd.setBrigade(newBrigade);
-    }
 
 
 }
