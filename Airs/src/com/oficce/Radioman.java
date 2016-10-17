@@ -31,7 +31,8 @@ public class Radioman extends Employee {
     }
 
 
-     public String toString(){
+    @Override
+    public String toString(){
         return ("RADIOMEN Name " + name + " - Age - " + Integer.toString(age)
                 + " - Height - " + Integer.toString(height)
                 + " - Experience - " + Integer.toString(experience)
@@ -43,7 +44,8 @@ public class Radioman extends Employee {
         return this.countForeignLanguage;
     }
 
-     public int hashCode() {
+    @Override
+    public int hashCode() {
          final int PRIME = 43;
          int result = 1;
          int MOD = 1000000007;
@@ -64,6 +66,7 @@ public class Radioman extends Employee {
          return result;
      }
 
+    @Override
     public boolean equals(Object obj){
         if (this == obj) return true;
         if (obj == null) return false;

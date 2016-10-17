@@ -30,43 +30,7 @@ public abstract class Employee {
     public String getPassportData() {
         return this.passportData;
     }
-
-    public int hashCode() {
-        final int PRIME = 43;
-        int result = 1;
-        int MOD = 1000000007;
-
-        for (int i = 0; i < name.length(); i++){
-            result = PRIME * result + name.charAt(i);
-            result %= MOD;
-        }
-
-        for (int i = 0; i < passportData.length(); i++){
-            result = result * PRIME + passportData.charAt(i);
-            result %= MOD;
-        }
-        result = result * age+PRIME;
-        result = result * experience +PRIME;
-        result = result * height+PRIME;
-        return result;
-    }
-
-    public boolean equals(Object obj){
-        if (this == obj) return true;
-        if (obj == null) return false;
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        return true;
-    }
-
-    public String toString(){
-        return ("STEWARDESS Name " + name + " - Age - " + Integer.toString(age)
-                +" - Height - " + Integer.toString(height)
-                + " - Expirience - " + Integer.toString(experience)
-                + " - Pasport Data - " + passportData + "\n");
-    }
-
+    
     public void setName(String name) {
         this.name = name;
     }

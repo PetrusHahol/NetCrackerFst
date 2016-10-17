@@ -67,12 +67,14 @@ public class Brigades  {
         this.flightObject = flightObject;
     }
 
+    @Override
     public String toString(){
         return ("Brigade :" + "\t" + firstPilot + "\t"+ secondPilot
                 + "\t" + stewardess + "\t" + navigator + "\t" + radioman
                 + "\t" + flightObject + "\n\n\n");
     }
 
+    @Override
     public int hashCode() {
         int result = 0;
         result = firstPilot.hashCode() + secondPilot.hashCode() + stewardess.hashCode() + navigator.hashCode()
@@ -80,6 +82,7 @@ public class Brigades  {
         return result;
     }
 
+    @Override
     public boolean equals(Object obj){
         if (this == obj) return true;
         if (obj == null) return false;

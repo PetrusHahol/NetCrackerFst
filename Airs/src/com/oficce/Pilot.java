@@ -32,6 +32,7 @@ public class Pilot extends Employee {
         this.mileage = mileage;
     }
 
+    @Override
     public String toString(){
         return ("PILOT Name " + name + " - Age - " + Integer.toString(age)
                 + " - Height - " + Integer.toString(height)
@@ -45,6 +46,7 @@ public class Pilot extends Employee {
         return this.mileage;
     }
 
+    @Override
     public int hashCode() {
         final int PRIME = 43;
         int result = 1;
@@ -66,6 +68,7 @@ public class Pilot extends Employee {
         return result;
     }
 
+    @Override
     public boolean equals(Object obj){
         if (this == obj) return true; else
             if (obj == null) return false; else

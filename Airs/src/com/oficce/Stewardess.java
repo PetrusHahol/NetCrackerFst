@@ -31,6 +31,7 @@ public class Stewardess extends Employee {
         objectsCounter++;
     }
 
+    @Override
     public String toString(){
         return ("STEWARDESS Name " + name + " - Age - " + Integer.toString(age)
                 +" - Height - " + Integer.toString(height)
@@ -39,6 +40,7 @@ public class Stewardess extends Employee {
                 + " - LengthWaist - " + lengthWaist + "\n");
     }
 
+    @Override
     public int hashCode() {
         final int PRIME = 43;
         int result = 1;
@@ -59,6 +61,7 @@ public class Stewardess extends Employee {
         return result;
     }
 
+    @Override
     public boolean equals(Object obj){
         if (this == obj) return true;
         else

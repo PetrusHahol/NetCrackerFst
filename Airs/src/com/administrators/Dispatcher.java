@@ -32,26 +32,31 @@ public class Dispatcher implements DispatcherInterface {
         brigade.add(newBrigade);
     }
 
+    @Override
     public  void AddNewRadioman(String name, int age, int height, int experience
             , String passportData, int countForeignLanguage){
         radiomans.add(new Radioman(name, age, height, experience, passportData, countForeignLanguage));
     }
 
+    @Override
     public  void AddNewStewardess(String name, int age, int height, int experience
             , String passportData, int lengthWaist){
         stewardess.add(new Stewardess(name, age, height, experience, passportData, lengthWaist));
     }
 
+    @Override
     public  void AddNewNavigator(String name, int age, int height, int experience
             , String passportData, String category){
         navigators.add(new Navigator(name, age, height, experience, passportData, category));
     }
 
+    @Override
     public  void AddNewPilot(String name, int age, int height, int experience
             , String passportData, int mileage){
         pilots.add(new Pilot(name, age, height, experience, passportData, mileage));
     }
 
+    @Override
     public  void Info(){
 
         for (Radioman iter: radiomans){
@@ -113,6 +118,7 @@ public class Dispatcher implements DispatcherInterface {
 
 
 
+    @Override
     public int hashCode() {
         int result = 0;
         for (Brigades iter:brigade) {
@@ -137,6 +143,7 @@ public class Dispatcher implements DispatcherInterface {
         return result;
     }
 
+    @Override
     public boolean equals(Object obj){
         if (this == obj) return true;
         if (obj == null) return false;
