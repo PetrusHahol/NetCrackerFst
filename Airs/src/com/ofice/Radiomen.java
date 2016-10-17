@@ -25,11 +25,6 @@ public class Radiomen extends Employee {
         setCountForeignLenguage(countForeignLenguage);
     }
 
-     private void setCountForeignLenguage() {
-        System.out.println("Enter count foreign lenguage");
-        Scanner in = new Scanner(System.in);
-        this.countForeignLenguage = in.nextInt();
-     }
 
      public String toString(){
         return ("RADIOMEN Name " + name + " - Age - " + Integer.toString(age)
