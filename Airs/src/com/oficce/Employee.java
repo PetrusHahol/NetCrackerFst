@@ -9,12 +9,8 @@ public abstract class Employee {
     protected int age;
     protected int height;
     protected int experience;
-    protected String pasportData;
-    private static int objectsCounter;
+    protected String passportData;
 
-    public Employee(){
-        objectsCounter++;
-    }
     public String getName() {
         return this.name;
     }
@@ -31,8 +27,8 @@ public abstract class Employee {
         return this.experience;
     }
 
-    public String getPasportData() {
-        return this.pasportData;
+    public String getPassportData() {
+        return this.passportData;
     }
 
     public int hashCode() {
@@ -45,8 +41,8 @@ public abstract class Employee {
             result %= MOD;
         }
 
-        for (int i = 0; i < pasportData.length(); i++){
-            result = result * PRIME + pasportData.charAt(i);
+        for (int i = 0; i < passportData.length(); i++){
+            result = result * PRIME + passportData.charAt(i);
             result %= MOD;
         }
         result = result * age+PRIME;
@@ -68,7 +64,7 @@ public abstract class Employee {
         return ("STEWARDESS Name " + name + " - Age - " + Integer.toString(age)
                 +" - Height - " + Integer.toString(height)
                 + " - Expirience - " + Integer.toString(experience)
-                + " - Pasport Data - " + pasportData + "\n");
+                + " - Pasport Data - " + passportData + "\n");
     }
 
     public void setName(String name) {
@@ -87,7 +83,7 @@ public abstract class Employee {
         this.experience = experience;
     }
 
-    public void setPasportData(String pasportData) {
-        this.pasportData = pasportData;
+    public void setPassportData(String passportData) {
+        this.passportData = passportData;
     }
 }

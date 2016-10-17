@@ -9,8 +9,8 @@ public class Brigades  {
 
     private Pilot firstPilot;
     private Pilot secondPilot;
-    private Stewardess stewardes;
-    private Radiomen radiomen;
+    private Stewardess stewardess;
+    private Radioman radioman;
     private Navigator navigator ;
     private Flight flightObject;
 
@@ -27,12 +27,12 @@ public class Brigades  {
         return this.secondPilot;
     }
 
-    public Stewardess getStewardes(){
-        return this.stewardes;
+    public Stewardess getStewardess(){
+        return this.stewardess;
     }
 
-    public Radiomen getRadiomen(){
-        return this.radiomen;
+    public Radioman getRadioman(){
+        return this.radioman;
     }
 
     public Navigator getNavigator(){
@@ -51,12 +51,12 @@ public class Brigades  {
         this.secondPilot = secondPilot;
     }
 
-    public void setStewardes(Stewardess stewardes){
-        this.stewardes = stewardes;
+    public void setStewardess(Stewardess stewardess){
+        this.stewardess = stewardess;
     }
 
-    public void setRadiomen(Radiomen radiomen){
-        this.radiomen = radiomen;
+    public void setRadioman(Radioman radioman){
+        this.radioman = radioman;
     }
 
     public void setNavigator(Navigator navigator){
@@ -69,14 +69,14 @@ public class Brigades  {
 
     public String toString(){
         return ("Brigade :" + "\t" + firstPilot + "\t"+ secondPilot
-                + "\t" + stewardes + "\t" + navigator + "\t" + radiomen
+                + "\t" + stewardess + "\t" + navigator + "\t" + radioman
                 + "\t" + flightObject + "\n\n\n");
     }
 
     public int hashCode() {
         int result = 0;
-        result = firstPilot.hashCode() + secondPilot.hashCode() + stewardes.hashCode() + navigator.hashCode()
-                     + flightObject.hashCode() + radiomen.hashCode();
+        result = firstPilot.hashCode() + secondPilot.hashCode() + stewardess.hashCode() + navigator.hashCode()
+                     + flightObject.hashCode() + radioman.hashCode();
         return result;
     }
 

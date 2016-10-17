@@ -19,7 +19,7 @@ public class Navigator extends Employee {
 
         setExperience(expirience);
 
-        setPasportData(pasportData);
+        setPassportData(pasportData);
 
         setCategory(category);
 
@@ -29,8 +29,8 @@ public class Navigator extends Employee {
     public String toString(){
         return ("NAVIGATOR Name " + name + " - Age - " + Integer.toString(age)
                 + " - Height - " + Integer.toString(height)
-                + " - Expirience - " + Integer.toString(experience)
-                + " - Pasport Data - " + pasportData
+                + " - Experience - " + Integer.toString(experience)
+                + " - Passport Data - " + passportData
                 + " - Category - " + category + "\n");
     }
 
@@ -46,8 +46,8 @@ public class Navigator extends Employee {
             result %= MOD;
         }
 
-        for (int i = 0; i < pasportData.length(); i++){
-            result = result * PRIME + pasportData.charAt(i);
+        for (int i = 0; i < passportData.length(); i++){
+            result = result * PRIME + passportData.charAt(i);
             result %= MOD;
         }
         for (int i = 0; i < category.length(); i++){
@@ -62,10 +62,12 @@ public class Navigator extends Employee {
 
     public boolean equals(Object obj){
         if (this == obj) return true;
-        if (obj == null) return false;
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
+        else
+            if (obj == null) return false;
+            else
+                if (getClass() != obj.getClass()) {
+                    return false;
+                }
         return true;
     }
 

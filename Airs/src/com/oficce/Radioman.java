@@ -3,17 +3,17 @@ package com.oficce;
 /**
  * Created by Asus on 14.10.2016.
  */
-public class Radiomen extends Employee {
+public class Radioman extends Employee {
 
-    private int countForeignLenguage;
+    private int countForeignLanguage;
     private static int objectsCounter;
 
-    public Radiomen(){
+    public Radioman(){
         objectsCounter++;
     }
 
-    public Radiomen(String name, int age, int height, int expirience
-                   , String pasportData, int countForeignLenguage){
+    public Radioman(String name, int age, int height, int experience
+                   , String passportData, int countForeignLanguage){
 
         setAge(age);
 
@@ -21,11 +21,11 @@ public class Radiomen extends Employee {
 
         setHeight(height);
 
-        setExperience(expirience);
+        setExperience(experience);
 
-        setPasportData(pasportData);
+        setPassportData(passportData);
 
-        setCountForeignLenguage(countForeignLenguage);
+        setCountForeignLanguage(countForeignLanguage);
 
         objectsCounter++;
     }
@@ -34,13 +34,13 @@ public class Radiomen extends Employee {
      public String toString(){
         return ("RADIOMEN Name " + name + " - Age - " + Integer.toString(age)
                 + " - Height - " + Integer.toString(height)
-                + " - Expirience - " + Integer.toString(experience)
-                + " - Pasport Data - " + pasportData
-                + " - Count Foreign Lenguage - " + countForeignLenguage + "\n");
+                + " - Experience - " + Integer.toString(experience)
+                + " - Passport Data - " + passportData
+                + " - Count Foreign Language - " + countForeignLanguage + "\n");
      }
 
-     public int getCountForeignLenguage() {
-        return this.countForeignLenguage;
+     public int getCountForeignLanguage() {
+        return this.countForeignLanguage;
     }
 
      public int hashCode() {
@@ -53,14 +53,14 @@ public class Radiomen extends Employee {
              result %= MOD;
          }
 
-         for (int i = 0; i < pasportData.length(); i++){
-             result = result * PRIME + pasportData.charAt(i);
+         for (int i = 0; i < passportData.length(); i++){
+             result = result * PRIME + passportData.charAt(i);
              result %= MOD;
          }
          result = result * age+PRIME;
          result = result * experience +PRIME;
          result = result * height+PRIME;
-         result = result * countForeignLenguage+PRIME;
+         result = result * countForeignLanguage +PRIME;
          return result;
      }
 
@@ -73,7 +73,7 @@ public class Radiomen extends Employee {
         return true;
     }
 
-    public void setCountForeignLenguage(int countForeignLenguage) {
-        this.countForeignLenguage = countForeignLenguage;
+    public void setCountForeignLanguage(int countForeignLanguage) {
+        this.countForeignLanguage = countForeignLanguage;
     }
 }

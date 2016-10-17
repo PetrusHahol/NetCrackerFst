@@ -58,7 +58,7 @@ public  class Menu {
                     if (tmp == 1) {
                         System.out.println(" Enter number:\n1 - Add new pilot\n2 - Add new radiomen"
                                 + "\n3 - Add new navigator"
-                                + "\n4 - Add new Stewardess\n-1 - Exit");
+                                + "\n4 - Add new stewardess\n-1 - Exit");
 
                         tmp = input.nextInt();
                         input.nextLine();
@@ -68,32 +68,32 @@ public  class Menu {
                         int age = input.nextInt();
                         System.out.println("Enter Height");
                         int height = input.nextInt();
-                        System.out.println("Enter Expirience");
-                        int expirience = input.nextInt();
+                        System.out.println("Enter Experience");
+                        int experience = input.nextInt();
                         input.nextLine();
-                        System.out.println("Enter Pasport Data");
-                        String pasoprtData = input.nextLine();
+                        System.out.println("Enter Passport Data");
+                        String pasportData = input.nextLine();
 
                         if (tmp == 1) {
                             System.out.println("Enter mileage");
                             int mileage = input.nextInt();
-                            dispatcher.AddNewPilot(name, age, height, expirience, pasoprtData, mileage);
+                            dispatcher.AddNewPilot(name, age, height, experience, pasportData, mileage);
                         }
                         if (tmp == 2) {
-                            System.out.println("Enter count foreign lenguage");
-                            int countForeignLenguage = input.nextInt();
-                            dispatcher.AddNewRadioman(name, age, height, expirience, pasoprtData, countForeignLenguage);
+                            System.out.println("Enter count foreign language");
+                            int countForeignLanguage = input.nextInt();
+                            dispatcher.AddNewRadioman(name, age, height, experience, pasportData, countForeignLanguage);
                         }
                         if (tmp == 3) {
                             System.out.println("Enter category");
                             input.nextLine();
                             String category = input.nextLine();
-                            dispatcher.AddNewNavigator(name, age, height, expirience, pasoprtData, category);
+                            dispatcher.AddNewNavigator(name, age, height, experience, pasportData, category);
                         }
                         if (tmp == 4) {
                             System.out.println("Enter length waist");
                             int lengthWaist = input.nextInt();
-                            dispatcher.AddNewStewardess(name, age, height, expirience, pasoprtData, lengthWaist);
+                            dispatcher.AddNewStewardess(name, age, height, experience, pasportData, lengthWaist);
                         }
                     }
                     if (tmp == 3) {
@@ -105,8 +105,5 @@ public  class Menu {
                 }
         }
     }
-
-
-
 }
 

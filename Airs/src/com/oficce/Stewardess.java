@@ -13,8 +13,8 @@ public class Stewardess extends Employee {
         objectsCounter++;
     }
 
-    public Stewardess(String name, int age, int height, int expirience
-            , String pasportData, int lengthWaist){
+    public Stewardess(String name, int age, int height, int experience
+            , String passportData, int lengthWaist){
 
         setAge(age);
 
@@ -22,9 +22,9 @@ public class Stewardess extends Employee {
 
         setHeight(height);
 
-        setExperience(expirience);
+        setExperience(experience);
 
-        setPasportData(pasportData);
+        setPassportData(passportData);
 
         setLengthWaist(lengthWaist);
 
@@ -34,8 +34,8 @@ public class Stewardess extends Employee {
     public String toString(){
         return ("STEWARDESS Name " + name + " - Age - " + Integer.toString(age)
                 +" - Height - " + Integer.toString(height)
-                + " - Expirience - " + Integer.toString(experience)
-                + " - Pasport Data - " + pasportData
+                + " - Experience - " + Integer.toString(experience)
+                + " - Passport Data - " + passportData
                 + " - LengthWaist - " + lengthWaist + "\n");
     }
 
@@ -49,8 +49,8 @@ public class Stewardess extends Employee {
             result %= MOD;
         }
 
-        for (int i = 0; i < pasportData.length(); i++){
-            result = result * PRIME + pasportData.charAt(i);
+        for (int i = 0; i < passportData.length(); i++){
+            result = result * PRIME + passportData.charAt(i);
             result %= MOD;
         }
         result = result * age+PRIME;

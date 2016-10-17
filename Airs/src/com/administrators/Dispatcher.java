@@ -4,7 +4,7 @@ import com.flights.Flight;
 import com.oficce.*;
 import com.oficce.Navigator;
 import com.oficce.Pilot;
-import com.oficce.Radiomen;
+import com.oficce.Radioman;
 import com.oficce.Stewardess;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class Dispatcher  {
 
     private List<Brigades> brigade = new ArrayList<Brigades>();
-    private List<Radiomen> radiomens = new ArrayList<Radiomen>();
+    private List<Radioman> radiomans = new ArrayList<Radioman>();
     private List<Pilot> pilots = new ArrayList<Pilot>();
     private List<Stewardess> stewardess = new ArrayList<Stewardess>();
     private List<Navigator> navigators = new ArrayList<Navigator>();
@@ -31,29 +31,29 @@ public class Dispatcher  {
         brigade.add(newBrigade);
     }
 
-    public  void AddNewRadioman(String name, int age, int height, int expirience
-            , String pasoprtData, int countForeignLenguage){
-        radiomens.add(new Radiomen(name, age, height, expirience, pasoprtData, countForeignLenguage));
+    public  void AddNewRadioman(String name, int age, int height, int experience
+            , String passportData, int countForeignLanguage){
+        radiomans.add(new Radioman(name, age, height, experience, passportData, countForeignLanguage));
     }
 
-    public  void AddNewStewardess(String name, int age, int height, int expirience
-            , String pasoprtData, int lengthWaist){
-        stewardess.add(new Stewardess(name, age, height, expirience, pasoprtData, lengthWaist));
+    public  void AddNewStewardess(String name, int age, int height, int experience
+            , String passportData, int lengthWaist){
+        stewardess.add(new Stewardess(name, age, height, experience, passportData, lengthWaist));
     }
 
-    public  void AddNewNavigator(String name, int age, int height, int expirience
-            , String pasoprtData, String category){
-        navigators.add(new Navigator(name, age, height, expirience, pasoprtData, category));
+    public  void AddNewNavigator(String name, int age, int height, int experience
+            , String passportData, String category){
+        navigators.add(new Navigator(name, age, height, experience, passportData, category));
     }
 
-    public  void AddNewPilot(String name, int age, int height, int expirience
-            , String pasoprtData, int mileage){
-        pilots.add(new Pilot(name, age, height, expirience, pasoprtData, mileage));
+    public  void AddNewPilot(String name, int age, int height, int experience
+            , String passportData, int mileage){
+        pilots.add(new Pilot(name, age, height, experience, passportData, mileage));
     }
 
     public  void Info(){
 
-        for (Radiomen iter:radiomens){
+        for (Radioman iter: radiomans){
             System.out.print(iter);
         }
 
@@ -78,8 +78,8 @@ public class Dispatcher  {
         return brigade;
     }
 
-    public List<Radiomen> getRadiomens() {
-        return radiomens;
+    public List<Radioman> getRadiomans() {
+        return radiomans;
     }
 
     public List<Pilot> getPilots() {
@@ -94,8 +94,8 @@ public class Dispatcher  {
         return navigators;
     }
 
-    public void setRadiomens(List<Radiomen> radiomens) {
-        this.radiomens = radiomens;
+    public void setRadiomans(List<Radioman> radiomen) {
+        this.radiomans = radiomen;
     }
 
     public void setPilots(List<Pilot> pilots) {
@@ -130,7 +130,7 @@ public class Dispatcher  {
             result += iter.hashCode();
         }
 
-        for (Radiomen iter:radiomens) {
+        for (Radioman iter: radiomans) {
             result += iter.hashCode();
         }
         return result;
@@ -179,15 +179,15 @@ public class Dispatcher  {
         {   pos++;
             System.out.println(Integer.toString(pos)+" "+ iter);
         }
-        System.out.println("Enter numb stewardes");
+        System.out.println("Enter numb stewardess");
 
-        int index_stewardes = in.nextInt();
+        int index_stewardess = in.nextInt();
         pos = 0;
 
         for (Stewardess iter:getStewardess())
         {   pos++;
-            if (pos == index_stewardes) {
-                newBrigade.setStewardes(iter);
+            if (pos == index_stewardess) {
+                newBrigade.setStewardess(iter);
             }
         }
 
@@ -207,23 +207,23 @@ public class Dispatcher  {
         }
 
         pos = 0;
-        for (Radiomen iter:getRadiomens())
+        for (Radioman iter: getRadiomans())
         {   pos++;
             System.out.println(Integer.toString(pos) + " " + iter);
         }
         System.out.println("Enter numb radiomen");
-        int index_radiomen = in.nextInt();
+        int index_radioman = in.nextInt();
         pos = 0;
-        for (Radiomen iter:getRadiomens())
+        for (Radioman iter: getRadiomans())
         {   pos++;
-            if (pos == index_radiomen) {
-                newBrigade.setRadiomen(iter);
+            if (pos == index_radioman) {
+                newBrigade.setRadioman(iter);
             }
         }
         pos = 0;
         for (Flight iter:fst.getFlights() )
         {   pos++;
-            if (pos == index_radiomen) {
+            if (pos == index_radioman) {
                 System.out.println(Integer.toString(pos) + " " + iter + "\n");
             }
         }
