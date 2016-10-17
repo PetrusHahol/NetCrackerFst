@@ -17,39 +17,16 @@ public class Admin {
         return flights;
     }
 
-    public  void AddFlight(){
-        Scanner in = new Scanner(System.in);
-
-        System.out.println("AddNewFlite");
-        System.out.println("From");
-        String namefrom = in.nextLine();
-        System.out.println("To");
-        String nameto = in.nextLine();
-        System.out.println("date");
-        String namedate = in.nextLine();
-
-        Flight tmp = new Flight(namefrom,nameto,namedate);
-
-        flights.add(tmp);
-        System.out.println(tmp+" was added");
+    public  void AddFlight(String from, String to, String date){
+        flights.add(new Flight(from,to,date));
     }
 
-    public  void DeleteFlight(){
-        Scanner in = new Scanner(System.in);
+    public  void DeleteFlight(String from, String to, String date){
 
-        System.out.println("AddNewFlite");
-        System.out.println("From");
-        String namefrom = in.nextLine();
-        System.out.println("To");
-        String nameto = in.nextLine();
-        System.out.println("date");
-        String namedate = in.nextLine();
-
-        Flight tmp = new Flight(namefrom,nameto,namedate);
+        Flight tmp = new Flight(from, to, date);
         int pos = -1,delete_pos=-1;
-
         for (Flight iter:flights) {
-            if (tmp.equels((iter))){
+            if (tmp.equals((iter))){
                 pos++;
                 delete_pos=pos;
             }
@@ -57,7 +34,6 @@ public class Admin {
         if (delete_pos!=-1){
             flights.remove(delete_pos);
         }
-
     }
 
     public  void Info(){
@@ -78,7 +54,7 @@ public class Admin {
         return result;
     }
 
-    public boolean equels(Object obj){
+    public boolean equals(Object obj){
         if (this == obj) return true;
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;

@@ -2,11 +2,10 @@ package com.administrators;
 
 import com.flights.Flight;
 import com.ofice.*;
-import com.ofice.personality.profesions.Navigator;
-import com.ofice.personality.profesions.Pilot;
-import com.ofice.personality.profesions.Radiomen;
-import com.ofice.personality.profesions.Stewardess;
-import com.sun.deploy.panel.AdvancedNetworkSettingsDialog;
+import com.ofice.Navigator;
+import com.ofice.Pilot;
+import com.ofice.Radiomen;
+import com.ofice.Stewardess;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,24 +23,29 @@ public class Dispatcher  {
     private List<Navigator> navigators = new ArrayList<Navigator>();
 
 
-    public void setBrigade(Brigades newBrigade){
+
+    public  void setBrigade(Brigades newBrigade){
         brigade.add(newBrigade);
     }
 
-    public  void AddNewRadioman(){
-        radiomens.add(new Radiomen());
+    public  void AddNewRadioman(String name, int age, int height, int expirience
+            , String pasoprtData, int countForeignLenguage){
+        radiomens.add(new Radiomen(name, age, height, expirience, pasoprtData, countForeignLenguage));
     }
 
-    public  void AddNewStewardess(){
-        stewardess.add(new Stewardess());
+    public  void AddNewStewardess(String name, int age, int height, int expirience
+            , String pasoprtData, int lengthWaist){
+        stewardess.add(new Stewardess(name, age, height, expirience, pasoprtData, lengthWaist));
     }
 
-    public  void AddNewNavigator(){
-        navigators.add(new Navigator());
+    public  void AddNewNavigator(String name, int age, int height, int expirience
+            , String pasoprtData, String category){
+        navigators.add(new Navigator(name, age, height, expirience, pasoprtData, category));
     }
 
-    public  void AddNewPilot(){
-        pilots.add(new Pilot());
+    public  void AddNewPilot(String name, int age, int height, int expirience
+            , String pasoprtData, int mileage){
+        pilots.add(new Pilot(name, age, height, expirience, pasoprtData, mileage));
     }
 
     public  void Info(){
@@ -129,7 +133,7 @@ public class Dispatcher  {
         return result;
     }
 
-    public boolean equels(Object obj){
+    public boolean equals(Object obj){
         if (this == obj) return true;
         if (obj == null) return false;
         if (getClass() != obj.getClass()) {

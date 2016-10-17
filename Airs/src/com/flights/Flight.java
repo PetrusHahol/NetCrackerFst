@@ -64,11 +64,10 @@ public class Flight {
             result %= MOD;
 
         }
-
         return result;
     }
 
-    public boolean equels(Object obj){
+    public boolean equals(Object obj){
 
         System.out.println(this);
         if (this == obj) return true;
@@ -91,13 +90,11 @@ public class Flight {
                 return false;
             }
         }
-
         for (int i = 0; i < date.length(); i++){
             if (temper.date.charAt(i) != this.date.charAt(i)){
                 return false;
             }
         }
-
         return true;
     }
 }

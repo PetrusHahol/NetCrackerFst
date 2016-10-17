@@ -1,41 +1,33 @@
-package com.ofice.personality.profesions;
-
-import com.ofice.personality.Employ;
-
-import java.util.Scanner;
+package com.ofice;
 
 /**
  * Created by Asus on 14.10.2016.
  */
-public class Navigator extends Employ {
+public class Navigator extends Employee {
 
     private String category;
 
-    public Navigator(){
-        setAge();
+    public Navigator(String name, int age, int height, int expirience
+            , String pasportData, String category){
 
-        setName();
+        setAge(age);
 
-        setHeight();
+        setName(name);
 
-        setExperience();
+        setHeight(height);
 
-        setPasportData();
+        setExperience(expirience);
 
-        setCategory();
-    }
+        setPasportData(pasportData);
 
-    private void setCategory() {
-        System.out.println("Add Category");
-        Scanner in = new Scanner(System.in);
-        this.category = in.nextLine();
+        setCategory(category);
     }
 
     public String toString(){
         return ("NAVIGATOR Name " + name + " - Age - " + Integer.toString(age)
                 + " - Height - " + Integer.toString(height)
-                + " - Expirience - " + Integer.toString(expirience)
-                + " - Pasport Data - " + pasporData
+                + " - Expirience - " + Integer.toString(experience)
+                + " - Pasport Data - " + pasportData
                 + " - Category - " + category + "\n");
     }
 
@@ -51,8 +43,8 @@ public class Navigator extends Employ {
             result %= MOD;
         }
 
-        for (int i = 0; i < pasporData.length(); i++){
-            result = result * PRIME + pasporData.charAt(i);
+        for (int i = 0; i < pasportData.length(); i++){
+            result = result * PRIME + pasportData.charAt(i);
             result %= MOD;
         }
         for (int i = 0; i < category.length(); i++){
@@ -60,12 +52,12 @@ public class Navigator extends Employ {
             result %= MOD;
         }
         result = result * age+PRIME;
-        result = result * expirience+PRIME;
+        result = result * experience +PRIME;
         result = result * height+PRIME;
         return result;
     }
 
-    public boolean equels(Object obj){
+    public boolean equals(Object obj){
         if (this == obj) return true;
         if (obj == null) return false;
         if (getClass() != obj.getClass()) {
@@ -76,5 +68,9 @@ public class Navigator extends Employ {
 
     public String getCategory() {
         return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

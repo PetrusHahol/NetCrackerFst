@@ -1,10 +1,6 @@
 package com.ofice;
 
 import com.flights.Flight;
-import com.ofice.personality.profesions.Navigator;
-import com.ofice.personality.profesions.Pilot;
-import com.ofice.personality.profesions.Radiomen;
-import com.ofice.personality.profesions.Stewardess;
 
 /**
  * Created by Asus on 14.10.2016.
@@ -79,7 +75,7 @@ public class Brigades  {
         return result;
     }
 
-    public boolean equels(Object obj){
+    public boolean equals(Object obj){
         if (this == obj) return true;
         if (obj == null) return false;
         if (getClass() != obj.getClass()) {

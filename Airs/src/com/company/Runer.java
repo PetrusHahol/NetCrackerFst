@@ -2,12 +2,6 @@ package com.company;
 
 import com.administrators.Admin;
 import com.administrators.Dispatcher;
-import com.flights.Flight;
-import com.ofice.*;
-import com.ofice.personality.profesions.Navigator;
-import com.ofice.personality.profesions.Pilot;
-import com.ofice.personality.profesions.Radiomen;
-import com.ofice.personality.profesions.Stewardess;
 
 import java.util.Scanner;
 
@@ -16,8 +10,8 @@ import java.util.Scanner;
  */
 public  class Runer {
 
-    private Admin fst = new Admin();
-    private Dispatcher snd = new Dispatcher();
+    private Admin admin = new Admin();
+    private Dispatcher dispatcher = new Dispatcher();
 
     public Runer()
     {   int tmp = 0;
@@ -33,37 +27,80 @@ public  class Runer {
                                    +"2 - Delete flight\n3 - Info\n-1 - Exit");
                 tmp = input.nextInt();
                 if (tmp == 1) {
-                    fst.AddFlight();
+                    Scanner in = new Scanner(System.in);
+                    System.out.println("AddNewFlite");
+                    System.out.println("From");
+                    String from = in.nextLine();
+                    System.out.println("To");
+                    String to = in.nextLine();
+                    System.out.println("date");
+                    String date = in.nextLine();
+                    admin.AddFlight(from, to, date);
                 }
                 if (tmp == 2){
-                    fst.DeleteFlight();
+                    Scanner in = new Scanner(System.in);
+                    System.out.println("AddNewFlite");
+                    System.out.println("From");
+                    String from = in.nextLine();
+                    System.out.println("To");
+                    String to = in.nextLine();
+                    System.out.println("date");
+                    String date = in.nextLine();
+                    admin.DeleteFlight(from, to , date);
                 }
                 if (tmp == 3) {
-                    fst.Info();
+                    admin.Info();
                 }
             } else
-                if (tmp == 2){
-                    System.out.println(" Enter number:\n1 - Add new pilot\n2 - "
-                                       +"Add new Radiomen\n3 - Add new Navigator\n4 - "
-                                       +"Add new Stewardess\n5- Add new brigade\n6 - Info\n-1 - Exit");
+                if (tmp == 2) {
+                    System.out.println(" Enter number:\n1 - Add new employee\n2 - Add new brigade\n3 - Info\n-1 - Exit");
                     tmp = input.nextInt();
-                    if (tmp == 1){
-                        snd.AddNewPilot();
+                    if (tmp == 1) {
+                        System.out.println(" Enter number:\n1 - Add new pilot\n2 - Add new radiomen"
+                                + "\n3 - Add new navigator"
+                                + "\n4 - Add new Stewardess\n-1 - Exit");
+
+                        tmp = input.nextInt();
+                        input.nextLine();
+                        System.out.println("Enter name");
+                        String name = input.nextLine();
+                        System.out.println("Enter age");
+                        int age = input.nextInt();
+                        System.out.println("Enter Height");
+                        int height = input.nextInt();
+                        System.out.println("Enter Expirience");
+                        int expirience = input.nextInt();
+                        input.nextLine();
+                        System.out.println("Enter Pasport Data");
+                        String pasoprtData = input.nextLine();
+
+                        if (tmp == 1) {
+                            System.out.println("Enter mileage");
+                            int mileage = input.nextInt();
+                            dispatcher.AddNewPilot(name, age, height, expirience, pasoprtData, mileage);
+                        }
+                        if (tmp == 2) {
+                            System.out.println("Enter count foreign lenguage");
+                            int countForeignLenguage = input.nextInt();
+                            dispatcher.AddNewRadioman(name, age, height, expirience, pasoprtData, countForeignLenguage);
+                        }
+                        if (tmp == 3) {
+                            System.out.println("Enter category");
+                            input.nextLine();
+                            String category = input.nextLine();
+                            dispatcher.AddNewNavigator(name, age, height, expirience, pasoprtData, category);
+                        }
+                        if (tmp == 4) {
+                            System.out.println("Enter length waist");
+                            int lengthWaist = input.nextInt();
+                            dispatcher.AddNewStewardess(name, age, height, expirience, pasoprtData, lengthWaist);
+                        }
+                    }
+                    if (tmp == 3) {
+                        dispatcher.Info();
                     }
                     if (tmp == 2 ){
-                        snd.AddNewRadioman();
-                    }
-                    if (tmp == 3){
-                        snd.AddNewNavigator();
-                    }
-                    if (tmp == 4){
-                        snd.AddNewStewardess();
-                    }
-                    if (tmp == 5 ){
-                        snd.AddBrigade(fst);
-                    }
-                    if (tmp == 6){
-                        snd.Info();
+                        dispatcher.AddBrigade(admin);
                     }
                 }
         }
