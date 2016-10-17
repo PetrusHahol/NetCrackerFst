@@ -1,5 +1,6 @@
 package com.administrators;
 
+import com.Interface.DispatcherInterface;
 import com.flights.Flight;
 import com.oficce.*;
 import com.oficce.Navigator;
@@ -14,7 +15,7 @@ import java.util.Scanner;
 /**
  * Created by Asus on 14.10.2016.
  */
-public class Dispatcher  {
+public class Dispatcher implements DispatcherInterface {
 
     private List<Brigades> brigade = new ArrayList<Brigades>();
     private List<Radioman> radiomans = new ArrayList<Radioman>();
