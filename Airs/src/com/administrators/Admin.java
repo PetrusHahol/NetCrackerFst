@@ -10,11 +10,15 @@ import com.flights.Flight;
  * Created by Asus on 13.10.2016.
  */
 public class Admin {
+    private static int objectsCounter;
 
     private static List<Flight> flights= new ArrayList<Flight>();
-
     public List<Flight> getFlights(){
         return flights;
+    }
+
+    public Admin(){
+        objectsCounter++;
     }
 
     public  void AddFlight(String from, String to, String date){

@@ -1,4 +1,4 @@
-package com.ofice;
+package com.oficce;
 
 /**
  * Created by Asus on 14.10.2016.
@@ -6,6 +6,12 @@ package com.ofice;
 public class Stewardess extends Employee {
 
     private int lengthWaist;
+
+    private static int objectsCounter;
+
+    public Stewardess(){
+        objectsCounter++;
+    }
 
     public Stewardess(String name, int age, int height, int expirience
             , String pasportData, int lengthWaist){
@@ -21,6 +27,8 @@ public class Stewardess extends Employee {
         setPasportData(pasportData);
 
         setLengthWaist(lengthWaist);
+
+        objectsCounter++;
     }
 
     public String toString(){
@@ -53,10 +61,10 @@ public class Stewardess extends Employee {
 
     public boolean equals(Object obj){
         if (this == obj) return true;
-        if (obj == null) return false;
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
+        else
+            if (obj == null) return false;
+            else
+                if (getClass() != obj.getClass());
         return true;
     }
 

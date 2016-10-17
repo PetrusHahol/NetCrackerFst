@@ -1,4 +1,4 @@
-package com.ofice;
+package com.oficce;
 
 /**
  * Created by Asus on 16.10.2016.
@@ -10,7 +10,11 @@ public class Employee {
     protected int height;
     protected int experience;
     protected String pasportData;
+    private static int objectsCounter;
 
+    public Employee(){
+        objectsCounter++;
+    }
     public String getName() {
         return this.name;
     }

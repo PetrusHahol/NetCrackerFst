@@ -1,18 +1,15 @@
-package com.ofice;
+package com.oficce;
 
 /**
  * Created by Asus on 14.10.2016.
  */
-public class Pilot extends Employee {
+public class Navigator extends Employee {
 
-    public void setMileage(int mileage) {
-        this.mileage = mileage;
-    }
+    private String category;
+    private static int objectsCounter;
 
-    private int mileage;
-
-    public Pilot(String name, int age, int height, int expirience
-            , String pasportData, int mileage){
+    public Navigator(String name, int age, int height, int expirience
+            , String pasportData, String category){
 
         setAge(age);
 
@@ -24,24 +21,20 @@ public class Pilot extends Employee {
 
         setPasportData(pasportData);
 
-        setMileage(mileage);
+        setCategory(category);
+
+        objectsCounter++;
     }
 
-
-
-
     public String toString(){
-        return ("PILOT Name " + name + " - Age - " + Integer.toString(age)
+        return ("NAVIGATOR Name " + name + " - Age - " + Integer.toString(age)
                 + " - Height - " + Integer.toString(height)
                 + " - Expirience - " + Integer.toString(experience)
                 + " - Pasport Data - " + pasportData
-                + " - Mileage - " + Integer.toString(mileage) + "\n");
+                + " - Category - " + category + "\n");
     }
 
 
-    public int getMileage() {
-        return this.mileage;
-    }
 
     public int hashCode() {
         final int PRIME = 43;
@@ -57,10 +50,13 @@ public class Pilot extends Employee {
             result = result * PRIME + pasportData.charAt(i);
             result %= MOD;
         }
+        for (int i = 0; i < category.length(); i++){
+            result = result * PRIME + category.charAt(i);
+            result %= MOD;
+        }
         result = result * age+PRIME;
         result = result * experience +PRIME;
         result = result * height+PRIME;
-        result = result * mileage+PRIME;
         return result;
     }
 
@@ -71,5 +67,13 @@ public class Pilot extends Employee {
             return false;
         }
         return true;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

@@ -1,4 +1,4 @@
-package com.ofice;
+package com.oficce;
 
 import com.flights.Flight;
 
@@ -7,19 +7,24 @@ import com.flights.Flight;
  */
 public class Brigades  {
 
-    private Pilot firstpilot;
-    private Pilot secondpilot;
+    private Pilot firstPilot;
+    private Pilot secondPilot;
     private Stewardess stewardes;
     private Radiomen radiomen;
     private Navigator navigator ;
     private Flight flightObject;
 
+    private static int objectsCounter;
+
+    public Brigades(){
+        objectsCounter++;
+    }
     public Pilot getFirstPilot(){
-        return this.firstpilot;
+        return this.firstPilot;
     }
 
     public Pilot getSecondPilot(){
-        return this.secondpilot;
+        return this.secondPilot;
     }
 
     public Stewardess getStewardes(){
@@ -38,12 +43,12 @@ public class Brigades  {
         return this.flightObject;
     }
 
-    public void setFirstPilot(Pilot firstpilot){
-        this.firstpilot = firstpilot;
+    public void setFirstPilot(Pilot firstPilot){
+        this.firstPilot = firstPilot;
     }
 
-    public void setSecondPilot(Pilot secondpilot){
-        this.secondpilot = secondpilot;
+    public void setSecondPilot(Pilot secondPilot){
+        this.secondPilot = secondPilot;
     }
 
     public void setStewardes(Stewardess stewardes){
@@ -58,19 +63,19 @@ public class Brigades  {
         this.navigator = navigator;
     }
 
-    public void setFlightsObject(Flight flightobject){
-        this.flightObject =  flightobject;
+    public void setFlightsObject(Flight flightObject){
+        this.flightObject = flightObject;
     }
 
     public String toString(){
-        return ("Brigade :" + "\t" + firstpilot + "\t"+secondpilot
+        return ("Brigade :" + "\t" + firstPilot + "\t"+ secondPilot
                 + "\t" + stewardes + "\t" + navigator + "\t" + radiomen
                 + "\t" + flightObject + "\n\n\n");
     }
 
     public int hashCode() {
         int result = 0;
-        result = firstpilot.hashCode() + secondpilot.hashCode() + stewardes.hashCode() + navigator.hashCode()
+        result = firstPilot.hashCode() + secondPilot.hashCode() + stewardes.hashCode() + navigator.hashCode()
                      + flightObject.hashCode() + radiomen.hashCode();
         return result;
     }

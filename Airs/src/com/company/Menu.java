@@ -8,12 +8,12 @@ import java.util.Scanner;
 /**
  * Created by Asus on 14.10.2016.
  */
-public  class Runer {
+public  class Menu {
 
     private Admin admin = new Admin();
     private Dispatcher dispatcher = new Dispatcher();
 
-    public Runer()
+    public Menu()
     {   int tmp = 0;
         Scanner input = new Scanner(System.in);
 

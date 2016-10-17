@@ -1,6 +1,4 @@
-package com.ofice;
-
-import java.util.Scanner;
+package com.oficce;
 
 /**
  * Created by Asus on 14.10.2016.
@@ -8,6 +6,11 @@ import java.util.Scanner;
 public class Radiomen extends Employee {
 
     private int countForeignLenguage;
+    private static int objectsCounter;
+
+    public Radiomen(){
+        objectsCounter++;
+    }
 
     public Radiomen(String name, int age, int height, int expirience
                    , String pasportData, int countForeignLenguage){
@@ -23,6 +26,8 @@ public class Radiomen extends Employee {
         setPasportData(pasportData);
 
         setCountForeignLenguage(countForeignLenguage);
+
+        objectsCounter++;
     }
 
 

@@ -1,11 +1,11 @@
 package com.administrators;
 
 import com.flights.Flight;
-import com.ofice.*;
-import com.ofice.Navigator;
-import com.ofice.Pilot;
-import com.ofice.Radiomen;
-import com.ofice.Stewardess;
+import com.oficce.*;
+import com.oficce.Navigator;
+import com.oficce.Pilot;
+import com.oficce.Radiomen;
+import com.oficce.Stewardess;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +21,11 @@ public class Dispatcher  {
     private List<Pilot> pilots = new ArrayList<Pilot>();
     private List<Stewardess> stewardess = new ArrayList<Stewardess>();
     private List<Navigator> navigators = new ArrayList<Navigator>();
+    private static int objectsCounter;
 
-
+    public Dispatcher(){
+        objectsCounter++;
+    }
 
     public  void setBrigade(Brigades newBrigade){
         brigade.add(newBrigade);

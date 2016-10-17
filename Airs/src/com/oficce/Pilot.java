@@ -1,14 +1,16 @@
-package com.ofice;
+package com.oficce;
 
 /**
  * Created by Asus on 14.10.2016.
  */
-public class Navigator extends Employee {
+public class Pilot extends Employee {
 
-    private String category;
 
-    public Navigator(String name, int age, int height, int expirience
-            , String pasportData, String category){
+    private int mileage;
+    private static int objectsCounter;
+
+    public Pilot(String name, int age, int height, int expirience
+            , String pasportData, int mileage){
 
         setAge(age);
 
@@ -20,18 +22,28 @@ public class Navigator extends Employee {
 
         setPasportData(pasportData);
 
-        setCategory(category);
+        setMileage(mileage);
+
+        objectsCounter++;
+
+    }
+
+    public void setMileage(int mileage) {
+        this.mileage = mileage;
     }
 
     public String toString(){
-        return ("NAVIGATOR Name " + name + " - Age - " + Integer.toString(age)
+        return ("PILOT Name " + name + " - Age - " + Integer.toString(age)
                 + " - Height - " + Integer.toString(height)
                 + " - Expirience - " + Integer.toString(experience)
                 + " - Pasport Data - " + pasportData
-                + " - Category - " + category + "\n");
+                + " - Mileage - " + Integer.toString(mileage) + "\n");
     }
 
 
+    public int getMileage() {
+        return this.mileage;
+    }
 
     public int hashCode() {
         final int PRIME = 43;
@@ -47,13 +59,10 @@ public class Navigator extends Employee {
             result = result * PRIME + pasportData.charAt(i);
             result %= MOD;
         }
-        for (int i = 0; i < category.length(); i++){
-            result = result * PRIME + category.charAt(i);
-            result %= MOD;
-        }
         result = result * age+PRIME;
         result = result * experience +PRIME;
         result = result * height+PRIME;
+        result = result * mileage+PRIME;
         return result;
     }
 
@@ -64,13 +73,5 @@ public class Navigator extends Employee {
             return false;
         }
         return true;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 }
