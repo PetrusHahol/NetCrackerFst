@@ -3,7 +3,7 @@ package com.oficce;
 /**
  * Created by Asus on 16.10.2016.
  */
-public class Employee {
+public abstract class Employee {
 
     protected String name;
     protected int age;
