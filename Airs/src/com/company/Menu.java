@@ -7,6 +7,7 @@ import com.administrators.Admin;
 import com.administrators.Dispatcher;
 
 import java.lang.reflect.Type;
+import java.util.GregorianCalendar;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -19,10 +20,10 @@ public  class Menu {
     private Dispatcher dispatcher = new Dispatcher();
 
     public Menu()  {
-        admin.AddFlight("Minsk","Moskow","27.12.2016");
-        admin.AddFlight("Minsk","Mogilev","28.10.2016");
-        admin.AddFlight("Voronezh","Gomel","13.09.2016");
-        admin.AddFlight("Minsk","Mars","05.05.2026");
+        admin.AddFlight("Minsk","Moskow",new GregorianCalendar(2016, 11, 18,22,23,22));
+        admin.AddFlight("Minsk","Mogilev",new GregorianCalendar(2016, 10, 5,6,7));
+        admin.AddFlight("Voronezh","Gomel",new GregorianCalendar(2017, 5, 5,6,40));
+        admin.AddFlight("Minsk","Mars",new GregorianCalendar(2020, 9, 12,20,30,50));
         dispatcher.AddNewPilot("Stas", 25, 160, 5, "KV185555", 550);
         dispatcher.AddNewStewardess("Stas", 25, 160, 5, "KV185555", 60);
         dispatcher.AddNewNavigator("Stas", 25, 160, 5, "KV185555", "First");
@@ -48,19 +49,41 @@ public  class Menu {
                     System.out.println("To");
                     String to = in.nextLine();
                     System.out.println("date");
-                    String date = in.nextLine();
-                    admin.AddFlight(from, to, date);
+
+                    int day = 0;
+                    int month = 0;
+                    int year = 0;
+                    int hours = 0;
+                    int minute = 0;
+                    int second = 0;
+
+                    System.out.println("Year(2016-2020)");
+                    year = in.nextInt();
+
+                    System.out.println("Month(1-12)");
+                    month = in.nextInt();
+
+                    System.out.println("Day(1-31)");
+                    day = in.nextInt();
+
+                    System.out.println("hour(0-59)");
+                    hours = in.nextInt();
+
+                    System.out.println("Minute(0-59)");
+                    minute = in.nextInt();
+
+                    System.out.println("Second(0-59)");
+                    second = in.nextInt();
+
+                    admin.AddFlight(from, to,new GregorianCalendar(year, month-1, day, hours, minute, second));
                 }
                 if (tmp == 2){
                     Scanner in = new Scanner(System.in);
-                    System.out.println("AddNewFlite");
-                    System.out.println("From");
-                    String from = in.nextLine();
-                    System.out.println("To");
-                    String to = in.nextLine();
-                    System.out.println("date");
-                    String date = in.nextLine();
-                    admin.DeleteFlight(from, to , date);
+                    System.out.println("DeleteFlite");
+                    admin.Info();
+                    System.out.println("Enter index");
+                    int index = in.nextInt();
+                    admin.DeleteFlight(index);
                 }
                 if (tmp == 3) {
                     admin.Info();

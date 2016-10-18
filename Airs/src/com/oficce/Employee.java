@@ -5,6 +5,7 @@ package com.oficce;
  */
 public abstract class Employee {
 
+
     protected String name;
     protected int age;
     protected int height;
@@ -30,7 +31,7 @@ public abstract class Employee {
     public String getPassportData() {
         return this.passportData;
     }
-    
+
     public void setName(String name) {
         this.name = name;
     }

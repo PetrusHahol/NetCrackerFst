@@ -1,5 +1,7 @@
 package com.flights;
 
+import java.util.GregorianCalendar;
+
 /**
  * Created by Asus on 13.10.2016.
  */
@@ -7,9 +9,9 @@ public class Flight {
 
     private String from;
     private String to;
-    private String date;
+    private GregorianCalendar date;
 
-    public Flight(String from, String to, String date ) {
+    public Flight(String from, String to, GregorianCalendar date ) {
         this.from = from;
         this.to = to;
         this.date=date;
@@ -23,13 +25,13 @@ public class Flight {
         this.to = to;
     }
 
-    public void setDate(String date){
+    public void setDate(GregorianCalendar date){
         this.date = date;
     }
 
     @Override
     public String toString(){
-        return ("FLIGHT From " + from + " - to - " + to + " - in - " + date);
+        return ("FLIGHT From " + from + " - to - " + to + " - in - " + date.getTime());
     }
 
     @Override
@@ -68,7 +70,7 @@ public class Flight {
         return to;
     }
 
-    public String getDate() {
+    public GregorianCalendar getDate() {
         return date;
     }
 }
