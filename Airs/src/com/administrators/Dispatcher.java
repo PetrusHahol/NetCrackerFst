@@ -1,6 +1,6 @@
 package com.administrators;
 
-import com.Exceptions.CustomExceptions.BrigadeCreateException;
+import com.Exceptions.CustomExceptions;
 import com.Interface.DispatcherInterface;
 import com.flights.Flight;
 import com.oficce.*;
@@ -154,11 +154,12 @@ public class Dispatcher implements DispatcherInterface {
         return true;
     }
 
-    public void AddBrigade(Admin admin) throws BrigadeCreateException{
+    public void AddBrigade(Admin admin) throws CustomExceptions{
 
         if (Pilot.objectsCounter <2 || Stewardess.objectsCounter == 0
             || Navigator.objectsCounter ==0  || Radioman.objectsCounter == 0)
-            throw new BrigadeCreateException("To add a team, you need at least one employee of each specialty");
+            throw new CustomExceptions("For add a team, you need at least one employee "
+                                        + "of each specialty and necessarily two pilots");
 
         int pos = 0;
         Brigades newBrigade = new Brigades();

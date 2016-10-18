@@ -1,9 +1,13 @@
 package com.company;
 
-import com.Exceptions.CustomExceptions.BrigadeCreateException;
+import com.Exceptions.CustomExceptions;
+
+
 import com.administrators.Admin;
 import com.administrators.Dispatcher;
 
+import java.lang.reflect.Type;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -61,7 +65,7 @@ public  class Menu {
                 if (tmp == 3) {
                     admin.Info();
                 }
-            } else
+            } else {
                 if (tmp == 2) {
                     System.out.println(" Enter number:\n1 - Add new employee\n2 - Add new brigade\n3 - Info\n-1 - Exit");
                     tmp = input.nextInt();
@@ -75,44 +79,87 @@ public  class Menu {
                         System.out.println("Enter name");
                         String name = input.nextLine();
                         System.out.println("Enter age");
-                        int age = input.nextInt();
-                        System.out.println("Enter Height");
-                        int height = input.nextInt();
-                        System.out.println("Enter Experience");
-                        int experience = input.nextInt();
-                        input.nextLine();
-                        System.out.println("Enter Passport Data");
-                        String pasportData = input.nextLine();
+                        int age = 0;
+                        int experience = 0;
+                        String passportData = "";
+                        int height = 0;
 
-                        if (tmp == 1) {
+                        try {
+                            age = input.nextInt();
+                            if (age < 25 || age > 50) throw new CustomExceptions("Age needs to be between 25 and 50");
+                            System.out.println("Enter Height");
+                            height = input.nextInt();
+                            if (height < 150 || height > 230) throw new CustomExceptions("Height needs to be between 150 and 230");
+                            System.out.println("Enter Experience");
+                            experience = input.nextInt();
+                            if (experience < 2 || experience > 20) throw new CustomExceptions("Experience needs to be between 2 and 20");
+                            input.nextLine();
+                            System.out.println("Enter Passport Data");
+                            passportData = input.nextLine();
+                        } catch (InputMismatchException ex) {
+                            System.out.println("Try again, height, age, experience must be integer");
+                            input.nextLine();
+                            tmp = 0;
+                        } catch (CustomExceptions ex) {
+                            System.out.println(ex.getMessage());
+                            tmp = 0;
+                        }
+                        if (tmp == 1){
                             System.out.println("Enter mileage");
-                            int mileage = input.nextInt();
-                            dispatcher.AddNewPilot(name, age, height, experience, pasportData, mileage);
+                            int mileage = 0;
+                            try {
+                                 mileage = input.nextInt();
+                            }
+                            catch (InputMismatchException ex){
+                                System.out.println("Try again, mileage must be integer");
+                                input.nextLine();
+                                tmp = 0;
+                            }
+                            if (tmp == 1 )dispatcher.AddNewPilot(name, age, height, experience, passportData, mileage);
                         }
                         if (tmp == 2) {
                             System.out.println("Enter count foreign language");
-                            int countForeignLanguage = input.nextInt();
-                            dispatcher.AddNewRadioman(name, age, height, experience, pasportData, countForeignLanguage);
+                            int countForeignLanguage = 0;
+                            try {
+                                 countForeignLanguage = input.nextInt();
+
+                            }catch (InputMismatchException ex){
+                                System.out.println("Try again, count foreign language must be integer");
+                                tmp = 0;
+                            }
+                            if (tmp == 2) dispatcher.AddNewRadioman(name, age, height, experience
+                                    , passportData, countForeignLanguage);
                         }
-                        if (tmp == 3) {
+
+                        if (tmp == 3){
                             System.out.println("Enter category");
                             input.nextLine();
                             String category = input.nextLine();
-                            dispatcher.AddNewNavigator(name, age, height, experience, pasportData, category);
+                            dispatcher.AddNewNavigator(name, age, height, experience, passportData, category);
                         }
+
                         if (tmp == 4) {
                             System.out.println("Enter length waist");
-                            int lengthWaist = input.nextInt();
-                            dispatcher.AddNewStewardess(name, age, height, experience, pasportData, lengthWaist);
+                            int lengthWaist = 0;
+                            try {
+                                lengthWaist = input.nextInt();
+                            } catch (InputMismatchException ex) {
+                                tmp = 0 ;
+                                System.out.println("Try again, length waist must be integer");
+
+                            }
+                            if (tmp  == 4 ) dispatcher.AddNewStewardess(name, age, height, experience, passportData, lengthWaist);
                         }
                     }
+                }
+
                     if (tmp == 3) {
                         dispatcher.Info();
                     }
                     if (tmp == 2 ){
                         try {
                             dispatcher.AddBrigade(admin);
-                        }catch (BrigadeCreateException ex){
+                        }catch (CustomExceptions ex){
                             System.out.println(ex.getMessage());
                         }
                     }
