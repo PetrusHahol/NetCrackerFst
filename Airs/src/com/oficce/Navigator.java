@@ -43,22 +43,10 @@ public class Navigator extends Employee {
         int result = 1;
         int MOD = 1000000007;
 
-        for (int i = 0; i < name.length(); i++){
-            result = PRIME * result + name.charAt(i);
-            result %= MOD;
-        }
-
-        for (int i = 0; i < passportData.length(); i++){
-            result = result * PRIME + passportData.charAt(i);
-            result %= MOD;
-        }
-        for (int i = 0; i < category.length(); i++){
-            result = result * PRIME + category.charAt(i);
-            result %= MOD;
-        }
-        result = result * age+PRIME;
-        result = result * experience +PRIME;
-        result = result * height+PRIME;
+        result += name.hashCode()+passportData.hashCode()+category.hashCode();
+        result += (result * age+PRIME) % MOD;
+        result += (result * experience +PRIME) % MOD;
+        result += (result * height+PRIME) % MOD;
         return result;
     }
 
