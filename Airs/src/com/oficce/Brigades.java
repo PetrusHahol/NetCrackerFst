@@ -19,6 +19,7 @@ public class Brigades  {
     public Brigades(){
         objectsCounter++;
     }
+
     public Pilot getFirstPilot(){
         return this.firstPilot;
     }

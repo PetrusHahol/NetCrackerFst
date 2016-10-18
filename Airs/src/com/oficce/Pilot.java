@@ -7,7 +7,7 @@ public class Pilot extends Employee {
 
 
     private int mileage;
-    private static int objectsCounter;
+    public static int objectsCounter;
 
     public Pilot(String name, int age, int height, int experience
             , String passportData, int mileage){

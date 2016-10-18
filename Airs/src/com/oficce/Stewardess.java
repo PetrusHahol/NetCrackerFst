@@ -7,7 +7,7 @@ public class Stewardess extends Employee {
 
     private int lengthWaist;
 
-    private static int objectsCounter;
+    public static int objectsCounter;
 
     public Stewardess(){
         objectsCounter++;

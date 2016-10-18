@@ -15,23 +15,11 @@ public class Flight {
         this.date=date;
     }
 
-    public String getFrom(){
-        return this.from;
-    }
-
-    public String getTo(){
-        return this.to;
-    }
-
-    public String getDate(){
-        return this.to;
-    }
-
     public void setFrom(String from){
         this.from = from;
     }
 
-    public void setTo(String to){
+    public void setTo(String to) {
         this.to = to;
     }
 
@@ -39,10 +27,12 @@ public class Flight {
         this.date = date;
     }
 
+    @Override
     public String toString(){
-        return ("From " +from + " - to - " + to+ " - in - " + date);
+        return ("FLIGHT From " + from + " - to - " + to + " - in - " + date);
     }
 
+    @Override
     public int hashCode() {
 
         final int PRIME = 43;
@@ -67,6 +57,7 @@ public class Flight {
         return result;
     }
 
+    @Override
     public boolean equals(Object obj){
 
         System.out.println(this);
@@ -96,5 +87,17 @@ public class Flight {
             }
         }
         return true;
+    }
+
+    public String getFrom() {
+        return from;
+    }
+
+    public String getTo() {
+        return to;
+    }
+
+    public String getDate() {
+        return date;
     }
 }

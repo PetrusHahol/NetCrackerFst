@@ -6,7 +6,7 @@ package com.oficce;
 public class Navigator extends Employee {
 
     private String category;
-    private static int objectsCounter;
+    public static int objectsCounter;
 
     public Navigator(String name, int age, int height, int expirience
             , String pasportData, String category){

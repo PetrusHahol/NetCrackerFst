@@ -6,7 +6,7 @@ package com.oficce;
 public class Radioman extends Employee {
 
     private int countForeignLanguage;
-    private static int objectsCounter;
+    public static int objectsCounter;
 
     public Radioman(){
         objectsCounter++;

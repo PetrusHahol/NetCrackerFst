@@ -1,5 +1,6 @@
 package com.company;
 
+import com.Exceptions.CustomExceptions.BrigadeCreateException;
 import com.administrators.Admin;
 import com.administrators.Dispatcher;
 
@@ -13,8 +14,17 @@ public  class Menu {
     private Admin admin = new Admin();
     private Dispatcher dispatcher = new Dispatcher();
 
-    public Menu()
-    {   int tmp = 0;
+    public Menu()  {
+        admin.AddFlight("Minsk","Moskow","27.12.2016");
+        admin.AddFlight("Minsk","Mogilev","28.10.2016");
+        admin.AddFlight("Voronezh","Gomel","13.09.2016");
+        admin.AddFlight("Minsk","Mars","05.05.2026");
+        dispatcher.AddNewPilot("Stas", 25, 160, 5, "KV185555", 550);
+        dispatcher.AddNewStewardess("Stas", 25, 160, 5, "KV185555", 60);
+        dispatcher.AddNewNavigator("Stas", 25, 160, 5, "KV185555", "First");
+        dispatcher.AddNewRadioman("Stas", 25, 160, 5, "KV185555", 12);
+
+        int tmp = 0;
         Scanner input = new Scanner(System.in);
 
         while (tmp != -1) {
@@ -28,7 +38,7 @@ public  class Menu {
                 tmp = input.nextInt();
                 if (tmp == 1) {
                     Scanner in = new Scanner(System.in);
-                    System.out.println("AddNewFlite");
+                    System.out.println("AddNewFlight");
                     System.out.println("From");
                     String from = in.nextLine();
                     System.out.println("To");
@@ -100,7 +110,11 @@ public  class Menu {
                         dispatcher.Info();
                     }
                     if (tmp == 2 ){
-                        dispatcher.AddBrigade(admin);
+                        try {
+                            dispatcher.AddBrigade(admin);
+                        }catch (BrigadeCreateException ex){
+                            System.out.println(ex.getMessage());
+                        }
                     }
                 }
         }

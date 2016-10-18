@@ -1,5 +1,6 @@
 package com.administrators;
 
+import com.Exceptions.CustomExceptions.BrigadeCreateException;
 import com.Interface.DispatcherInterface;
 import com.flights.Flight;
 import com.oficce.*;
@@ -153,7 +154,12 @@ public class Dispatcher implements DispatcherInterface {
         return true;
     }
 
-    public void AddBrigade(Admin fst){
+    public void AddBrigade(Admin admin) throws BrigadeCreateException{
+
+        if (Pilot.objectsCounter <2 || Stewardess.objectsCounter == 0
+            || Navigator.objectsCounter ==0  || Radioman.objectsCounter == 0)
+            throw new BrigadeCreateException("To add a team, you need at least one employee of each specialty");
+
         int pos = 0;
         Brigades newBrigade = new Brigades();
         for (Pilot iter:getPilots())
@@ -229,17 +235,16 @@ public class Dispatcher implements DispatcherInterface {
             }
         }
         pos = 0;
-        for (Flight iter:fst.getFlights() )
+        for (Flight iter:admin.getFlights() )
         {   pos++;
-            if (pos == index_radioman) {
                 System.out.println(Integer.toString(pos) + " " + iter + "\n");
-            }
+
         }
         System.out.println("Enter flight index");
         int indexObj = in.nextInt();
 
         pos=0;
-        for (Flight iter:fst.getFlights() )
+        for (Flight iter:admin.getFlights())
         {   pos++;
             if (pos == indexObj) {
                 newBrigade.setFlightsObject(iter);
