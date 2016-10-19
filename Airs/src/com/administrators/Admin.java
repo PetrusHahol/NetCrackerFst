@@ -27,7 +27,14 @@ public class Admin     {
     }
 
     public  void DeleteFlight(int index) {
-            flights.remove(index);
+        int position = 0;
+        for (Flight iter:flights) {
+            position++;
+            if (position == index) {
+                flights.remove(iter);
+                break;
+            }
+        }
     }
 
 
@@ -44,7 +51,7 @@ public class Admin     {
 
     public int hashCode() {
         int result = 0;
-        for (Flight iter : flights) {
+        for (Flight iter: flights) {
             result += iter.hashCode();
         }
         return result;
