@@ -73,11 +73,11 @@ public  class Menu {
                     try {
                         System.out.println("Year(2016-2020)");
                         year = in.nextInt();
-                        if (year <= 2015) throw new CustomExceptions("Year will had to more then 2015");
+                        if (year <= 2015)
+                            throw new CustomExceptions("Year will had to more then 2015");
                     } catch (CustomExceptions ex) {
                         year = ex.getYear();
-                    }
-                    catch (InputMismatchException ex){
+                    } catch (InputMismatchException ex){
                         CustomExceptions temp = new CustomExceptions();
                         in.nextLine();
                         year = temp.getYear();
@@ -144,14 +144,12 @@ public  class Menu {
                     System.out.println("DeleteFlite");
                     admin.Info();
                     System.out.println("Enter index");
-                    int index = 0;
                     try {
-                        index = input.nextInt();
+                        int index = input.nextInt();
+                        admin.DeleteFlight(index);
                     }
                     catch (InputMismatchException ex){
                         System.out.println("Try again ");
-                    }finally {
-                        admin.DeleteFlight(index);
                     }
                 }
                 if (tmp == 3) {
@@ -210,27 +208,26 @@ public  class Menu {
                             System.out.println("Enter mileage");
                             int mileage = 0;
                             try {
-                                 mileage = input.nextInt();
+                                mileage = input.nextInt();
+                                dispatcher.AddNewPilot(name, age, height, experience, passportData, mileage);
                             }
                             catch (InputMismatchException ex){
                                 System.out.println("Try again, mileage must be integer");
                                 input.nextLine();
-                                tmp = 0;
                             }
-                            if (tmp == 1 )dispatcher.AddNewPilot(name, age, height, experience, passportData, mileage);
+
                         }
                         if (tmp == 2) {
                             System.out.println("Enter count foreign language");
                             int countForeignLanguage = 0;
                             try {
-                                 countForeignLanguage = input.nextInt();
+                                countForeignLanguage = input.nextInt();
+                                dispatcher.AddNewRadioman(name, age, height, experience
+                                        , passportData, countForeignLanguage);
 
                             }catch (InputMismatchException ex){
                                 System.out.println("Try again, count foreign language must be integer");
-                                tmp = 0;
                             }
-                            if (tmp == 2) dispatcher.AddNewRadioman(name, age, height, experience
-                                    , passportData, countForeignLanguage);
                         }
 
                         if (tmp == 3){
@@ -245,12 +242,11 @@ public  class Menu {
                             int lengthWaist = 0;
                             try {
                                 lengthWaist = input.nextInt();
+                                dispatcher.AddNewStewardess(name, age, height, experience, passportData, lengthWaist);
                             } catch (InputMismatchException ex) {
-                                tmp = 0 ;
                                 System.out.println("Try again, length waist must be integer");
-
                             }
-                            if (tmp  == 4 ) dispatcher.AddNewStewardess(name, age, height, experience, passportData, lengthWaist);
+
                         }
                     }
                 }
