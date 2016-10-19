@@ -34,9 +34,6 @@ public class Navigator extends Employee {
                 + " - Passport Data - " + passportData
                 + " - Category - " + category + "\n");
     }
-
-
-
     @Override
     public int hashCode() {
         final int PRIME = 43;

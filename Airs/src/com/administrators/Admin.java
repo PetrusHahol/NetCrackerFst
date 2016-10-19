@@ -1,8 +1,6 @@
 package com.administrators;
 
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.*;
 
 import com.flights.Flight;
 
@@ -10,13 +8,13 @@ public class Admin     {
 
     private static int objectsCounter;
 
-    private static List<Flight> flights = new ArrayList<Flight>();
+    private static Set<Flight> flights = new HashSet<Flight>() ;
 
     public static int getObjectsCounter() {
         return objectsCounter;
     }
 
-    public List<Flight> getFlights(){
+    public Set<Flight> getFlights(){
         return flights;
     }
 
@@ -40,7 +38,7 @@ public class Admin     {
         for (Flight iter:flights){
             pos++;
             System.out.print(pos);
-            System.out.println(" "+iter);
+            System.out.print(" "+iter);
         }
     }
 

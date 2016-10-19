@@ -14,7 +14,6 @@ public class Brigades  {
     private Stewardess stewardess;
     private Radioman radioman;
     private Navigator navigator ;
-    private Flight flightObject;
 
     private static int objectsCounter;
 
@@ -42,10 +41,6 @@ public class Brigades  {
         return this.navigator;
     }
 
-    public Flight getFlights(){
-        return this.flightObject;
-    }
-
     public void setFirstPilot(Pilot firstPilot){
         this.firstPilot = firstPilot;
     }
@@ -66,22 +61,18 @@ public class Brigades  {
         this.navigator = navigator;
     }
 
-    public void setFlightsObject(Flight flightObject){
-        this.flightObject = flightObject;
-    }
 
     @Override
     public String toString(){
         return ("Brigade :" + "\t" + firstPilot + "\t"+ secondPilot
-                + "\t" + stewardess + "\t" + navigator + "\t" + radioman
-                + "\t" + flightObject + "\n\n\n");
+                + "\t" + stewardess + "\t" + navigator + "\t" + radioman );
     }
 
     @Override
     public int hashCode() {
         int result = 0;
         result = firstPilot.hashCode() + secondPilot.hashCode() + stewardess.hashCode() + navigator.hashCode()
-                     + flightObject.hashCode() + radioman.hashCode();
+                     + radioman.hashCode();
         return result;
     }
 

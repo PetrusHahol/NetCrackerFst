@@ -9,9 +9,7 @@ import com.oficce.Pilot;
 import com.oficce.Radioman;
 import com.oficce.Stewardess;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by Asus on 14.10.2016.
@@ -19,6 +17,7 @@ import java.util.Scanner;
 public class Dispatcher implements DispatcherInterface {
 
     private List<Brigades> brigade = new ArrayList<Brigades>();
+    private Map<Brigades, Flight> brigadeData = new HashMap<Brigades, Flight>();
     private List<Radioman> radiomans = new ArrayList<Radioman>();
     private List<Pilot> pilots = new ArrayList<Pilot>();
     private List<Stewardess> stewardess = new ArrayList<Stewardess>();
@@ -29,8 +28,10 @@ public class Dispatcher implements DispatcherInterface {
         objectsCounter++;
     }
 
-    public  void setBrigade(Brigades newBrigade){
+    public  void setBrigade(Brigades newBrigade, Flight flightObject)
+    {
         brigade.add(newBrigade);
+        brigadeData.put(newBrigade, flightObject);
     }
 
     @Override
@@ -75,46 +76,9 @@ public class Dispatcher implements DispatcherInterface {
         for (Stewardess iter:stewardess){
             System.out.print(iter);
         }
-
-        for (Brigades iter:brigade){
-            System.out.print(iter);
+        for(Brigades iter: brigade){
+            System.out.print(iter + " " + brigadeData.get(iter));
         }
-    }
-
-    public List<Brigades> getBrigade() {
-        return brigade;
-    }
-
-    public List<Radioman> getRadiomans() {
-        return radiomans;
-    }
-
-    public List<Pilot> getPilots() {
-        return pilots;
-    }
-
-    public List<Stewardess> getStewardess() {
-        return stewardess;
-    }
-
-    public List<Navigator> getNavigators() {
-        return navigators;
-    }
-
-    public void setRadiomans(List<Radioman> radiomen) {
-        this.radiomans = radiomen;
-    }
-
-    public void setPilots(List<Pilot> pilots) {
-        this.pilots = pilots;
-    }
-
-    public void setStewardess(List<Stewardess> stewardess) {
-        this.stewardess = stewardess;
-    }
-
-    public void setNavigators(List<Navigator> navigators) {
-        this.navigators = navigators;
     }
 
 
@@ -247,11 +211,55 @@ public class Dispatcher implements DispatcherInterface {
         pos=0;
         for (Flight iter:admin.getFlights())
         {   pos++;
-            if (pos == indexObj) {
-                newBrigade.setFlightsObject(iter);
+            if (pos == indexObj) {;
+                this.setBrigade(newBrigade, iter);
             }
         }
-        this.setBrigade(newBrigade);
+    }
+
+
+    public Map<Brigades, Flight> getBrigadeData() {
+        return brigadeData;
+    }
+
+    public static int getObjectsCounter() {
+        return objectsCounter;
+    }
+
+    public List<Brigades> getBrigade() {
+        return brigade;
+    }
+
+    public List<Radioman> getRadiomans() {
+        return radiomans;
+    }
+
+    public List<Pilot> getPilots() {
+        return pilots;
+    }
+
+    public List<Stewardess> getStewardess() {
+        return stewardess;
+    }
+
+    public List<Navigator> getNavigators() {
+        return navigators;
+    }
+
+    public void setRadiomans(List<Radioman> radiomen) {
+        this.radiomans = radiomen;
+    }
+
+    public void setPilots(List<Pilot> pilots) {
+        this.pilots = pilots;
+    }
+
+    public void setStewardess(List<Stewardess> stewardess) {
+        this.stewardess = stewardess;
+    }
+
+    public void setNavigators(List<Navigator> navigators) {
+        this.navigators = navigators;
     }
 
 

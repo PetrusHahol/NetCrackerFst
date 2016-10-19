@@ -24,6 +24,7 @@ public  class Menu {
         admin.AddFlight("Minsk","Mogilev",new GregorianCalendar(2016, 10, 5,6,7));
         admin.AddFlight("Voronezh","Gomel",new GregorianCalendar(2017, 5, 5,6,40));
         admin.AddFlight("Minsk","Mars",new GregorianCalendar(2020, 9, 12,20,30,50));
+        admin.AddFlight("Minsk","Mars",new GregorianCalendar(2020, 9, 12,20,30,50));
         dispatcher.AddNewPilot("Stas", 25, 160, 5, "KV185555", 550);
         dispatcher.AddNewStewardess("Stas", 25, 160, 5, "KV185555", 60);
         dispatcher.AddNewNavigator("Stas", 25, 160, 5, "KV185555", "First");
@@ -36,11 +37,23 @@ public  class Menu {
             System.out.println("Enter number:\n1 "
                                +"- Go to administraton center\n"
                                +"2 - Go to Dispatcer center\n-1 - Exit");
-            tmp = input.nextInt();
+            try {
+                tmp = input.nextInt();
+            }
+            catch (InputMismatchException ex){
+                System.out.println("Try again ( 1 - 2) ");
+                input.nextLine();
+            }
             if (tmp == 1) {
                 System.out.println("Enter number:\n1 - Add new flight\n"
                                    +"2 - Delete flight\n3 - Info\n-1 - Exit");
-                tmp = input.nextInt();
+                try {
+                    tmp = input.nextInt();
+                }
+                catch (InputMismatchException ex){
+                    System.out.println("Try again ( 1 - 3 ) ");
+                    input.nextLine();
+                }
                 if (tmp == 1) {
                     Scanner in = new Scanner(System.in);
                     System.out.println("AddNewFlight");
@@ -50,40 +63,96 @@ public  class Menu {
                     String to = in.nextLine();
                     System.out.println("date");
 
-                    int day = 0;
-                    int month = 0;
-                    int year = 0;
-                    int hours = 0;
-                    int minute = 0;
-                    int second = 0;
+                    int day ;
+                    int month;
+                    int year ;
+                    int hour ;
+                    int minute;
+                    int second;
 
-                    System.out.println("Year(2016-2020)");
-                    year = in.nextInt();
+                    try {
+                        System.out.println("Year(2016-2020)");
+                        year = in.nextInt();
+                        if (year <= 2015) throw new CustomExceptions("Year will had to more then 2015");
+                    } catch (CustomExceptions ex) {
+                        year = ex.getYear();
+                    }
+                    catch (InputMismatchException ex){
+                        CustomExceptions temp = new CustomExceptions();
+                        in.nextLine();
+                        year = temp.getYear();
+                    }
+                    try {
+                        System.out.println("Month(1-12)");
+                        month = in.nextInt();
+                        if (month < 1 && month > 12 ) throw new CustomExceptions("Month will had to between 1 and 12");
+                    } catch (CustomExceptions ex){
+                        month = ex.getMonth();
+                    } catch (InputMismatchException ex){
+                        CustomExceptions temp = new CustomExceptions();
+                        in.nextLine();
+                        month = temp.getMonth();
+                    }
+                    try {
+                        System.out.println("Day(1-31)");
+                        day = in.nextInt();
+                        if (day < 1 && day>31 ) throw new CustomExceptions("Day will had to between 1 and 31");
+                    } catch (CustomExceptions ex){
+                        day = ex.getDay();
+                    } catch (InputMismatchException ex){
+                        CustomExceptions temp = new CustomExceptions();
+                        in.nextLine();
+                        day = temp.getDay();
+                    }
+                    try {
+                        System.out.println("hour(0-23)");
+                        hour = in.nextInt();
+                        if ( hour < 0 && hour > 23 ) throw new CustomExceptions("Hour will had to between 0 and 59");
+                    } catch (CustomExceptions ex){
+                        hour = ex.getHour();
+                    } catch (InputMismatchException ex){
+                        CustomExceptions temp = new CustomExceptions();
+                        in.nextLine();
+                        hour = temp.getHour();
+                    }
+                    try {
+                        System.out.println("Minute(0-59)");
+                        minute = in.nextInt();
+                        if ( minute < 0 && minute > 59 ) throw new CustomExceptions("Minute will had to between 0 and 59");
+                    } catch (CustomExceptions ex){
+                        minute = ex.getMinute();
+                    } catch (InputMismatchException ex){
+                        CustomExceptions temp = new CustomExceptions();
+                        in.nextLine();
+                        minute = temp.getMinute();
+                    }
+                    try {
+                        System.out.println("Second(0-59)");
+                        second = in.nextInt();
+                        if ( second < 0 && second > 59 ) throw new CustomExceptions("Second will had to between 0 and 59");
+                    } catch (CustomExceptions ex){
+                        second = ex.getSecond();
+                    } catch (InputMismatchException ex){
+                        CustomExceptions temp = new CustomExceptions();
+                        in.nextLine();
+                        second = temp.getSecond();
+                    }
 
-                    System.out.println("Month(1-12)");
-                    month = in.nextInt();
-
-                    System.out.println("Day(1-31)");
-                    day = in.nextInt();
-
-                    System.out.println("hour(0-59)");
-                    hours = in.nextInt();
-
-                    System.out.println("Minute(0-59)");
-                    minute = in.nextInt();
-
-                    System.out.println("Second(0-59)");
-                    second = in.nextInt();
-
-                    admin.AddFlight(from, to,new GregorianCalendar(year, month-1, day, hours, minute, second));
+                    admin.AddFlight(from, to,new GregorianCalendar(year, month-1, day, hour, minute, second));
                 }
                 if (tmp == 2){
-                    Scanner in = new Scanner(System.in);
                     System.out.println("DeleteFlite");
                     admin.Info();
                     System.out.println("Enter index");
-                    int index = in.nextInt();
-                    admin.DeleteFlight(index);
+                    int index = 0;
+                    try {
+                        index = input.nextInt();
+                    }
+                    catch (InputMismatchException ex){
+                        System.out.println("Try again ");
+                    }finally {
+                        admin.DeleteFlight(index);
+                    }
                 }
                 if (tmp == 3) {
                     admin.Info();
@@ -91,13 +160,23 @@ public  class Menu {
             } else {
                 if (tmp == 2) {
                     System.out.println(" Enter number:\n1 - Add new employee\n2 - Add new brigade\n3 - Info\n-1 - Exit");
-                    tmp = input.nextInt();
+                    try {
+                        tmp = input.nextInt();
+                    }
+                    catch (InputMismatchException ex){
+                        System.out.println("Try again ( 1 - 3 ) ");
+                    }
                     if (tmp == 1) {
                         System.out.println(" Enter number:\n1 - Add new pilot\n2 - Add new radiomen"
                                 + "\n3 - Add new navigator"
                                 + "\n4 - Add new stewardess\n-1 - Exit");
-
-                        tmp = input.nextInt();
+                        try {
+                            tmp = input.nextInt();
+                        }
+                        catch (InputMismatchException ex){
+                            System.out.println("Try again ( 1 - 4 ) ");
+                            input.nextLine();
+                        }
                         input.nextLine();
                         System.out.println("Enter name");
                         String name = input.nextLine();
