@@ -34,118 +34,7 @@ public  class Menu {
     private void SecondMenu(){
         int tmp = 0;
         Scanner input = new Scanner(System.in);
-        if (tmp == 1) {
-            System.out.println("Enter number:\n1 - Add new flight\n"
-                    +"2 - Delete flight\n3 - Info\n-1 - Exit");
-            try {
-                tmp = input.nextInt();
-            }
-            catch (InputMismatchException ex){
-                System.out.println("Try again ( 1 - 3 ) ");
-                input.nextLine();
-            }
-            if (tmp == 1) {
-                Scanner in = new Scanner(System.in);
-                System.out.println("AddNewFlight");
-                System.out.println("From");
-                String from = in.nextLine();
-                System.out.println("To");
-                String to = in.nextLine();
-                System.out.println("date");
 
-                int day ;
-                int month;
-                int year ;
-                int hour ;
-                int minute;
-                int second;
-
-                try {
-                    System.out.println("Year(2016-2020)");
-                    year = in.nextInt();
-                    if (year <= 2015)
-                        throw new CustomExceptions("Year will had to more then 2015");
-                } catch (CustomExceptions ex) {
-                    year = ex.getYear();
-                } catch (InputMismatchException ex){
-                    CustomExceptions temp = new CustomExceptions();
-                    in.nextLine();
-                    year = temp.getYear();
-                }
-                try {
-                    System.out.println("Month(1-12)");
-                    month = in.nextInt();
-                    if (month < 1 && month > 12 ) throw new CustomExceptions("Month will had to between 1 and 12");
-                } catch (CustomExceptions ex){
-                    month = ex.getMonth();
-                } catch (InputMismatchException ex){
-                    CustomExceptions temp = new CustomExceptions();
-                    in.nextLine();
-                    month = temp.getMonth();
-                }
-                try {
-                    System.out.println("Day(1-31)");
-                    day = in.nextInt();
-                    if (day < 1 && day>31 ) throw new CustomExceptions("Day will had to between 1 and 31");
-                } catch (CustomExceptions ex){
-                    day = ex.getDay();
-                } catch (InputMismatchException ex){
-                    CustomExceptions temp = new CustomExceptions();
-                    in.nextLine();
-                    day = temp.getDay();
-                }
-                try {
-                    System.out.println("hour(0-23)");
-                    hour = in.nextInt();
-                    if ( hour < 0 && hour > 23 ) throw new CustomExceptions("Hour will had to between 0 and 59");
-                } catch (CustomExceptions ex){
-                    hour = ex.getHour();
-                } catch (InputMismatchException ex){
-                    CustomExceptions temp = new CustomExceptions();
-                    in.nextLine();
-                    hour = temp.getHour();
-                }
-                try {
-                    System.out.println("Minute(0-59)");
-                    minute = in.nextInt();
-                    if ( minute < 0 && minute > 59 ) throw new CustomExceptions("Minute will had to between 0 and 59");
-                } catch (CustomExceptions ex){
-                    minute = ex.getMinute();
-                } catch (InputMismatchException ex){
-                    CustomExceptions temp = new CustomExceptions();
-                    in.nextLine();
-                    minute = temp.getMinute();
-                }
-                try {
-                    System.out.println("Second(0-59)");
-                    second = in.nextInt();
-                    if ( second < 0 && second > 59 ) throw new CustomExceptions("Second will had to between 0 and 59");
-                } catch (CustomExceptions ex){
-                    second = ex.getSecond();
-                } catch (InputMismatchException ex){
-                    CustomExceptions temp = new CustomExceptions();
-                    in.nextLine();
-                    second = temp.getSecond();
-                }
-
-                admin.AddFlight(from, to,new GregorianCalendar(year, month-1, day, hour, minute, second));
-            }
-            if (tmp == 2){
-                System.out.println("DeleteFlite");
-                admin.Info();
-                System.out.println("Enter index");
-                try {
-                    int index = input.nextInt();
-                    admin.DeleteFlight(index);
-                }
-                catch (InputMismatchException ex){
-                    System.out.println("Try again ");
-                }
-            }
-            if (tmp == 3) {
-                admin.Info();
-            }
-        } else {
             if (tmp == 2) {
                 System.out.println(" Enter number:\n1 - Add new employee\n2 - Add new brigade\n3 - Info\n-1 - Exit");
                 try {
@@ -252,6 +141,84 @@ public  class Menu {
                 }
             }
         }
+
+    private int EnterYearMenu() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Year(2016-2020)");
+        return TryParse(input.nextLine());
+    }
+
+
+    private int EnterMonthMenu() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Month(1-12)");
+        return TryParse(input.nextLine());
+    }
+
+    private int EnterDayMenu() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Day(1-31(30))");
+        return TryParse(input.nextLine());
+    }
+    private int EnterMinuteMenu() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Minute (0-59)");
+        return TryParse(input.nextLine());
+    }
+
+    private int EnterSecondMenu() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Second(0-59)");
+        return TryParse(input.nextLine());
+    }
+
+    private int EnterHourMenu() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("hour(0-23)");
+        return TryParse(input.nextLine());
+    }
+
+
+
+    private void AddNewFlightMenu(){
+
+        Scanner input = new Scanner(System.in);
+        System.out.println("AddNewFlight");
+        System.out.println("From");
+        String from = input.nextLine();
+        System.out.println("To");
+        String to = input.nextLine();
+        System.out.println("date");
+
+        admin.AddFlight(from, to,new GregorianCalendar(EnterYearMenu(), EnterMonthMenu()-1
+                        , EnterDayMenu(), EnterHourMenu(),  EnterMinuteMenu(), EnterSecondMenu()));
+    }
+
+
+
+    private void AdminMenu() {
+            Scanner input = new Scanner(System.in);
+            System.out.println("Enter number:\n1 - Add new flight\n"
+                    + "2 - Delete flight\n3 - Info\n-1 - Exit");
+            int tmp = TryParse(input.nextLine());
+            if (tmp == 1) {
+                AddNewFlightMenu();
+            }
+
+            if (tmp == 2) {
+                System.out.println("DeleteFlite");
+                admin.Info();
+                System.out.println("Enter index");
+                try {
+                    int index = input.nextInt();
+                    admin.DeleteFlight(index);
+                } catch (InputMismatchException ex) {
+                    System.out.println("Try again ");
+                }
+            }
+            if (tmp == 3) {
+                admin.Info();
+            }
     }
 
     private int TryParse(String string){
@@ -259,7 +226,7 @@ public  class Menu {
         try {
             answer = Integer.parseInt(string);
         }catch (NumberFormatException e) {
-            System.err.println("Wrong Format, try again");
+            System.err.println("Wrong Format");
         }
         return answer;
     }
@@ -272,10 +239,13 @@ public  class Menu {
             System.out.println("Enter number:\n1 "
                     +"- Go to administrator center\n"
                     +"2 - Go to Dispatcher center\n-1 - Exit");
-            tmp = TryParse(input.nextInt());
-            System.out.println(tmp);
+            tmp = TryParse(input.nextLine());
+            if (tmp == 1 ) {
+                AdminMenu();
+            }
         }
     }
+
 
     private Admin admin = new Admin();
     private Dispatcher dispatcher = new Dispatcher();
