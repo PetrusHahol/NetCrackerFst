@@ -18,6 +18,8 @@ import java.util.Scanner;
 
 
 public  class Menu {
+    private Admin admin = new Admin();
+    private Dispatcher dispatcher = new Dispatcher();
     private  Scanner input = new Scanner(System.in);
     private int age = 0;
     private int experience = 0;
@@ -25,6 +27,10 @@ public  class Menu {
     private int height = 0;
     private String name = "";
 
+    public Menu()  {
+        Init();
+        MainMenu();
+    }
     private void Init() {
         admin.AddFlight("Minsk", "Moskow", new GregorianCalendar(2016, 11, 18, 22, 23, 22));
         admin.AddFlight("Minsk", "Mogilev", new GregorianCalendar(2016, 10, 5, 6, 7));
@@ -38,7 +44,6 @@ public  class Menu {
     }
 
     private void CharactersMenu(){
-
         System.out.println("Enter name");
         name = input.nextLine();
         System.out.println("Enter age");
@@ -61,120 +66,107 @@ public  class Menu {
     private void PilotMenu(){
         System.out.println("Enter mileage");
         int mileage = 0;
-        try {
-            mileage = input.nextInt();
-            dispatcher.AddNewPilot(name, age, height, experience, passportData, mileage);
-        } catch (InputMismatchException ex) {
-            System.out.println("Try again, mileage must be integer");
-            input.nextLine();
+        while (mileage == 0) {
+            mileage = TryParse(input.nextLine());
         }
-
+        dispatcher.AddNewPilot(name, age, height, experience, passportData, mileage);
     }
-    private void NewEmployMenu() {
-        Scanner input = new Scanner(System.in);
 
+    private void RadiomenMenu(){
+        System.out.println("Enter count foreign language");
+        int countForeignLanguage = 0;
+        while (countForeignLanguage == 0) {
+            countForeignLanguage = TryParse(input.nextLine());
+        }
+        dispatcher.AddNewRadioman(name, age, height, experience
+                , passportData, countForeignLanguage);
+    }
+
+    private void NavigatorMenu(){
+        System.out.println("Enter category");
+        input.nextLine();
+        String category = input.nextLine();
+        dispatcher.AddNewNavigator(name, age, height, experience, passportData, category);
+    }
+
+    private void StewardessMenu(){
+        System.out.println("Enter length waist");
+        int lengthWaist = 0;
+        while (lengthWaist == 0){
+            lengthWaist = TryParse(input.nextLine());
+        }
+        dispatcher.AddNewStewardess(name, age, height, experience, passportData, lengthWaist);
+    }
+
+    private void NewEmployMenu() {
         System.out.println(" Enter number:\n1 - Add new pilot\n2 - Add new radiomen"
                 + "\n3 - Add new navigator"
                 + "\n4 - Add new stewardess\n-1 - Exit");
         int tmp = TryParse(input.nextLine());
         CharactersMenu();
-        if (tmp == 1)
-
-        {
-
-        }
-        if (tmp == 2)
-
-        {
-            System.out.println("Enter count foreign language");
-            int countForeignLanguage = 0;
-            try {
-                countForeignLanguage = input.nextInt();
-                dispatcher.AddNewRadioman(name, age, height, experience
-                        , passportData, countForeignLanguage);
-
-            } catch (InputMismatchException ex) {
-                System.out.println("Try again, count foreign language must be integer");
-            }
-        }
-
-        if (tmp == 3)
-
-        {
-            System.out.println("Enter category");
-            input.nextLine();
-            String category = input.nextLine();
-            dispatcher.AddNewNavigator(name, age, height, experience, passportData, category);
-        }
-
-        if (tmp == 4)
-
-        {
-            System.out.println("Enter length waist");
-            int lengthWaist = 0;
-            try {
-                lengthWaist = input.nextInt();
-                dispatcher.AddNewStewardess(name, age, height, experience, passportData, lengthWaist);
-            } catch (InputMismatchException ex) {
-                System.out.println("Try again, length waist must be integer");
-            }
-
+        switch (tmp) {
+            case 1:
+                PilotMenu();
+                break;
+            case 2:
+                RadiomenMenu();
+                break;
+            case 3:
+                NavigatorMenu();
+                break;
+            case 4:
+                StewardessMenu();
+                break;
         }
     }
-
-
-
 
 
     private void DispatcherMenu() {
-        int tmp = 0;
-        Scanner input = new Scanner(System.in);
-
         System.out.println(" Enter number:\n1 - Add new employee\n2 - Add new brigade\n3 - Info\n-1 - Exit");
-        tmp = TryParse(input.nextLine());
-        if (tmp == 1) NewEmployMenu();
-        if (tmp == 2) {
-            try {
-                dispatcher.AddBrigade(admin);
-            } catch (CustomExceptions ex) {
-                System.out.println(ex.getMessage());
-            }
+        int tmp = TryParse(input.nextLine());
+        switch (tmp) {
+            case 1:
+                NewEmployMenu();
+                break;
+            case 2:
+                try {
+                    dispatcher.AddBrigade(admin);
+                } catch (CustomExceptions ex) {
+                    System.out.println(ex.getMessage());
+                }
+                break;
+            case 3:
+                dispatcher.Info();
+                break;
         }
-        if (tmp == 3) {dispatcher.Info();}
     }
 
     private int EnterYearMenu() {
-        Scanner input = new Scanner(System.in);
         System.out.println("Year(2016-2020)");
         return TryParse(input.nextLine());
     }
 
 
     private int EnterMonthMenu() {
-        Scanner input = new Scanner(System.in);
         System.out.println("Month(1-12)");
         return TryParse(input.nextLine());
     }
 
     private int EnterDayMenu() {
-        Scanner input = new Scanner(System.in);
         System.out.println("Day(1-31(30))");
         return TryParse(input.nextLine());
     }
     private int EnterMinuteMenu() {
-        Scanner input = new Scanner(System.in);
         System.out.println("Minute (0-59)");
         return TryParse(input.nextLine());
     }
 
     private int EnterSecondMenu() {
-        Scanner input = new Scanner(System.in);
         System.out.println("Second(0-59)");
         return TryParse(input.nextLine());
     }
 
     private int EnterHourMenu() {
-        Scanner input = new Scanner(System.in);
         System.out.println("hour(0-23)");
         return TryParse(input.nextLine());
     }
@@ -200,24 +192,21 @@ public  class Menu {
             System.out.println("Enter number:\n1 - Add new flight\n"
                     + "2 - Delete flight\n3 - Info\n-1 - Exit");
             int tmp = TryParse(input.nextLine());
-            if (tmp == 1) {
+        switch (tmp) {
+            case 1:
                 AddNewFlightMenu();
-            }
-
-            if (tmp == 2) {
+                break;
+            case 2:
                 System.out.println("DeleteFlite");
                 admin.Info();
                 System.out.println("Enter index");
-                try {
-                    int index = input.nextInt();
-                    admin.DeleteFlight(index);
-                } catch (InputMismatchException ex) {
-                    System.out.println("Try again ");
-                }
-            }
-            if (tmp == 3) {
+                int index = TryParse(input.nextLine());
+                admin.DeleteFlight(index);
+                break;
+            case 3:
                 admin.Info();
-            }
+                break;
+        }
     }
 
     private int TryParse(String string){
@@ -231,27 +220,22 @@ public  class Menu {
     }
 
     private void MainMenu(){
-        Scanner input = new Scanner(System.in);
         int tmp = 0;
-
         while (tmp != -1) {
             System.out.println("Enter number:\n1 "
                     +"- Go to administrator center\n"
                     +"2 - Go to Dispatcher center\n-1 - Exit");
             tmp = TryParse(input.nextLine());
-            if (tmp == 1 ) {
-                AdminMenu();
+            switch (tmp) {
+                case 1:
+                    AdminMenu();
+                    break;
+                case 2:
+                    DispatcherMenu();
+                    break;
             }
         }
     }
 
-
-    private Admin admin = new Admin();
-    private Dispatcher dispatcher = new Dispatcher();
-
-    public Menu()  {
-        Init();
-        MainMenu();
-    }
 }
 

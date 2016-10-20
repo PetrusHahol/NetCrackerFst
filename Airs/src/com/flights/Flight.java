@@ -31,7 +31,7 @@ public class Flight {
 
     @Override
     public String toString(){
-        return ("FLIGHT From " + from + " - to - " + to + " - in - " + date.getTime() + '\n');
+        return ("FLIGHT From " + from + " - to - " + to + " - in - " + date.getTime() + "\n");
     }
 
     @Override
