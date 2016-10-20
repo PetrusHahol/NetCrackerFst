@@ -48,7 +48,6 @@ public class Flight implements Serializable {
     @Override
     public boolean equals(Object obj){
 
-        System.out.println(this);
         if (this == obj) return true;
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;

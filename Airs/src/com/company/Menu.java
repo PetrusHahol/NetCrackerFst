@@ -19,9 +19,9 @@ import java.util.Scanner;
 
 
 public  class Menu implements Serializable{
-    private static Admin admin = new Admin();
-    transient private Dispatcher dispatcher = new Dispatcher();
-    transient private static  Scanner input = new Scanner(System.in);
+    private  Admin admin = new Admin();
+    private  Dispatcher dispatcher = new Dispatcher();
+    private static  Scanner input = new Scanner(System.in);
     transient private int age = 0;
     transient private int experience = 0;
     transient private String passportData = "";
@@ -142,39 +142,39 @@ public  class Menu implements Serializable{
         }
     }
 
-    private static int EnterYearMenu() {
+    private  int EnterYearMenu() {
         System.out.println("Year(2016-2020)");
         return TryParse(input.nextLine());
     }
 
 
-    private static int EnterMonthMenu() {
+    private  int EnterMonthMenu() {
         System.out.println("Month(1-12)");
         return TryParse(input.nextLine());
     }
 
-    private static int EnterDayMenu() {
+    private  int EnterDayMenu() {
         System.out.println("Day(1-31(30))");
         return TryParse(input.nextLine());
     }
-    private  static int EnterMinuteMenu() {
+    private  int EnterMinuteMenu() {
         System.out.println("Minute (0-59)");
         return TryParse(input.nextLine());
     }
 
-    private static int EnterSecondMenu() {
+    private  int EnterSecondMenu() {
         System.out.println("Second(0-59)");
         return TryParse(input.nextLine());
     }
 
-    private static int EnterHourMenu() {
+    private  int EnterHourMenu() {
         System.out.println("hour(0-23)");
         return TryParse(input.nextLine());
     }
 
 
 
-    private static void AddNewFlightMenu(){
+    private  void AddNewFlightMenu(){
 
         System.out.println("AddNewFlight");
         System.out.println("From");

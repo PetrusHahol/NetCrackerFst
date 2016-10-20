@@ -9,7 +9,7 @@ public class Admin implements Serializable {
 
     private static int objectsCounter;
 
-    private static Set<Flight> flights = new HashSet<Flight>() ;
+    private Set<Flight> flights = new HashSet<Flight>() ;
 
     public static int getObjectsCounter() {
         return objectsCounter;

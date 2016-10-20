@@ -18,44 +18,44 @@ import java.util.*;
 public class Dispatcher implements  Serializable {
 
     private static List<Brigades> brigade = new ArrayList<Brigades>();
-    private static Map<Brigades, Flight> brigadeToFlight = new HashMap<Brigades, Flight>();
-    private static List<Radioman> radiomans = new ArrayList<Radioman>();
-    private static List<Pilot> pilots = new ArrayList<Pilot>();
-    private static List<Stewardess> stewardess = new ArrayList<Stewardess>();
-    private static List<Navigator> navigators = new ArrayList<Navigator>();
-    private static int objectsCounter;
+    private  Map<Brigades, Flight> brigadeToFlight = new HashMap<Brigades, Flight>();
+    private  List<Radioman> radiomans = new ArrayList<Radioman>();
+    private  List<Pilot> pilots = new ArrayList<Pilot>();
+    private  List<Stewardess> stewardess = new ArrayList<Stewardess>();
+    private  List<Navigator> navigators = new ArrayList<Navigator>();
+    private  int objectsCounter;
 
     public Dispatcher(){
         objectsCounter++;
     }
 
-    public static void setBrigade(Brigades newBrigade, Flight flightObject)
+    public void setBrigade(Brigades newBrigade, Flight flightObject)
     {
         brigade.add(newBrigade);
         brigadeToFlight.put(newBrigade, flightObject);
     }
 
-    public static  void AddNewRadioman(String name, int age, int height, int experience
+    public  void AddNewRadioman(String name, int age, int height, int experience
             , String passportData, int countForeignLanguage){
         radiomans.add(new Radioman(name, age, height, experience, passportData, countForeignLanguage));
     }
 
-    public static  void AddNewStewardess(String name, int age, int height, int experience
+    public void AddNewStewardess(String name, int age, int height, int experience
             , String passportData, int lengthWaist){
         stewardess.add(new Stewardess(name, age, height, experience, passportData, lengthWaist));
     }
 
-    public static  void AddNewNavigator(String name, int age, int height, int experience
+    public  void AddNewNavigator(String name, int age, int height, int experience
             , String passportData, String category){
         navigators.add(new Navigator(name, age, height, experience, passportData, category));
     }
 
-    public static void AddNewPilot(String name, int age, int height, int experience
+    public void AddNewPilot(String name, int age, int height, int experience
             , String passportData, int mileage){
         pilots.add(new Pilot(name, age, height, experience, passportData, mileage));
     }
 
-    public static void Info(){
+    public  void Info(){
 
         for (Radioman iter: radiomans){
             System.out.print(iter);
@@ -114,7 +114,7 @@ public class Dispatcher implements  Serializable {
         return true;
     }
 
-    public static void AddBrigade(Admin admin) throws CustomExceptions{
+    public  void AddBrigade(Admin admin) throws CustomExceptions{
 
         if (Pilot.objectsCounter <2 || Stewardess.objectsCounter == 0
             || Navigator.objectsCounter ==0  || Radioman.objectsCounter == 0)
@@ -218,7 +218,7 @@ public class Dispatcher implements  Serializable {
         return brigadeToFlight;
     }
 
-    public static int getObjectsCounter() {
+    public int getObjectsCounter() {
         return objectsCounter;
     }
 
@@ -226,36 +226,36 @@ public class Dispatcher implements  Serializable {
         return brigade;
     }
 
-    public static List<Radioman> getRadiomans() {
+    public  List<Radioman> getRadiomans() {
         return radiomans;
     }
 
-    public static List<Pilot> getPilots() {
+    public  List<Pilot> getPilots() {
         return pilots;
     }
 
-    public static List<Stewardess> getStewardess() {
+    public  List<Stewardess> getStewardess() {
         return stewardess;
     }
 
-    public static List<Navigator> getNavigators() {
+    public  List<Navigator> getNavigators() {
         return navigators;
     }
 
-    public static void setRadiomans(List<Radioman> radiomen) {
-        radiomans = radiomen;
+    public  void setRadiomans(List<Radioman> radiomen) {
+        this.radiomans = radiomen;
     }
 
-    public static void setPilots(List<Pilot> pilots) {
-        pilots = pilots;
+    public void setPilots(List<Pilot> pilots) {
+        this.pilots = pilots;
     }
 
-    public static void setStewardess(List<Stewardess> stewardess) {
-        stewardess = stewardess;
+    public  void setStewardess(List<Stewardess> stewardess) {
+        this.stewardess = stewardess;
     }
 
-    public static void setNavigators(List<Navigator> navigator) {
-        navigators = navigator;
+    public  void setNavigators(List<Navigator> navigator) {
+        this.navigators = navigator;
     }
 
 

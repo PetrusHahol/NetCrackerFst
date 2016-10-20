@@ -11,7 +11,6 @@ public class Main {
         Scanner input = new Scanner(System.in);
         System.out.println("1 - New menu; 2 - Download previous menu ");
         String numbDownload = input.nextLine();
-
         if (numbDownload.equals("1")) {
             try {
                 FileOutputStream fos = new FileOutputStream("temp.out");
