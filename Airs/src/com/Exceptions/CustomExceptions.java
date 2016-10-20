@@ -1,10 +1,12 @@
 package com.Exceptions;
 
 
+import java.io.Serializable;
+
 /**
  * Created by Asus on 18.10.2016.
  */
-public class CustomExceptions extends  Exception{
+public class CustomExceptions extends  Exception implements Serializable{
 
     public CustomExceptions(String message){
         super(message);
@@ -14,27 +16,5 @@ public class CustomExceptions extends  Exception{
         super();
     }
 
-    public int getYear() {
-        return 0;
-    }
 
-    public int getMonth() {
-        return 0;
-    }
-
-    public int getDay() {
-        return 0;
-    }
-
-    public int getHour() {
-        return 0;
-    }
-
-    public int getMinute() {
-        return 0;
-    }
-
-    public int getSecond() {
-        return 0;
-    }
 }

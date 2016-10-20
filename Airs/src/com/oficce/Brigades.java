@@ -2,12 +2,13 @@ package com.oficce;
 
 import com.flights.Flight;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Asus on 14.10.2016.
  */
-public class Brigades  {
+public class Brigades implements Serializable {
 
     private Pilot firstPilot;
     private Pilot secondPilot;

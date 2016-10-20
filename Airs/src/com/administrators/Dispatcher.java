@@ -9,12 +9,13 @@ import com.oficce.Pilot;
 import com.oficce.Radioman;
 import com.oficce.Stewardess;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * Created by Asus on 14.10.2016.
  */
-public class Dispatcher implements DispatcherInterface {
+public class Dispatcher implements DispatcherInterface, Serializable {
 
     private List<Brigades> brigade = new ArrayList<Brigades>();
     private Map<Brigades, Flight> brigadeToFlight = new HashMap<Brigades, Flight>();

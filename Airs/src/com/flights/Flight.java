@@ -1,11 +1,12 @@
 package com.flights;
 
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
 /**
  * Created by Asus on 13.10.2016.
  */
-public class Flight {
+public class Flight implements Serializable {
 
     private String from;
     private String to;

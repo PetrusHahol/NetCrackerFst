@@ -1,10 +1,11 @@
 package com.administrators;
 
+import java.io.Serializable;
 import java.util.*;
 
 import com.flights.Flight;
 
-public class Admin     {
+public class Admin implements Serializable {
 
     private static int objectsCounter;
 

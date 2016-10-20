@@ -1,9 +1,11 @@
 package com.oficce;
 
+import java.io.Serializable;
+
 /**
  * Created by Asus on 16.10.2016.
  */
-public abstract class Employee {
+public abstract class Employee implements Serializable{
 
 
     protected String name;

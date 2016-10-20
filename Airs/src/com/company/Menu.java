@@ -7,6 +7,7 @@ import com.administrators.Admin;
 import com.administrators.Dispatcher;
 import com.flights.Flight;
 
+import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.GregorianCalendar;
 import java.util.InputMismatchException;
@@ -17,15 +18,15 @@ import java.util.Scanner;
  */
 
 
-public  class Menu {
-    private Admin admin = new Admin();
-    private Dispatcher dispatcher = new Dispatcher();
-    private  Scanner input = new Scanner(System.in);
-    private int age = 0;
-    private int experience = 0;
-    private String passportData = "";
-    private int height = 0;
-    private String name = "";
+public  class Menu implements Serializable{
+    private static Admin admin = new Admin();
+    transient private Dispatcher dispatcher = new Dispatcher();
+    transient private static  Scanner input = new Scanner(System.in);
+    transient private int age = 0;
+    transient private int experience = 0;
+    transient private String passportData = "";
+    transient private int height = 0;
+    transient private String name = "";
 
     public Menu()  {
         Init();
@@ -141,39 +142,39 @@ public  class Menu {
         }
     }
 
-    private int EnterYearMenu() {
+    private static int EnterYearMenu() {
         System.out.println("Year(2016-2020)");
         return TryParse(input.nextLine());
     }
 
 
-    private int EnterMonthMenu() {
+    private static int EnterMonthMenu() {
         System.out.println("Month(1-12)");
         return TryParse(input.nextLine());
     }
 
-    private int EnterDayMenu() {
+    private static int EnterDayMenu() {
         System.out.println("Day(1-31(30))");
         return TryParse(input.nextLine());
     }
-    private int EnterMinuteMenu() {
+    private  static int EnterMinuteMenu() {
         System.out.println("Minute (0-59)");
         return TryParse(input.nextLine());
     }
 
-    private int EnterSecondMenu() {
+    private static int EnterSecondMenu() {
         System.out.println("Second(0-59)");
         return TryParse(input.nextLine());
     }
 
-    private int EnterHourMenu() {
+    private static int EnterHourMenu() {
         System.out.println("hour(0-23)");
         return TryParse(input.nextLine());
     }
 
 
 
-    private void AddNewFlightMenu(){
+    private static void AddNewFlightMenu(){
 
         System.out.println("AddNewFlight");
         System.out.println("From");
@@ -209,7 +210,7 @@ public  class Menu {
         }
     }
 
-    private int TryParse(String string){
+    private static int TryParse(String string){
         int answer = 0;
         try {
             answer = Integer.parseInt(string);
@@ -219,7 +220,7 @@ public  class Menu {
         return answer;
     }
 
-    private void MainMenu(){
+     void MainMenu(){
         int tmp = 0;
         while (tmp != -1) {
             System.out.println("Enter number:\n1 "
