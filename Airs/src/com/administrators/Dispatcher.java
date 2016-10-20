@@ -17,7 +17,7 @@ import java.util.*;
  */
 public class Dispatcher implements  Serializable {
 
-    private static List<Brigades> brigade = new ArrayList<Brigades>();
+    private  List<Brigades> brigade = new ArrayList<Brigades>();
     private  Map<Brigades, Flight> brigadeToFlight = new HashMap<Brigades, Flight>();
     private  List<Radioman> radiomans = new ArrayList<Radioman>();
     private  List<Pilot> pilots = new ArrayList<Pilot>();

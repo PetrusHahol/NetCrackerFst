@@ -32,6 +32,8 @@ public  class Menu implements Serializable{
         Init();
         MainMenu();
     }
+
+
     private void Init() {
         admin.AddFlight("Minsk", "Moskow", new GregorianCalendar(2016, 11, 18, 22, 23, 22));
         admin.AddFlight("Minsk", "Mogilev", new GregorianCalendar(2016, 10, 5, 6, 7));
@@ -175,7 +177,6 @@ public  class Menu implements Serializable{
 
 
     private  void AddNewFlightMenu(){
-
         System.out.println("AddNewFlight");
         System.out.println("From");
         String from = input.nextLine();
@@ -187,11 +188,9 @@ public  class Menu implements Serializable{
                         , EnterDayMenu(), EnterHourMenu(),  EnterMinuteMenu(), EnterSecondMenu()));
     }
 
-
-
     private void AdminMenu() {
             System.out.println("Enter number:\n1 - Add new flight\n"
-                    + "2 - Delete flight\n3 - Info\n-1 - Exit");
+                    + "2 - Delete flight\n3 - Info\n4 - Download flights from files\n-1 - Exit");
             int tmp = TryParse(input.nextLine());
         switch (tmp) {
             case 1:
@@ -207,6 +206,8 @@ public  class Menu implements Serializable{
             case 3:
                 admin.Info();
                 break;
+            case 4:
+                admin.DownloadFlights();
         }
     }
 
@@ -238,5 +239,68 @@ public  class Menu implements Serializable{
         }
     }
 
+    public Admin getAdmin() {
+        return admin;
+    }
+
+    public Dispatcher getDispatcher() {
+        return dispatcher;
+    }
+
+    public static Scanner getInput() {
+        return input;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public int getExperience() {
+        return experience;
+    }
+
+    public String getPassportData() {
+        return passportData;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
+    }
+
+    public void setDispatcher(Dispatcher dispatcher) {
+        this.dispatcher = dispatcher;
+    }
+
+    public static void setInput(Scanner input) {
+        Menu.input = input;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
+    public void setPassportData(String passportData) {
+        this.passportData = passportData;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
 

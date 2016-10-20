@@ -1,6 +1,7 @@
 package com.administrators;
 
-import java.io.Serializable;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 import com.flights.Flight;
@@ -21,6 +22,29 @@ public class Admin implements Serializable {
 
     public Admin(){
         objectsCounter++;
+    }
+
+    public void DownloadFlights(){
+        try (BufferedReader in = new BufferedReader(
+                new InputStreamReader(
+                        new FileInputStream("src/com/input.txt"), StandardCharsets.UTF_8))){
+            String line = " ";
+            while (true) {
+                in.readLine();
+                AddFlight(in.readLine(),in.readLine()
+                                , new GregorianCalendar(Integer.parseInt(in.readLine())
+                                , Integer.parseInt(in.readLine())
+                                , Integer.parseInt(in.readLine())
+                                , Integer.parseInt(in.readLine())
+                                , Integer.parseInt(in.readLine())
+                                , Integer.parseInt(in.readLine())));
+            }
+        } catch (IOException ex) {
+           System.out.println("OUT");
+        }
+        catch(NumberFormatException ex){
+            // log;
+        }
     }
 
     public  void AddFlight(String from, String to, GregorianCalendar date)  {

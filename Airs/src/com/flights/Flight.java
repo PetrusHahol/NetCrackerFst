@@ -18,19 +18,7 @@ public class Flight implements Serializable {
         this.date=date;
     }
 
-    public void setFrom(String from){
-        this.from = from;
-    }
-
-    public void setTo(String to) {
-        this.to = to;
-    }
-
-    public void setDate(GregorianCalendar date){
-        this.date = date;
-    }
-
-    @Override
+   @Override
     public String toString(){
         return ("FLIGHT From " + from + " - to - " + to + " - in - " + date.getTime() + "\n");
     }
@@ -72,5 +60,16 @@ public class Flight implements Serializable {
 
     public GregorianCalendar getDate() {
         return date;
+    }
+    public void setFrom(String from){
+        this.from = from;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
+    }
+
+    public void setDate(GregorianCalendar date){
+        this.date = date;
     }
 }
