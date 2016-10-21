@@ -1,12 +1,14 @@
 package com.flights;
 
 import java.io.Serializable;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**
  * Created by Asus on 13.10.2016.
  */
-public class Flight implements Serializable {
+public class Flight implements Serializable , Comparable, Comparator<Flight> {
 
     private String from;
     private String to;
@@ -32,7 +34,6 @@ public class Flight implements Serializable {
         result += from.hashCode()+to.hashCode()+date.hashCode();
         return result;
     }
-
     @Override
     public boolean equals(Object obj){
 
@@ -72,4 +73,20 @@ public class Flight implements Serializable {
     public void setDate(GregorianCalendar date){
         this.date = date;
     }
+
+    @Override
+    public int compareTo(Object obj) {
+        Flight entry = (Flight) obj;
+        int result =  entry.date.compareTo(this.date);
+        if(result != 0) {
+            return result;
+        }
+        return 0;
+    }
+
+    @Override
+    public int compare(Flight obj1,Flight  obj2) {
+        return obj1.from.compareTo(obj2.from);
+    }
+
 }
