@@ -8,6 +8,7 @@ import java.io.Serializable;
  */
 public class CustomExceptions extends  Exception implements Serializable{
 
+
     public CustomExceptions(String message){
         super(message);
     }

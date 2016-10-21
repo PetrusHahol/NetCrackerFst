@@ -11,15 +11,6 @@ public class Admin implements Serializable {
     private static int objectsCounter;
 
     private Set<Flight> flights = new HashSet<Flight>() ;
-
-    public static int getObjectsCounter() {
-        return objectsCounter;
-    }
-
-    public Set<Flight> getFlights(){
-        return flights;
-    }
-
     public Admin(){
         objectsCounter++;
     }
@@ -62,11 +53,34 @@ public class Admin implements Serializable {
         }
     }
 
+    public void SaveFlights() {
+        try {
+            File file = new File("src/com/input.txt");
+            PrintWriter out = new PrintWriter(file.getAbsoluteFile());
+            for (Flight iter : flights) {
+                out.println("-----------");
+                out.print(iter.getFrom() + "\n" + iter.getTo()
+                        + "\n" + iter.getDate().get(Calendar.YEAR) + "\n"
+                        + iter.getDate().get(Calendar.MONTH)+"\n"
+                        + iter.getDate().get(Calendar.DAY_OF_MONTH)+"\n"
+                        + iter.getDate().get(Calendar.HOUR_OF_DAY)+"\n"
+                        + iter.getDate().get(Calendar.MINUTE)+"\n"
+                        + iter.getDate().get(Calendar.SECOND)+"\n");
+
+            }
+            out.close();
+        } catch (IOException ex) {
+            System.out.println("OUT");
+        } catch (NumberFormatException ex) {
+            // log;
+        }
+    }
+
+
 
 
     public  void Info(){
         int pos=0;
-
         for (Flight iter:flights){
             pos++;
             System.out.print(pos);
@@ -88,4 +102,14 @@ public class Admin implements Serializable {
         if (getClass() != obj.getClass()) return false;
         return true;
     }
+
+    public static int getObjectsCounter() {
+        return objectsCounter;
+    }
+
+    public Set<Flight> getFlights(){
+        return flights;
+    }
+
+
 }

@@ -174,8 +174,6 @@ public  class Menu implements Serializable{
         return TryParse(input.nextLine());
     }
 
-
-
     private  void AddNewFlightMenu(){
         System.out.println("AddNewFlight");
         System.out.println("From");
@@ -190,9 +188,9 @@ public  class Menu implements Serializable{
 
     private void AdminMenu() {
             System.out.println("Enter number:\n1 - Add new flight\n"
-                    + "2 - Delete flight\n3 - Info\n4 - Download flights from files\n-1 - Exit");
-            int tmp = TryParse(input.nextLine());
-        switch (tmp) {
+                    + "2 - Delete flight\n3 - Info\n4 - Download flights from BD\n5 - Rewrite flights in BD\n-1 - Exit");
+            int enterBit = TryParse(input.nextLine());
+        switch (enterBit) {
             case 1:
                 AddNewFlightMenu();
                 break;
@@ -208,6 +206,9 @@ public  class Menu implements Serializable{
                 break;
             case 4:
                 admin.DownloadFlights();
+                break;
+            case 5:
+                admin.SaveFlights();
         }
     }
 

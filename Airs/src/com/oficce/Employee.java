@@ -7,7 +7,6 @@ import java.io.Serializable;
  */
 public abstract class Employee implements Serializable{
 
-
     protected String name;
     protected int age;
     protected int height;
