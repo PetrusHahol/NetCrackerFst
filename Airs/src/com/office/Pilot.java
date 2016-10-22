@@ -1,4 +1,4 @@
-package com.oficce;
+package com.office;
 
 /**
  * Created by Asus on 14.10.2016.
@@ -53,10 +53,10 @@ public class Pilot extends Employee {
         int MOD = 1000000007;
 
         result += name.hashCode() + passportData.hashCode();
-        result += (result * age+PRIME) % MOD;
-        result += (result * experience +PRIME) % MOD;
-        result += (result * height+PRIME) % MOD;
-        result += (result * mileage+PRIME) % MOD;
+        result += (result * age + PRIME) % MOD;
+        result += (result * experience + PRIME) % MOD;
+        result += (result * height + PRIME) % MOD;
+        result += (result * mileage + PRIME) % MOD;
         return result;
     }
 

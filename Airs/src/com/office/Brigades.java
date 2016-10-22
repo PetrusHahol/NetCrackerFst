@@ -1,11 +1,6 @@
-package com.oficce;
-
-import com.flights.Flight;
+package com.office;
 
 import java.io.Serializable;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.Objects;
 
 /**
  * Created by Asus on 14.10.2016.

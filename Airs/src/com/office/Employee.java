@@ -1,6 +1,4 @@
-package com.oficce;
-
-import com.flights.Flight;
+package com.office;
 
 import java.io.Serializable;
 import java.util.Comparator;
@@ -60,10 +58,8 @@ public abstract class Employee implements Serializable , Comparator<Pilot>{
 
     @Override
     public int compare(Pilot obj1, Pilot obj2){
-        if (obj1.experience> obj2.experience) return 1;
-        if (obj1.experience<obj2.experience) return -1;
+        if (obj1.experience > obj2.experience) return 1;
+        if (obj1.experience < obj2.experience) return -1;
         else return 0;
     }
-
-
 }

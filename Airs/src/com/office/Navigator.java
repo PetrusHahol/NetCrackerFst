@@ -1,15 +1,15 @@
-package com.oficce;
+package com.office;
 
 /**
  * Created by Asus on 14.10.2016.
  */
-public class Navigator extends Employee {
+public class Navigator<T> extends Employee {
 
-    private String category;
+    private T category;
     public static int objectsCounter;
 
     public Navigator(String name, int age, int height, int expirience
-            , String pasportData, String category){
+            , String passportData, T category){
 
         setAge(age);
 
@@ -19,7 +19,7 @@ public class Navigator extends Employee {
 
         setExperience(expirience);
 
-        setPassportData(pasportData);
+        setPassportData(passportData);
 
         setCategory(category);
 
@@ -42,8 +42,8 @@ public class Navigator extends Employee {
 
         result += name.hashCode()+passportData.hashCode()+category.hashCode();
         result += (result * age+PRIME) % MOD;
-        result += (result * experience +PRIME) % MOD;
-        result += (result * height+PRIME) % MOD;
+        result += (result * experience + PRIME) % MOD;
+        result += (result * height + PRIME) % MOD;
         return result;
     }
 
@@ -59,11 +59,11 @@ public class Navigator extends Employee {
         return true;
     }
 
-    public String getCategory() {
+    public T getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(T category) {
         this.category = category;
     }
 }

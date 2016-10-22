@@ -1,4 +1,4 @@
-package com.oficce;
+package com.office;
 
 /**
  * Created by Asus on 14.10.2016.
@@ -52,9 +52,9 @@ public class Radioman extends Employee {
 
          result += name.hashCode() + passportData.hashCode();
          result += (result * age+PRIME) % MOD;
-         result += (result * experience +PRIME) % MOD;
-         result += (result * height+PRIME) % MOD;
-         result += (result * countForeignLanguage +PRIME) % MOD;
+         result += (result * experience + PRIME) % MOD;
+         result += (result * height + PRIME) % MOD;
+         result += (result * countForeignLanguage + PRIME) % MOD;
          return result;
      }
 
