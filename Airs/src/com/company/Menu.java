@@ -7,7 +7,10 @@ import com.administrators.Admin;
 import com.administrators.Dispatcher;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.GregorianCalendar;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -16,6 +19,7 @@ import java.util.Scanner;
 
 
 public  class Menu implements Serializable{
+    enum City{Minsk, Moskow, Voronezh, Gomel, Mogilev, Mars , Kiev, Pskow, Grodno, Wails}
     private  Admin admin = new Admin();
     private  Dispatcher dispatcher = new Dispatcher();
     private static  Scanner input = new Scanner(System.in);
@@ -32,11 +36,19 @@ public  class Menu implements Serializable{
 
 
     private void Init() {
-        admin.AddFlight("Minsk", "Moskow", new GregorianCalendar(2016, 11, 18, 22, 23, 22));
-        admin.AddFlight("Minsk", "Mogilev", new GregorianCalendar(2016, 10, 5, 6, 7));
-        admin.AddFlight("Voronezh", "Gomel", new GregorianCalendar(2017, 5, 5, 6, 40));
-        admin.AddFlight("Minsk", "Mars", new GregorianCalendar(2020, 9, 12, 20, 30, 50));
-        admin.AddFlight("Minsk", "Mars", new GregorianCalendar(2020, 9, 12, 20, 30, 50));
+        Random rand = new Random();
+        City[] allCity = City.values();
+        System.out.println(rand.nextInt() % 10);
+        admin.AddFlight(allCity[rand.nextInt(10) ].toString()
+                        , allCity[rand.nextInt(10) ].toString(), new GregorianCalendar(2016, 11, 18, 22, 23, 22));
+        admin.AddFlight(allCity[rand.nextInt(10)].toString()
+                        , allCity[rand.nextInt(10) ].toString(), new GregorianCalendar(2016, 10, 5, 6, 7));
+        admin.AddFlight(allCity[rand.nextInt(10) ].toString()
+                        , allCity[rand.nextInt(10)].toString(), new GregorianCalendar(2017, 5, 5, 6, 40));
+        admin.AddFlight(allCity[rand.nextInt(10) ].toString()
+                        , allCity[rand.nextInt(10)].toString(), new GregorianCalendar(2020, 9, 12, 20, 30, 50));
+        admin.AddFlight(allCity[rand.nextInt(10)].toString()
+                        , allCity[rand.nextInt(10) ].toString(), new GregorianCalendar(2020, 9, 12, 20, 30, 50));
         dispatcher.AddNewPilot("Stas", 25, 160, 5, "KV185555", 550);
         dispatcher.AddNewStewardess("Stas", 25, 160, 5, "KV185555", 60);
         dispatcher.AddNewNavigator("Stas", 25, 160, 5, "KV185555", "First");
@@ -174,7 +186,7 @@ public  class Menu implements Serializable{
     }
 
     private  int EnterHourMenu() {
-        System.out.println("hour(0-23)");
+        System.out.println("Hour(0-23)");
         return TryParse(input.nextLine());
     }
 
