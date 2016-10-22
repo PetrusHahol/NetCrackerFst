@@ -1,7 +1,6 @@
 package com.company;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class Main {
@@ -35,7 +34,7 @@ public class Main {
                 oos.flush();
                 oos.close();
             } catch (IOException ex) {
-                System.out.println("Create new menu");
+                System.out.println("Run again");
             } catch (ClassNotFoundException e) {
                 System.out.println("Class not Found");
             }

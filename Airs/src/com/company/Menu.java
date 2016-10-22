@@ -47,6 +47,9 @@ public  class Menu implements Serializable{
         System.out.println("Enter name");
         name = input.nextLine();
         System.out.println("Enter age");
+        age = 0;
+        height = 0;
+        experience = 0;
         while (age == 0) {
             age = TryParse(input.nextLine());
         }
@@ -84,7 +87,6 @@ public  class Menu implements Serializable{
 
     private void NavigatorMenu(){
         System.out.println("Enter category");
-        input.nextLine();
         String category = input.nextLine();
         dispatcher.AddNewNavigator(name, age, height, experience, passportData, category);
     }
