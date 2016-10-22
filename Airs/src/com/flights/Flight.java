@@ -20,7 +20,7 @@ public class Flight implements Serializable , Comparable, Comparator<Flight> {
         this.date=date;
     }
 
-   @Override
+    @Override
     public String toString(){
         return ("FLIGHT From " + from + " - to - " + to + " - in - " + date.getTime() + "\n");
     }
@@ -43,9 +43,7 @@ public class Flight implements Serializable , Comparable, Comparator<Flight> {
 
         Flight temper = (Flight) obj;
         if (!to.equals(temper.to)) return false;
-
         if (!from.equals(temper.from)) return false;
-
         if (!date.equals(temper.date)) return false;
 
         return true;
@@ -62,6 +60,7 @@ public class Flight implements Serializable , Comparable, Comparator<Flight> {
     public GregorianCalendar getDate() {
         return date;
     }
+
     public void setFrom(String from){
         this.from = from;
     }

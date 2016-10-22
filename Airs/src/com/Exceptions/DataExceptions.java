@@ -6,14 +6,13 @@ import java.io.Serializable;
 /**
  * Created by Asus on 18.10.2016.
  */
-public class CustomExceptions extends  Exception implements Serializable{
+public class DataExceptions extends  Exception implements Serializable{
 
 
-    public CustomExceptions(String message){
+    public DataExceptions(String message){
         super(message);
     }
-
-    public CustomExceptions(){
+    public DataExceptions(){
         super();
     }
 

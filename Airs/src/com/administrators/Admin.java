@@ -9,7 +9,6 @@ import com.flights.Flight;
 public class Admin implements Serializable {
 
     private static int objectsCounter;
-
     private Set<Flight> flights = new TreeSet<>();
     public Admin(){
         objectsCounter++;
@@ -34,7 +33,7 @@ public class Admin implements Serializable {
            System.out.println("OUT");
         }
         catch(NumberFormatException ex){
-            // log;
+            // some
         }
     }
 
@@ -81,6 +80,7 @@ public class Admin implements Serializable {
 
     public  void Info(){
         int pos=0;
+
         for (Flight iter:flights){
             pos++;
             System.out.print(pos);

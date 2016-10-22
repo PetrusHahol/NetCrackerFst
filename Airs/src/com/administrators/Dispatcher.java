@@ -1,6 +1,6 @@
 package com.administrators;
 
-import com.Exceptions.CustomExceptions;
+import com.Exceptions.DataExceptions;
 
 import com.flights.Flight;
 import com.oficce.*;
@@ -27,6 +27,10 @@ public class Dispatcher implements  Serializable {
 
     public Dispatcher(){
         objectsCounter++;
+    }
+
+    public void Regularize(){
+        Collections.sort(brigade);
     }
 
     public void setBrigade(Brigades newBrigade, Flight flightObject)
@@ -114,12 +118,11 @@ public class Dispatcher implements  Serializable {
         return true;
     }
 
-    public  void AddBrigade(Admin admin) throws CustomExceptions{
+    public  void AddBrigade(Admin admin) throws DataExceptions {
 
         if (Pilot.objectsCounter <2 || Stewardess.objectsCounter == 0
             || Navigator.objectsCounter ==0  || Radioman.objectsCounter == 0)
-            throw new CustomExceptions("For add a team, you need at least one employee "
-                                        + "of each specialty and necessarily two pilots");
+            throw new DataExceptions("Your have to enter 2 pilots and 1 over employee");
 
         int pos = 0;
         Brigades newBrigade = new Brigades();

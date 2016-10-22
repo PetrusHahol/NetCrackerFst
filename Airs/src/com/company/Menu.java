@@ -1,16 +1,13 @@
 package com.company;
 
-import com.Exceptions.CustomExceptions;
+import com.Exceptions.DataExceptions;
 
 
 import com.administrators.Admin;
 import com.administrators.Dispatcher;
-import com.flights.Flight;
 
 import java.io.Serializable;
-import java.lang.reflect.Type;
 import java.util.GregorianCalendar;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -125,7 +122,8 @@ public  class Menu implements Serializable{
 
 
     private void DispatcherMenu() {
-        System.out.println(" Enter number:\n1 - Add new employee\n2 - Add new brigade\n3 - Info\n-1 - Exit");
+        System.out.println(" Enter number:\n1 - Add new employee\n2 - Add new brigade\n3 - Info\n4 -"
+                + " Regularize\n-1 - Exit");
         int tmp = TryParse(input.nextLine());
         switch (tmp) {
             case 1:
@@ -134,13 +132,17 @@ public  class Menu implements Serializable{
             case 2:
                 try {
                     dispatcher.AddBrigade(admin);
-                } catch (CustomExceptions ex) {
+                } catch (DataExceptions ex) {
                     System.out.println(ex.getMessage());
                 }
                 break;
             case 3:
                 dispatcher.Info();
                 break;
+            case 4:
+                dispatcher.Regularize();
+                break;
+
         }
     }
 
@@ -188,7 +190,8 @@ public  class Menu implements Serializable{
 
     private void AdminMenu() {
             System.out.println("Enter number:\n1 - Add new flight\n"
-                    + "2 - Delete flight\n3 - Info\n4 - Download flights from BD\n5 - Rewrite flights in BD\n-1 - Exit");
+                                + "2 - Delete flight\n3 - Info\n4 - Download flights from BD\n"
+                                + "5 - Rewrite flights in BD\n-1 - Exit");
             int enterBit = TryParse(input.nextLine());
         switch (enterBit) {
             case 1:
@@ -209,6 +212,8 @@ public  class Menu implements Serializable{
                 break;
             case 5:
                 admin.SaveFlights();
+                break;
+
         }
     }
 

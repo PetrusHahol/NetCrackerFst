@@ -1,11 +1,14 @@
 package com.oficce;
 
+import com.flights.Flight;
+
 import java.io.Serializable;
+import java.util.Comparator;
 
 /**
  * Created by Asus on 16.10.2016.
  */
-public abstract class Employee implements Serializable{
+public abstract class Employee implements Serializable , Comparable{
 
     protected String name;
     protected int age;
@@ -51,5 +54,12 @@ public abstract class Employee implements Serializable{
 
     public void setPassportData(String passportData) {
         this.passportData = passportData;
+    }
+
+
+    @Override
+    public int compareTo(Object obj) {
+        Employee entry = (Employee) obj;
+        if (this.experience> entry.experience) return 1; else return 0;
     }
 }

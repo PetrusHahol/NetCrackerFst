@@ -3,12 +3,13 @@ package com.oficce;
 import com.flights.Flight;
 
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.Date;
 
 /**
  * Created by Asus on 14.10.2016.
  */
-public class Brigades implements Serializable {
+public class Brigades implements Serializable ,Comparable, Comparator<Brigades>{
 
     private Pilot firstPilot;
     private Pilot secondPilot;
@@ -86,4 +87,33 @@ public class Brigades implements Serializable {
         }
         return true;
     }
+
+    @Override
+    public int compareTo(Object obj) {
+        return 0;
+    }
+
+
+    @Override
+    public int compare(Brigades obj1, Brigades obj2) {
+        int size = obj1.firstPilot.compareTo(obj2.firstPilot);
+        if (size != 0 ){
+            return size;
+        }
+        size = obj1.secondPilot.compareTo(obj2.secondPilot);
+        if (size != 0){
+            return size;
+        }
+        size = obj1.stewardess.compareTo(obj2.stewardess);
+        if (size != 0){
+            return size;
+        }
+        size = obj1.navigator.compareTo(obj2.navigator);
+        if (size != 0){
+            return size;
+        }
+        size = obj1.radioman.compareTo(obj2.radioman);
+        return size;
+    }
+
 }
