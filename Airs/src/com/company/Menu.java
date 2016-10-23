@@ -8,10 +8,7 @@ import com.administrators.Dispatcher;
 
 import java.io.Serializable;
 import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.GregorianCalendar;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by Asus on 14.10.2016.
@@ -38,7 +35,6 @@ public  class Menu implements Serializable{
     private void Init() {
         Random rand = new Random();
         City[] allCity = City.values();
-        System.out.println(rand.nextInt() % 10);
         admin.AddFlight(allCity[rand.nextInt(10) ].toString()
                         , allCity[rand.nextInt(10) ].toString(), new GregorianCalendar(2016, 11, 18, 22, 23, 22));
         admin.AddFlight(allCity[rand.nextInt(10)].toString()
@@ -99,8 +95,15 @@ public  class Menu implements Serializable{
 
     private void NavigatorMenu(){
         System.out.println("Enter category");
-        String category = input.nextLine();
-        dispatcher.AddNewNavigator(name, age, height, experience, passportData, category);
+        String strCategory = "";
+        try {
+            strCategory = input.nextLine();
+            int intCategory = Integer.parseInt(strCategory);
+            dispatcher.AddNewNavigator(name, age, height, experience, passportData, intCategory);
+        }
+        catch(NumberFormatException ex){
+            dispatcher.AddNewNavigator(name, age, height, experience, passportData, strCategory);
+        }
     }
 
     private void StewardessMenu(){
@@ -162,7 +165,7 @@ public  class Menu implements Serializable{
 
     private  int EnterYearMenu() {
         System.out.println("Year(2016-2020)");
-        return TryParse(input.nextLine());
+        return Math.max(2016,TryParse(input.nextLine()));
     }
 
 

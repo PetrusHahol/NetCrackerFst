@@ -10,19 +10,12 @@ public class Navigator<T> extends Employee {
 
     public Navigator(String name, int age, int height, int expirience
             , String passportData, T category){
-
         setAge(age);
-
         setName(name);
-
         setHeight(height);
-
         setExperience(expirience);
-
         setPassportData(passportData);
-
         setCategory(category);
-
         objectsCounter++;
     }
 
@@ -34,14 +27,14 @@ public class Navigator<T> extends Employee {
                 + " - Passport Data - " + passportData
                 + " - Category - " + category + "\n");
     }
+
     @Override
     public int hashCode() {
         final int PRIME = 43;
         int result = 1;
         int MOD = 1000000007;
-
-        result += name.hashCode()+passportData.hashCode()+category.hashCode();
-        result += (result * age+PRIME) % MOD;
+        result += name.hashCode() + passportData.hashCode() + category.hashCode();
+        result += (result * age + PRIME) % MOD;
         result += (result * experience + PRIME) % MOD;
         result += (result * height + PRIME) % MOD;
         return result;
@@ -50,13 +43,14 @@ public class Navigator<T> extends Employee {
     @Override
     public boolean equals(Object obj){
         if (this == obj) return true;
-        else
-            if (obj == null) return false;
-            else
-                if (getClass() != obj.getClass()) {
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) {
                     return false;
-                }
-        return true;
+        }
+        Navigator temp =  (Navigator) obj;
+        return (temp.name.equals(this.name) ||  temp.age == this.age
+                || temp.height == this.height || temp.experience == this.experience
+                || temp.passportData.equals(this.passportData) || temp.category.equals(this.category));
     }
 
     public T getCategory() {

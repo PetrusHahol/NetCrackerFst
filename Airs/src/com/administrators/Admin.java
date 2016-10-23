@@ -75,12 +75,8 @@ public class Admin implements Serializable {
         }
     }
 
-
-
-
     public  void Info(){
         int pos=0;
-
         for (Flight iter:flights){
             pos++;
             System.out.print(pos);
@@ -88,6 +84,7 @@ public class Admin implements Serializable {
         }
     }
 
+    @Override
     public int hashCode() {
         int result = 0;
         for (Flight iter: flights) {
@@ -96,11 +93,13 @@ public class Admin implements Serializable {
         return result;
     }
 
+    @Override
     public boolean equals(Object obj){
         if (this == obj) return true;
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
-        return true;
+        Admin temp = (Admin) obj;
+        return temp.flights.equals(this.flights);
     }
 
     public static int getObjectsCounter() {

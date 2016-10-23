@@ -54,6 +54,11 @@ public class Dispatcher implements  Serializable {
         navigators.add(new Navigator(name, age, height, experience, passportData, category));
     }
 
+    public  void AddNewNavigator(String name, int age, int height, int experience
+            , String passportData, int category){
+        navigators.add(new Navigator(name, age, height, experience, passportData, category));
+    }
+
     public void AddNewPilot(String name, int age, int height, int experience
             , String passportData, int mileage){
         pilots.add(new Pilot(name, age, height, experience, passportData, mileage));
@@ -112,10 +117,7 @@ public class Dispatcher implements  Serializable {
     public boolean equals(Object obj){
         if (this == obj) return true;
         if (obj == null) return false;
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        return true;
+        return  getClass() == obj.getClass();
     }
 
     public  void AddBrigade(Admin admin) throws DataExceptions {

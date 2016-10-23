@@ -81,7 +81,10 @@ public class Brigades implements Serializable ,Comparable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        return true;
+        Brigades temp =  (Brigades) obj;
+        return (temp.firstPilot.equals(this.firstPilot) ||  temp.secondPilot.equals(this.secondPilot)
+                || temp.navigator.equals(this.navigator) || temp.stewardess.equals(this.stewardess)
+                || temp.radioman.equals(this.radioman));
     }
 
     @Override
@@ -91,7 +94,6 @@ public class Brigades implements Serializable ,Comparable {
         if (size != 0) {
             return size;
         }
-
         size = secondPilot.compare(firstPilot, ((Brigades) obj).firstPilot);
         if (size != 0) {
             return size;

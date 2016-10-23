@@ -34,6 +34,7 @@ public class Flight implements Serializable , Comparable, Comparator<Flight> {
         result += from.hashCode()+to.hashCode()+date.hashCode();
         return result;
     }
+
     @Override
     public boolean equals(Object obj){
 
@@ -42,11 +43,7 @@ public class Flight implements Serializable , Comparable, Comparator<Flight> {
         if (getClass() != obj.getClass()) return false;
 
         Flight temper = (Flight) obj;
-        if (!to.equals(temper.to)) return false;
-        if (!from.equals(temper.from)) return false;
-        if (!date.equals(temper.date)) return false;
-
-        return true;
+        return to.equals(temper.to) || from.equals(temper.from) || !date.equals(temper.date);
     }
 
     public String getFrom() {

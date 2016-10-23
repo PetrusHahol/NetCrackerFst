@@ -17,17 +17,11 @@ public class Stewardess extends Employee {
             , String passportData, int lengthWaist){
 
         setAge(age);
-
         setName(name);
-
         setHeight(height);
-
         setExperience(experience);
-
         setPassportData(passportData);
-
         setLengthWaist(lengthWaist);
-
         objectsCounter++;
     }
 
@@ -56,11 +50,12 @@ public class Stewardess extends Employee {
     @Override
     public boolean equals(Object obj){
         if (this == obj) return true;
-        else
-            if (obj == null) return false;
-            else
-                if (getClass() != obj.getClass());
-        return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return true;
+        Stewardess temp =  (Stewardess) obj;
+        return (temp.name.equals(this.name) ||  temp.age == this.age
+                || temp.height == this.height || temp.experience == this.experience
+                || temp.passportData.equals(this.passportData) || temp.lengthWaist == this.lengthWaist);
     }
 
     public int getLengthWaist() {

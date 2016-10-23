@@ -16,17 +16,11 @@ public class Radioman extends Employee {
                    , String passportData, int countForeignLanguage){
 
         setAge(age);
-
         setName(name);
-
         setHeight(height);
-
         setExperience(experience);
-
         setPassportData(passportData);
-
         setCountForeignLanguage(countForeignLanguage);
-
         objectsCounter++;
     }
 
@@ -62,10 +56,11 @@ public class Radioman extends Employee {
     public boolean equals(Object obj){
         if (this == obj) return true;
         if (obj == null) return false;
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        return true;
+        if (getClass() != obj.getClass()) return false;
+        Radioman temp =  (Radioman) obj;
+        return (temp.name.equals(this.name) ||  temp.age == this.age
+                || temp.height == this.height || temp.experience == this.experience
+                || temp.passportData.equals(this.passportData) || temp.countForeignLanguage == this.countForeignLanguage);
     }
 
     public void setCountForeignLanguage(int countForeignLanguage) {

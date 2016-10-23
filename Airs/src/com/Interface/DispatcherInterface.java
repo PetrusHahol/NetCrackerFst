@@ -14,8 +14,9 @@ public interface DispatcherInterface {
     public void AddNewNavigator(String name, int age, int height, int experience
             , String passportData, String category);
 
+    public void AddNewNavigator(String name, int age, int height, int experience
+            , String passportData, int category);
+
     public void AddNewPilot(String name, int age, int height, int experience
             , String passportData, int mileage);
-
-    public  void Info();
 }
