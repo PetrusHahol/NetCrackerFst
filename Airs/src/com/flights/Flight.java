@@ -2,7 +2,6 @@ package com.flights;
 
 import java.io.Serializable;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**
@@ -28,11 +27,8 @@ public class Flight implements Serializable , Comparable, Comparator<Flight> {
     @Override
     public int hashCode() {
 
-        final int PRIME = 43;
-        int result = 1;
         int MOD = 1000000007;
-        result += from.hashCode()+to.hashCode()+date.hashCode();
-        return result;
+        return (from.hashCode()+to.hashCode()+date.hashCode()) % MOD;
     }
 
     @Override

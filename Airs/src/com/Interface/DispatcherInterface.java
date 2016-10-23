@@ -5,18 +5,18 @@ package com.Interface;
  */
 public interface DispatcherInterface {
 
-    public  void AddNewRadioman(String name, int age, int height, int experience
+    void AddNewRadioman(String name, int age, int height, int experience
             , String passportData, int countForeignLanguage);
 
-    public  void AddNewStewardess(String name, int age, int height, int experience
+    void AddNewStewardess(String name, int age, int height, int experience
             , String passportData, int lengthWaist);
 
-    public void AddNewNavigator(String name, int age, int height, int experience
+    void AddNewNavigator(String name, int age, int height, int experience
             , String passportData, String category);
 
-    public void AddNewNavigator(String name, int age, int height, int experience
+    void AddNewNavigator(String name, int age, int height, int experience
             , String passportData, int category);
 
-    public void AddNewPilot(String name, int age, int height, int experience
+    void AddNewPilot(String name, int age, int height, int experience
             , String passportData, int mileage);
 }

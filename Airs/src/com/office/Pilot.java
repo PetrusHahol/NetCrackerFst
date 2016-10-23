@@ -7,7 +7,9 @@ public class Pilot extends Employee {
 
 
     private int mileage;
-    public static int objectsCounter;
+
+
+    private static int objectsCounter;
 
     public Pilot(String name, int age, int height, int experience
             , String passportData, int mileage){
@@ -63,5 +65,13 @@ public class Pilot extends Employee {
         return (temp.name.equals(this.name) ||  temp.age == this.age
                 || temp.height == this.height || temp.experience == this.experience
                 || temp.passportData.equals(this.passportData) || temp.mileage == this.mileage);
+    }
+
+    public static int getObjectsCounter() {
+        return objectsCounter;
+    }
+
+    public static void setObjectsCounter(int objectsCounter) {
+        Pilot.objectsCounter = objectsCounter;
     }
 }

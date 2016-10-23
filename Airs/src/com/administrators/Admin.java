@@ -18,7 +18,6 @@ public class Admin implements Serializable {
         try (BufferedReader in = new BufferedReader(
                 new InputStreamReader(
                         new FileInputStream("src/com/input.txt"), StandardCharsets.UTF_8))){
-            String line = " ";
             while (true) {
                 in.readLine();
                 AddFlight(in.readLine(),in.readLine()

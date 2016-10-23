@@ -4,10 +4,6 @@ import com.Exceptions.DataExceptions;
 
 import com.flights.Flight;
 import com.office.*;
-import com.office.Navigator;
-import com.office.Pilot;
-import com.office.Radioman;
-import com.office.Stewardess;
 
 import java.io.Serializable;
 import java.util.*;
@@ -17,12 +13,12 @@ import java.util.*;
  */
 public class Dispatcher implements  Serializable {
 
-    private  List<Brigades> brigade = new ArrayList<Brigades>();
-    private  Map<Brigades, Flight> brigadeToFlight = new HashMap<Brigades, Flight>();
-    private  List<Radioman> radiomans = new ArrayList<Radioman>();
-    private  List<Pilot> pilots = new ArrayList<Pilot>();
-    private  List<Stewardess> stewardess = new ArrayList<Stewardess>();
-    private  List<Navigator> navigators = new ArrayList<Navigator>();
+    private  List<Brigades> brigade = new ArrayList<>();
+    private  Map<Brigades, Flight> brigadeToFlight = new HashMap<>();
+    private  List<Radioman> radiomans = new ArrayList<>();
+    private  List<Pilot> pilots = new ArrayList<>();
+    private  List<Stewardess> stewardess = new ArrayList<>();
+    private  List<Navigator> navigators = new ArrayList<>();
     private  int objectsCounter;
 
     public Dispatcher(){
@@ -122,8 +118,8 @@ public class Dispatcher implements  Serializable {
 
     public  void AddBrigade(Admin admin) throws DataExceptions {
 
-        if (Pilot.objectsCounter <2 || Stewardess.objectsCounter == 0
-            || Navigator.objectsCounter ==0  || Radioman.objectsCounter == 0)
+        if (Pilot.getObjectsCounter() <2 || Stewardess.getObjectsCounter() == 0
+            || Navigator.getObjectsCounter() ==0  || Radioman.getObjectsCounter() == 0)
             throw new DataExceptions("Your have to enter 2 pilots and 1 over employee");
 
         int pos = 0;
@@ -212,7 +208,7 @@ public class Dispatcher implements  Serializable {
         pos=0;
         for (Flight iter:admin.getFlights())
         {   pos++;
-            if (pos == indexObj) {;
+            if (pos == indexObj) {
                 setBrigade(newBrigade, iter);
             }
         }

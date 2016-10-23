@@ -68,7 +68,7 @@ public class Brigades implements Serializable ,Comparable {
 
     @Override
     public int hashCode() {
-        int result = 0;
+        int result;
         result = firstPilot.hashCode() + secondPilot.hashCode() + stewardess.hashCode() + navigator.hashCode()
                 + radioman.hashCode();
         return result;

@@ -6,7 +6,8 @@ package com.office;
 public class Radioman extends Employee {
 
     private int countForeignLanguage;
-    public static int objectsCounter;
+
+    private static int objectsCounter;
 
     public Radioman(){
         objectsCounter++;
@@ -65,5 +66,13 @@ public class Radioman extends Employee {
 
     public void setCountForeignLanguage(int countForeignLanguage) {
         this.countForeignLanguage = countForeignLanguage;
+    }
+
+    public static int getObjectsCounter() {
+        return objectsCounter;
+    }
+
+    public static void setObjectsCounter(int objectsCounter) {
+        Radioman.objectsCounter = objectsCounter;
     }
 }
