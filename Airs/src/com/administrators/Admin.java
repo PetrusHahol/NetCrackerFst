@@ -14,13 +14,13 @@ public class Admin implements Serializable {
         objectsCounter++;
     }
 
-    public void DownloadFlights(){
+    public void downloadFlights(){
         try (BufferedReader in = new BufferedReader(
                 new InputStreamReader(
                         new FileInputStream("src/com/input.txt"), StandardCharsets.UTF_8))){
             while (true) {
                 in.readLine();
-                AddFlight(in.readLine(),in.readLine()
+                addFlight(in.readLine(),in.readLine()
                                 , new GregorianCalendar(Integer.parseInt(in.readLine())
                                 , Integer.parseInt(in.readLine())
                                 , Integer.parseInt(in.readLine())
@@ -36,11 +36,11 @@ public class Admin implements Serializable {
         }
     }
 
-    public  void AddFlight(String from, String to, GregorianCalendar date)  {
+    public  void addFlight(String from, String to, GregorianCalendar date)  {
             flights.add(new Flight(from, to, date));
     }
 
-    public  void DeleteFlight(int index) {
+    public  void deleteFlight(int index) {
         int position = 0;
         for (Flight iter:flights) {
             position++;
@@ -51,7 +51,7 @@ public class Admin implements Serializable {
         }
     }
 
-    public void SaveFlights() {
+    public void saveFlights() {
         try {
             File file = new File("src/com/input.txt");
             PrintWriter out = new PrintWriter(file.getAbsoluteFile());
@@ -74,7 +74,18 @@ public class Admin implements Serializable {
         }
     }
 
-    public  void Info(){
+    public Flight indexIntoFlight(int index){
+        int pos = 0;
+        for (Flight iter : flights) {
+            pos++;
+            if (pos == index) {
+                return iter;
+            }
+        }
+        return null;
+    }
+
+    public  void info(){
         int pos=0;
         for (Flight iter:flights){
             pos++;

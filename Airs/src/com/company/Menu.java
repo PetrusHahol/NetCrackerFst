@@ -5,6 +5,7 @@ import com.Exceptions.DataExceptions;
 
 import com.administrators.Admin;
 import com.administrators.Dispatcher;
+import com.office.*;
 
 import java.io.Serializable;
 import java.util.*;
@@ -15,9 +16,9 @@ import java.util.*;
 
 
 public  class Menu implements Serializable{
-    enum City{Minsk, Moskow, Voronezh, Gomel, Mogilev, Mars , Kiev, Pskow, Grodno, Wails}
-    private  Admin admin = new Admin();
-    private  Dispatcher dispatcher = new Dispatcher();
+    private enum City{Minsk, Moskow, Voronezh, Gomel, Mogilev, Mars , Kiev, Pskow, Grodno, Wails}
+    private Admin admin = new Admin();
+    private Dispatcher dispatcher = new Dispatcher();
     private static  Scanner input = new Scanner(System.in);
     transient private int age = 0;
     transient private int experience = 0;
@@ -26,31 +27,31 @@ public  class Menu implements Serializable{
     transient private String name = "";
 
     public Menu()  {
-        Init();
-        MainMenu();
+        init();
+        mainMenu();
     }
 
 
-    private void Init() {
+    private void init() {
         Random rand = new Random();
         City[] allCity = City.values();
-        admin.AddFlight(allCity[rand.nextInt(10) ].toString()
+        admin.addFlight(allCity[rand.nextInt(10) ].toString()
                         , allCity[rand.nextInt(10) ].toString(), new GregorianCalendar(2016, 11, 18, 22, 23, 22));
-        admin.AddFlight(allCity[rand.nextInt(10)].toString()
+        admin.addFlight(allCity[rand.nextInt(10)].toString()
                         , allCity[rand.nextInt(10) ].toString(), new GregorianCalendar(2016, 10, 5, 6, 7));
-        admin.AddFlight(allCity[rand.nextInt(10) ].toString()
+        admin.addFlight(allCity[rand.nextInt(10) ].toString()
                         , allCity[rand.nextInt(10)].toString(), new GregorianCalendar(2017, 5, 5, 6, 40));
-        admin.AddFlight(allCity[rand.nextInt(10) ].toString()
+        admin.addFlight(allCity[rand.nextInt(10) ].toString()
                         , allCity[rand.nextInt(10)].toString(), new GregorianCalendar(2020, 9, 12, 20, 30, 50));
-        admin.AddFlight(allCity[rand.nextInt(10)].toString()
+        admin.addFlight(allCity[rand.nextInt(10)].toString()
                         , allCity[rand.nextInt(10) ].toString(), new GregorianCalendar(2020, 9, 12, 20, 30, 50));
-        dispatcher.AddNewPilot("Stas", 25, 160, 5, "KV185555", 550);
-        dispatcher.AddNewStewardess("Stas", 25, 160, 5, "KV185555", 60);
-        dispatcher.AddNewNavigator("Stas", 25, 160, 5, "KV185555", "First");
-        dispatcher.AddNewRadioman("Stas", 25, 160, 5, "KV185555", 12);
+        dispatcher.addNewPilot("Stas", 25, 160, 5, "KV185555", 550);
+        dispatcher.addNewStewardess("Stas", 25, 160, 5, "KV185555", 60);
+        dispatcher.addNewNavigator("Stas", 25, 160, 5, "KV185555", "First");
+        dispatcher.addNewRadioman("Stas", 25, 160, 5, "KV185555", 12);
     }
 
-    private void CharactersMenu(){
+    private void charactersMenu(){
         System.out.println("Enter name");
         name = input.nextLine();
         System.out.println("Enter age");
@@ -58,141 +59,166 @@ public  class Menu implements Serializable{
         height = 0;
         experience = 0;
         while (age == 0) {
-            age = TryParse(input.nextLine());
+            age = tryParse(input.nextLine());
         }
         System.out.println("Enter Height");
         while (height == 0) {
-            height = TryParse(input.nextLine());
+            height = tryParse(input.nextLine());
         }
         System.out.println("Enter Experience");
         while (experience == 0) {
-            experience = TryParse(input.nextLine());
+            experience = tryParse(input.nextLine());
         }
         System.out.println("Enter Passport Data");
         passportData = input.nextLine();
 
     }
 
-    private void PilotMenu(){
+    private void pilotMenu(){
         System.out.println("Enter mileage");
         int mileage = 0;
         while (mileage == 0) {
-            mileage = TryParse(input.nextLine());
+            mileage = tryParse(input.nextLine());
         }
-        dispatcher.AddNewPilot(name, age, height, experience, passportData, mileage);
+        dispatcher.addNewPilot(name, age, height, experience, passportData, mileage);
     }
 
-    private void RadiomenMenu(){
+    private void radiomenMenu(){
         System.out.println("Enter count foreign language");
         int countForeignLanguage = 0;
         while (countForeignLanguage == 0) {
-            countForeignLanguage = TryParse(input.nextLine());
+            countForeignLanguage = tryParse(input.nextLine());
         }
-        dispatcher.AddNewRadioman(name, age, height, experience
+        dispatcher.addNewRadioman(name, age, height, experience
                 , passportData, countForeignLanguage);
     }
 
-    private void NavigatorMenu(){
+    private void navigatorMenu(){
         System.out.println("Enter category");
         String strCategory = "";
         try {
             strCategory = input.nextLine();
             int intCategory = Integer.parseInt(strCategory);
-            dispatcher.AddNewNavigator(name, age, height, experience, passportData, intCategory);
+            dispatcher.addNewNavigator(name, age, height, experience, passportData, intCategory);
         }
         catch(NumberFormatException ex){
-            dispatcher.AddNewNavigator(name, age, height, experience, passportData, strCategory);
+            dispatcher.addNewNavigator(name, age, height, experience, passportData, strCategory);
         }
     }
 
-    private void StewardessMenu(){
+    private void stewardessMenu(){
         System.out.println("Enter length waist");
         int lengthWaist = 0;
         while (lengthWaist == 0){
-            lengthWaist = TryParse(input.nextLine());
+            lengthWaist = tryParse(input.nextLine());
         }
-        dispatcher.AddNewStewardess(name, age, height, experience, passportData, lengthWaist);
+        dispatcher.addNewStewardess(name, age, height, experience, passportData, lengthWaist);
     }
 
-    private void NewEmployMenu() {
+    private void newEmployMenu() {
         System.out.println(" Enter number:\n1 - Add new pilot\n2 - Add new radiomen"
                 + "\n3 - Add new navigator"
                 + "\n4 - Add new stewardess\n-1 - Exit");
-        int tmp = TryParse(input.nextLine());
-        CharactersMenu();
+        int tmp = tryParse(input.nextLine());
+        charactersMenu();
         switch (tmp) {
             case 1:
-                PilotMenu();
+                pilotMenu();
                 break;
             case 2:
-                RadiomenMenu();
+                radiomenMenu();
                 break;
             case 3:
-                NavigatorMenu();
+                navigatorMenu();
                 break;
             case 4:
-                StewardessMenu();
+                stewardessMenu();
                 break;
         }
     }
 
+    private void brigadeMenu(){
 
-    private void DispatcherMenu() {
+        try {
+            if (Pilot.getObjectsCounter() < 2 || Stewardess.getObjectsCounter() == 0
+                    || Navigator.getObjectsCounter() == 0 || Radioman.getObjectsCounter() == 0)
+                throw new DataExceptions("Your have to enter 2 pilots and 1 over employee");
+        } catch (DataExceptions ex){
+            ex.getMessage();
+        }
+
+        dispatcher.employeeInfo();
+        System.out.println("Enter numb first pilot");
+        int indexFirstPilot = tryParse(input.nextLine());
+        System.out.println("Enter numb second pilot");
+        int indexSecondPilot = tryParse(input.nextLine());
+        System.out.println("Enter numb navigator");
+        int indexNavigator = tryParse(input.nextLine());
+        System.out.println("Enter numb stewardess");
+        int indexStewardess = tryParse(input.nextLine());
+        System.out.println("Enter numb radiomen");
+        int indexRadioman = tryParse(input.nextLine());
+        admin.info();
+        System.out.println("Enter flight index");
+        int indexFlightObject = tryParse(input.nextLine());
+
+        dispatcher.addBrigade(dispatcher.iterIntoPilot(indexFirstPilot),dispatcher.iterIntoPilot(indexSecondPilot),
+                dispatcher.iterIntoNavigator(indexNavigator) ,dispatcher.iterIntoStewardess(indexStewardess),
+                dispatcher.iterIntoRadioman(indexRadioman), admin.indexIntoFlight(indexFlightObject));
+
+    }
+
+    private void dispatcherMenu() {
         System.out.println(" Enter number:\n1 - Add new employee\n2 - Add new brigade\n3 - Info\n4 -"
-                + " Regularize\n-1 - Exit");
-        int tmp = TryParse(input.nextLine());
+                + " regularize\n-1 - Exit");
+        int tmp = tryParse(input.nextLine());
         switch (tmp) {
             case 1:
-                NewEmployMenu();
+                newEmployMenu();
                 break;
             case 2:
-                try {
-                    dispatcher.AddBrigade(admin);
-                } catch (DataExceptions ex) {
-                    System.out.println(ex.getMessage());
-                }
+                brigadeMenu();
                 break;
             case 3:
-                dispatcher.Info();
+                dispatcher.info();
                 break;
             case 4:
-                dispatcher.Regularize();
+                dispatcher.regularize();
                 break;
 
         }
     }
 
-    private  int EnterYearMenu() {
+    private  int enterYearMenu() {
         System.out.println("Year(2016-2020)");
-        return Math.max(2016,TryParse(input.nextLine()));
+        return Math.max(2016, tryParse(input.nextLine()));
     }
 
-
-    private  int EnterMonthMenu() {
+    private  int enterMonthMenu() {
         System.out.println("Month(1-12)");
-        return TryParse(input.nextLine());
+        return tryParse(input.nextLine());
     }
 
-    private  int EnterDayMenu() {
+    private  int enterDayMenu() {
         System.out.println("Day(1-31(30))");
-        return TryParse(input.nextLine());
+        return tryParse(input.nextLine());
     }
-    private  int EnterMinuteMenu() {
+    private  int enterMinuteMenu() {
         System.out.println("Minute (0-59)");
-        return TryParse(input.nextLine());
+        return tryParse(input.nextLine());
     }
 
-    private  int EnterSecondMenu() {
+    private  int enterSecondMenu() {
         System.out.println("Second(0-59)");
-        return TryParse(input.nextLine());
+        return tryParse(input.nextLine());
     }
 
-    private  int EnterHourMenu() {
+    private  int enterHourMenu() {
         System.out.println("Hour(0-23)");
-        return TryParse(input.nextLine());
+        return tryParse(input.nextLine());
     }
 
-    private  void AddNewFlightMenu(){
+    private  void addNewFlightMenu(){
         System.out.println("AddNewFlight");
         System.out.println("From");
         String from = input.nextLine();
@@ -200,40 +226,40 @@ public  class Menu implements Serializable{
         String to = input.nextLine();
         System.out.println("date");
 
-        admin.AddFlight(from, to,new GregorianCalendar(EnterYearMenu(), EnterMonthMenu()-1
-                        , EnterDayMenu(), EnterHourMenu(),  EnterMinuteMenu(), EnterSecondMenu()));
+        admin.addFlight(from, to,new GregorianCalendar(enterYearMenu(), enterMonthMenu()-1
+                        , enterDayMenu(), enterHourMenu(),  enterMinuteMenu(), enterSecondMenu()));
     }
 
-    private void AdminMenu() {
+    private void adminMenu() {
             System.out.println("Enter number:\n1 - Add new flight\n"
                                 + "2 - Delete flight\n3 - Info\n4 - Download flights from BD\n"
                                 + "5 - Rewrite flights in BD\n-1 - Exit");
-            int enterBit = TryParse(input.nextLine());
+            int enterBit = tryParse(input.nextLine());
         switch (enterBit) {
             case 1:
-                AddNewFlightMenu();
+                addNewFlightMenu();
                 break;
             case 2:
-                System.out.println("DeleteFlite");
-                admin.Info();
+                System.out.println("DeleteFlight");
+                admin.info();
                 System.out.println("Enter index");
-                int index = TryParse(input.nextLine());
-                admin.DeleteFlight(index);
+                int index = tryParse(input.nextLine());
+                admin.deleteFlight(index);
                 break;
             case 3:
-                admin.Info();
+                admin.info();
                 break;
             case 4:
-                admin.DownloadFlights();
+                admin.downloadFlights();
                 break;
             case 5:
-                admin.SaveFlights();
+                admin.saveFlights();
                 break;
 
         }
     }
 
-    private static int TryParse(String string){
+    private static int tryParse(String string){
         int answer = 0;
         try {
             answer = Integer.parseInt(string);
@@ -243,19 +269,19 @@ public  class Menu implements Serializable{
         return answer;
     }
 
-     void MainMenu(){
+     void mainMenu(){
         int tmp = 0;
         while (tmp != -1) {
             System.out.println("Enter number:\n1 "
                     +"- Go to administrator center\n"
                     +"2 - Go to Dispatcher center\n-1 - Exit");
-            tmp = TryParse(input.nextLine());
+            tmp = tryParse(input.nextLine());
             switch (tmp) {
                 case 1:
-                    AdminMenu();
+                    adminMenu();
                     break;
                 case 2:
-                    DispatcherMenu();
+                    dispatcherMenu();
                     break;
             }
         }

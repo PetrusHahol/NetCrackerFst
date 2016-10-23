@@ -26,7 +26,7 @@ public class Main {
                 FileInputStream fis = new FileInputStream("src/temp.out");
                 ObjectInputStream oin = new ObjectInputStream(fis);
                 Menu run = (Menu) oin.readObject();
-                run.MainMenu();
+                run.mainMenu();
                 FileOutputStream fos = new FileOutputStream("src/temp.out");
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
                 oos.writeObject(run);

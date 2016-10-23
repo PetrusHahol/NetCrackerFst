@@ -11,7 +11,7 @@ import java.util.*;
 /**
  * Created by Asus on 14.10.2016.
  */
-public class Dispatcher implements  Serializable {
+public class Dispatcher<T> implements  Serializable {
 
     private  List<Brigades> brigade = new ArrayList<>();
     private  Map<Brigades, Flight> brigadeToFlight = new HashMap<>();
@@ -25,7 +25,7 @@ public class Dispatcher implements  Serializable {
         objectsCounter++;
     }
 
-    public void Regularize(){
+    public void regularize(){
         Collections.sort(brigade);
     }
 
@@ -35,53 +35,68 @@ public class Dispatcher implements  Serializable {
         brigadeToFlight.put(newBrigade, flightObject);
     }
 
-    public  void AddNewRadioman(String name, int age, int height, int experience
+    public  void addNewRadioman(String name, int age, int height, int experience
             , String passportData, int countForeignLanguage){
         radiomans.add(new Radioman(name, age, height, experience, passportData, countForeignLanguage));
     }
 
-    public void AddNewStewardess(String name, int age, int height, int experience
+    public void addNewStewardess(String name, int age, int height, int experience
             , String passportData, int lengthWaist){
         stewardess.add(new Stewardess(name, age, height, experience, passportData, lengthWaist));
     }
 
-    public  void AddNewNavigator(String name, int age, int height, int experience
+    public  void addNewNavigator(String name, int age, int height, int experience
             , String passportData, String category){
         navigators.add(new Navigator(name, age, height, experience, passportData, category));
     }
 
-    public  void AddNewNavigator(String name, int age, int height, int experience
+    public  void addNewNavigator(String name, int age, int height, int experience
             , String passportData, int category){
         navigators.add(new Navigator(name, age, height, experience, passportData, category));
     }
 
-    public void AddNewPilot(String name, int age, int height, int experience
+    public void addNewPilot(String name, int age, int height, int experience
             , String passportData, int mileage){
         pilots.add(new Pilot(name, age, height, experience, passportData, mileage));
     }
 
-    public  void Info(){
+    public  void employeeInfo(){
 
+        int pos = 1 ;
         for (Radioman iter: radiomans){
-            System.out.print(iter);
+            System.out.print(pos + " " + iter);
+            pos++;
         }
+        System.out.println("--");
 
+        pos = 1;
         for (Pilot iter:pilots){
-            System.out.print(iter);
+            System.out.print(pos + " " +iter);
+            pos++;
         }
+        System.out.println("--");
 
+        pos = 1;
         for (Navigator iter:navigators){
-            System.out.print(iter);
+            System.out.print(pos + " " +iter);
+            pos++;
         }
+        System.out.println("--");
 
+        pos = 1;
         for (Stewardess iter:stewardess){
-            System.out.print(iter);
+            System.out.print(pos + " " + iter);
+            pos++;
         }
+        System.out.println("--");
+
+    }
+
+    public void info(){
         for(Brigades iter: brigade){
             System.out.print(iter + " " + brigadeToFlight.get(iter));
         }
     }
-
 
 
     @Override
@@ -116,104 +131,55 @@ public class Dispatcher implements  Serializable {
         return  getClass() == obj.getClass();
     }
 
-    public  void AddBrigade(Admin admin) throws DataExceptions {
 
-        if (Pilot.getObjectsCounter() <2 || Stewardess.getObjectsCounter() == 0
-            || Navigator.getObjectsCounter() ==0  || Radioman.getObjectsCounter() == 0)
-            throw new DataExceptions("Your have to enter 2 pilots and 1 over employee");
-
+    public Pilot iterIntoPilot(int index) {
         int pos = 0;
-        Brigades newBrigade = new Brigades();
-        for (Pilot iter:getPilots())
-        {   pos++;
-            System.out.println(Integer.toString(pos)+" "+ iter);
-        }
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter numb first pilot");
-        int index_first_pilot = in.nextInt();
-
-        pos = 0;
-        for (Pilot iter:getPilots())
-        {   pos++;
-            if (pos == index_first_pilot) {
-                newBrigade.setFirstPilot(iter);
+        for (Pilot iter : pilots) {
+            pos++;
+            if (pos == index) {
+                return iter;
             }
         }
-
-        System.out.println("Enter numb second pilot");
-        int index_second_pilot = in.nextInt();
-        pos = 0;
-        for (Pilot iter:getPilots())
-        {   pos++;
-            if (pos == index_second_pilot) {
-                newBrigade.setSecondPilot(iter);
-            }
-        }
-        pos = 0;
-
-        for (Stewardess iter:getStewardess())
-        {   pos++;
-            System.out.println(Integer.toString(pos)+" "+ iter);
-        }
-        System.out.println("Enter numb stewardess");
-
-        int index_stewardess = in.nextInt();
-        pos = 0;
-
-        for (Stewardess iter:getStewardess())
-        {   pos++;
-            if (pos == index_stewardess) {
-                newBrigade.setStewardess(iter);
-            }
-        }
-
-        pos = 0;
-        for (Navigator iter:getNavigators())
-        {   pos++;
-            System.out.println(Integer.toString(pos)+" "+ iter);
-        }
-        System.out.println("Enter numb navigator");
-        int index_navigator = in.nextInt();
-        pos = 0;
-        for (Navigator iter:getNavigators())
-        {   pos++;
-            if (pos == index_navigator) {
-                newBrigade.setNavigator(iter);
-            }
-        }
-
-        pos = 0;
-        for (Radioman iter: getRadiomans())
-        {   pos++;
-            System.out.println(Integer.toString(pos) + " " + iter);
-        }
-        System.out.println("Enter numb radiomen");
-        int index_radioman = in.nextInt();
-        pos = 0;
-        for (Radioman iter: getRadiomans())
-        {   pos++;
-            if (pos == index_radioman) {
-                newBrigade.setRadioman(iter);
-            }
-        }
-        pos = 0;
-        for (Flight iter:admin.getFlights() )
-        {   pos++;
-                System.out.println(Integer.toString(pos) + " " + iter + "\n");
-
-        }
-        System.out.println("Enter flight index");
-        int indexObj = in.nextInt();
-
-        pos=0;
-        for (Flight iter:admin.getFlights())
-        {   pos++;
-            if (pos == indexObj) {
-                setBrigade(newBrigade, iter);
-            }
-        }
+        return null;
     }
 
+    public Navigator iterIntoNavigator(int index) {
+        int pos = 0;
+        for (Navigator iter : navigators) {
+            pos++;
+            if (pos == index) {
+                return iter;
+            }
+        }
+        return null;
+    }
+
+    public Stewardess iterIntoStewardess(int index) {
+        int pos = 0;
+        for (Stewardess iter : stewardess) {
+            pos++;
+            if (pos == index) {
+                return iter;
+            }
+        }
+        return null;
+    }
+
+    public Radioman iterIntoRadioman(int index) {
+        int pos = 0;
+        for (Radioman iter : radiomans) {
+            pos++;
+            if (pos == index) {
+                return iter;
+            }
+        }
+        return null;
+    }
+
+    public  void addBrigade(Pilot firstPilot, Pilot secondPilot, Navigator navigator
+            , Stewardess stewardess , Radioman radiomen, Flight flight) {
+        setBrigade(new Brigades(firstPilot,secondPilot,navigator,stewardess,radiomen), flight);
+    }
 
     public Map<Brigades, Flight> getBrigadeToFlight() {
         return brigadeToFlight;

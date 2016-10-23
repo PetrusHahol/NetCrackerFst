@@ -6,8 +6,6 @@ package com.office;
 public class Navigator<T> extends Employee {
 
     private T category;
-
-
     private static int objectsCounter;
 
     public Navigator(String name, int age, int height, int experience

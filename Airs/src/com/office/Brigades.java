@@ -13,9 +13,15 @@ public class Brigades implements Serializable ,Comparable {
     private Radioman radioman;
     private Navigator navigator;
 
+
     private static int objectsCounter;
 
-    public Brigades() {
+    public Brigades(Pilot firstPilot, Pilot secondPilot, Navigator navigator, Stewardess stewardess, Radioman radioman ) {
+        setFirstPilot(firstPilot);
+        setSecondPilot(secondPilot);
+        setStewardess(stewardess);
+        setRadioman(radioman);
+        setNavigator(navigator);
         objectsCounter++;
     }
 
