@@ -5,6 +5,7 @@ import com.Exceptions.DataExceptions;
 import com.flights.Flight;
 import com.office.*;
 
+import javax.xml.crypto.Data;
 import java.io.Serializable;
 import java.util.*;
 
@@ -92,7 +93,7 @@ public class Dispatcher<T> implements  Serializable {
 
     }
 
-    public void info(){
+    public void brigadeInfo(){
         for(Brigades iter: brigade){
             System.out.print(iter + " " + brigadeToFlight.get(iter));
         }
@@ -136,7 +137,7 @@ public class Dispatcher<T> implements  Serializable {
         int pos = 0;
         for (Pilot iter : pilots) {
             pos++;
-            if (pos == index) {
+            if (pos == index-1) {
                 return iter;
             }
         }
@@ -147,7 +148,7 @@ public class Dispatcher<T> implements  Serializable {
         int pos = 0;
         for (Navigator iter : navigators) {
             pos++;
-            if (pos == index) {
+            if (pos == index-1) {
                 return iter;
             }
         }
@@ -158,7 +159,7 @@ public class Dispatcher<T> implements  Serializable {
         int pos = 0;
         for (Stewardess iter : stewardess) {
             pos++;
-            if (pos == index) {
+            if (pos == index-1) {
                 return iter;
             }
         }
@@ -169,7 +170,7 @@ public class Dispatcher<T> implements  Serializable {
         int pos = 0;
         for (Radioman iter : radiomans) {
             pos++;
-            if (pos == index) {
+            if (pos == index-1) {
                 return iter;
             }
         }
@@ -178,7 +179,17 @@ public class Dispatcher<T> implements  Serializable {
 
     public  void addBrigade(Pilot firstPilot, Pilot secondPilot, Navigator navigator
             , Stewardess stewardess , Radioman radiomen, Flight flight) {
-        setBrigade(new Brigades(firstPilot,secondPilot,navigator,stewardess,radiomen), flight);
+
+        try{
+            if (firstPilot == null || secondPilot == null || navigator == null
+                    || stewardess == null || radiomen == null || flight == null)
+                throw new DataExceptions("Wrong  data");
+            setBrigade(new Brigades(firstPilot,secondPilot,navigator,stewardess,radiomen), flight);
+        }catch (DataExceptions ex){
+            System.out.println(ex.getMessage());
+        }
+
+
     }
 
     public Map<Brigades, Flight> getBrigadeToFlight() {

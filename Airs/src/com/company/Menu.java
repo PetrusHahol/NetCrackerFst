@@ -143,9 +143,7 @@ public  class Menu implements Serializable{
             if (Pilot.getObjectsCounter() < 2 || Stewardess.getObjectsCounter() == 0
                     || Navigator.getObjectsCounter() == 0 || Radioman.getObjectsCounter() == 0)
                 throw new DataExceptions("Your have to enter 2 pilots and 1 over employee");
-        } catch (DataExceptions ex){
-            ex.getMessage();
-        }
+
 
         dispatcher.employeeInfo();
         System.out.println("Enter numb first pilot");
@@ -161,16 +159,17 @@ public  class Menu implements Serializable{
         admin.info();
         System.out.println("Enter flight index");
         int indexFlightObject = tryParse(input.nextLine());
-
         dispatcher.addBrigade(dispatcher.iterIntoPilot(indexFirstPilot),dispatcher.iterIntoPilot(indexSecondPilot),
-                dispatcher.iterIntoNavigator(indexNavigator) ,dispatcher.iterIntoStewardess(indexStewardess),
-                dispatcher.iterIntoRadioman(indexRadioman), admin.indexIntoFlight(indexFlightObject));
-
+                              dispatcher.iterIntoNavigator(indexNavigator) ,dispatcher.iterIntoStewardess(indexStewardess),
+                              dispatcher.iterIntoRadioman(indexRadioman), admin.indexIntoFlight(indexFlightObject));
+        } catch (DataExceptions ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
     private void dispatcherMenu() {
         System.out.println(" Enter number:\n1 - Add new employee\n2 - Add new brigade\n3 - Info\n4 -"
-                + " regularize\n-1 - Exit");
+                + " Regularize\n-1 - Exit");
         int tmp = tryParse(input.nextLine());
         switch (tmp) {
             case 1:
@@ -180,7 +179,8 @@ public  class Menu implements Serializable{
                 brigadeMenu();
                 break;
             case 3:
-                dispatcher.info();
+                dispatcher.employeeInfo();
+                dispatcher.brigadeInfo();
                 break;
             case 4:
                 dispatcher.regularize();
