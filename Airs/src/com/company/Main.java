@@ -34,11 +34,11 @@ public class Main {
                     oos.flush();
                     oos.close();
                 } catch (IOException ex) {
-                    System.out.println("Run again");
+                    System.out.println("Try again");
                 } catch (ClassNotFoundException e) {
                     System.out.println("Class not Found");
                 }
-            }
+            } else System.out.println("Try again");
         }
     }
 }

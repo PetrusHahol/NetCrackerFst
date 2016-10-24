@@ -1,6 +1,6 @@
 -----------
-Minsk
-Mars
+Moskow
+Voronezh
 2020
 9
 12
@@ -8,8 +8,8 @@ Mars
 30
 50
 -----------
-Voronezh
-Gomel
+Minsk
+Mars
 2017
 5
 5
@@ -17,7 +17,7 @@ Gomel
 40
 0
 -----------
-Minsk
+Kiev
 Moskow
 2016
 11
@@ -26,8 +26,8 @@ Moskow
 23
 22
 -----------
-Minsk
-Mogilev
+Voronezh
+Gomel
 2016
 10
 5

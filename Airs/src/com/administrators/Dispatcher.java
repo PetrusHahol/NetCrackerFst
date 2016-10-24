@@ -137,7 +137,7 @@ public class Dispatcher<T> implements  Serializable {
         int pos = 0;
         for (Pilot iter : pilots) {
             pos++;
-            if (pos == index-1) {
+            if (pos == index) {
                 return iter;
             }
         }
@@ -148,7 +148,7 @@ public class Dispatcher<T> implements  Serializable {
         int pos = 0;
         for (Navigator iter : navigators) {
             pos++;
-            if (pos == index-1) {
+            if (pos == index) {
                 return iter;
             }
         }
@@ -159,7 +159,7 @@ public class Dispatcher<T> implements  Serializable {
         int pos = 0;
         for (Stewardess iter : stewardess) {
             pos++;
-            if (pos == index-1) {
+            if (pos == index) {
                 return iter;
             }
         }
@@ -170,7 +170,7 @@ public class Dispatcher<T> implements  Serializable {
         int pos = 0;
         for (Radioman iter : radiomans) {
             pos++;
-            if (pos == index-1) {
+            if (pos == index) {
                 return iter;
             }
         }
@@ -182,7 +182,7 @@ public class Dispatcher<T> implements  Serializable {
 
         try{
             if (firstPilot == null || secondPilot == null || navigator == null
-                    || stewardess == null || radiomen == null || flight == null)
+                    || stewardess == null || radiomen == null || flight == null || firstPilot.equals(secondPilot))
                 throw new DataExceptions("Wrong  data");
             setBrigade(new Brigades(firstPilot,secondPilot,navigator,stewardess,radiomen), flight);
         }catch (DataExceptions ex){

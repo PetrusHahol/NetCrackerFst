@@ -7,6 +7,7 @@ import com.administrators.Admin;
 import com.administrators.Dispatcher;
 import com.office.*;
 
+import javax.xml.crypto.Data;
 import java.io.Serializable;
 import java.util.*;
 
@@ -51,44 +52,46 @@ public  class Menu implements Serializable{
         dispatcher.addNewRadioman("Stas", 25, 160, 5, "KV185555", 12);
     }
 
+    private int enterCharacters(String type, int lowerData, int upperData){
+        int result = 0;
+        while (result == 0) {
+            System.out.println("Enter  " + type + " " + lowerData + " - " + upperData);
+            result  = 0;
+            while (result == 0){
+                try {
+                    result = tryParse(input.nextLine());
+                    if (result < lowerData || result > upperData)
+                        throw  new DataExceptions("Try again");
+                }catch (DataExceptions ex){
+                    result = 0;
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
+        return result;
+    }
+
     private void charactersMenu(){
         System.out.println("Enter name");
         name = input.nextLine();
-        System.out.println("Enter age");
-        age = 0;
-        height = 0;
-        experience = 0;
-        while (age == 0) {
-            age = tryParse(input.nextLine());
-        }
-        System.out.println("Enter Height");
-        while (height == 0) {
-            height = tryParse(input.nextLine());
-        }
-        System.out.println("Enter Experience");
-        while (experience == 0) {
-            experience = tryParse(input.nextLine());
-        }
+        age = enterCharacters("Age",DataExceptions.LOWER_AGE,DataExceptions.UPPER_AGE);
+        height = enterCharacters("Height",DataExceptions.LOWER_HEIGHT,DataExceptions.UPPER_HEIGHT);
+        experience = enterCharacters("Height",DataExceptions.LOWER_EXPERIENCE,DataExceptions.UPPER_EXPERIENCE);
         System.out.println("Enter Passport Data");
         passportData = input.nextLine();
 
     }
 
     private void pilotMenu(){
-        System.out.println("Enter mileage");
-        int mileage = 0;
-        while (mileage == 0) {
-            mileage = tryParse(input.nextLine());
-        }
+
+        int mileage = enterCharacters("Mileage",DataExceptions.LOWER_MILEAGE,DataExceptions.UPPER_MILEAGE);
         dispatcher.addNewPilot(name, age, height, experience, passportData, mileage);
     }
 
     private void radiomenMenu(){
-        System.out.println("Enter count foreign language");
-        int countForeignLanguage = 0;
-        while (countForeignLanguage == 0) {
-            countForeignLanguage = tryParse(input.nextLine());
-        }
+
+        int countForeignLanguage = enterCharacters("Count Foreign Language",DataExceptions.LOWER_LANGUAGE
+                                                    ,DataExceptions.UPPER_LANGUAGE);
         dispatcher.addNewRadioman(name, age, height, experience
                 , passportData, countForeignLanguage);
     }
@@ -107,11 +110,9 @@ public  class Menu implements Serializable{
     }
 
     private void stewardessMenu(){
-        System.out.println("Enter length waist");
-        int lengthWaist = 0;
-        while (lengthWaist == 0){
-            lengthWaist = tryParse(input.nextLine());
-        }
+
+        int lengthWaist = enterCharacters("Lenght Waist",DataExceptions.LOWER_LENGTH_WAIST,DataExceptions.UPPER_LENGTH_WAIST);
+
         dispatcher.addNewStewardess(name, age, height, experience, passportData, lengthWaist);
     }
 
@@ -295,10 +296,6 @@ public  class Menu implements Serializable{
         return dispatcher;
     }
 
-    public static Scanner getInput() {
-        return input;
-    }
-
     public int getAge() {
         return age;
     }
@@ -325,10 +322,6 @@ public  class Menu implements Serializable{
 
     public void setDispatcher(Dispatcher dispatcher) {
         this.dispatcher = dispatcher;
-    }
-
-    public static void setInput(Scanner input) {
-        Menu.input = input;
     }
 
     public void setAge(int age) {
