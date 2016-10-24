@@ -1,5 +1,6 @@
 package com.administrators;
 
+import com.Interface.DispatcherInterface;
 import com.exceptions.DataExceptions;
 
 import com.flights.Flight;
@@ -11,14 +12,14 @@ import java.util.*;
 /**
  * Created by Asus on 14.10.2016.
  */
-public class Dispatcher<T> implements  Serializable {
+public class Dispatcher<T> implements  Serializable, DispatcherInterface {
 
     private  List<Brigades> brigade = new ArrayList<>();
     private  Map<Brigades, Flight> brigadeToFlight = new HashMap<>();
     private  List<Radioman> radiomans = new ArrayList<>();
     private  List<Pilot> pilots = new ArrayList<>();
     private  List<Stewardess> stewardess = new ArrayList<>();
-    private  List<Navigator> navigators = new ArrayList<>();
+    private List<Navigator<Object>> navigators = new ArrayList<Navigator<Object>>();
     private  int objectsCounter;
 
     public Dispatcher(){
@@ -35,26 +36,26 @@ public class Dispatcher<T> implements  Serializable {
         brigadeToFlight.put(newBrigade, flightObject);
     }
 
+    @Override
     public  void addNewRadioman(String name, int age, int height, int experience
             , String passportData, int countForeignLanguage){
         radiomans.add(new Radioman(name, age, height, experience, passportData, countForeignLanguage));
     }
 
+    @Override
     public void addNewStewardess(String name, int age, int height, int experience
             , String passportData, int lengthWaist){
         stewardess.add(new Stewardess(name, age, height, experience, passportData, lengthWaist));
     }
 
-    public  void addNewNavigator(String name, int age, int height, int experience
-            , String passportData, String category){
-        navigators.add(new Navigator(name, age, height, experience, passportData, category));
+    @Override
+    public void addNewNavigator(String name, int age, int height, int experience, String passportData, Object category) {
+            navigators.add(new Navigator<>(name, age, height, experience, passportData, category));
+
     }
 
-    public  void addNewNavigator(String name, int age, int height, int experience
-            , String passportData, int category){
-        navigators.add(new Navigator(name, age, height, experience, passportData, category));
-    }
 
+    @Override
     public void addNewPilot(String name, int age, int height, int experience
             , String passportData, int mileage){
         pilots.add(new Pilot(name, age, height, experience, passportData, mileage));
@@ -77,7 +78,7 @@ public class Dispatcher<T> implements  Serializable {
         System.out.println("--");
 
         pos = 1;
-        for (Navigator iter:navigators){
+        for (Navigator<Object> iter:navigators){
             System.out.print(pos + " " +iter);
             pos++;
         }
@@ -114,7 +115,7 @@ public class Dispatcher<T> implements  Serializable {
             result += iter.hashCode();
         }
 
-        for (Navigator iter:navigators) {
+        for (Navigator<Object> iter:navigators) {
             result += iter.hashCode();
         }
 
@@ -143,9 +144,9 @@ public class Dispatcher<T> implements  Serializable {
         return null;
     }
 
-    public Navigator iterIntoNavigator(int index) {
+    public Navigator<Object> iterIntoNavigator(int index) {
         int pos = 0;
-        for (Navigator iter : navigators) {
+        for (Navigator<Object> iter : navigators) {
             pos++;
             if (pos == index) {
                 return iter;
@@ -176,7 +177,7 @@ public class Dispatcher<T> implements  Serializable {
         return null;
     }
 
-    public  void addBrigade(Pilot firstPilot, Pilot secondPilot, Navigator navigator
+    public  void addBrigade(Pilot firstPilot, Pilot secondPilot, Navigator<Object> navigator
             , Stewardess stewardess , Radioman radiomen, Flight flight) {
 
         try{
@@ -215,7 +216,7 @@ public class Dispatcher<T> implements  Serializable {
         return stewardess;
     }
 
-    public  List<Navigator> getNavigators() {
+    public List<Navigator<Object>> getNavigators() {
         return navigators;
     }
 
@@ -231,7 +232,7 @@ public class Dispatcher<T> implements  Serializable {
         this.stewardess = stewardess;
     }
 
-    public  void setNavigators(List<Navigator> navigator) {
+    public  void setNavigators(List<Navigator<Object>> navigator) {
         this.navigators = navigator;
     }
 
