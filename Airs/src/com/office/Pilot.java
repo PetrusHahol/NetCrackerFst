@@ -23,9 +23,6 @@ public class Pilot extends Employee {
         objectsCounter++;
     }
 
-    public void setMileage(int mileage) {
-        this.mileage = mileage;
-    }
 
     @Override
     public String toString(){
@@ -34,11 +31,6 @@ public class Pilot extends Employee {
                 + " - Experience - " + Integer.toString(experience)
                 + " - Passport Data - " + passportData
                 + " - Mileage - " + Integer.toString(mileage) + "\n");
-    }
-
-
-    public int getMileage() {
-        return this.mileage;
     }
 
     @Override
@@ -70,7 +62,13 @@ public class Pilot extends Employee {
     public static int getObjectsCounter() {
         return objectsCounter;
     }
+    public int getMileage() {
+        return this.mileage;
+    }
 
+    public void setMileage(int mileage) {
+        this.mileage = mileage;
+    }
     public static void setObjectsCounter(int objectsCounter) {
         Pilot.objectsCounter = objectsCounter;
     }

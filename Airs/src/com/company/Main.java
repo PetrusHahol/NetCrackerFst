@@ -19,6 +19,7 @@ public class Main {
                     oos.writeObject(run);
                     oos.flush();
                     oos.close();
+                    numbDownload = "-1";
                 } catch (IOException ex) {
                     System.out.println("Not Serializable ");
                 }
@@ -33,12 +34,13 @@ public class Main {
                     oos.writeObject(run);
                     oos.flush();
                     oos.close();
+                    numbDownload = "-1";
                 } catch (IOException ex) {
                     System.out.println("Try again");
                 } catch (ClassNotFoundException e) {
                     System.out.println("Class not Found");
                 }
-            } else System.out.println("Try again");
+            } else if (!numbDownload.equals("-1")) System.out.println("Try again");
         }
     }
 }

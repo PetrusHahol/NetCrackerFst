@@ -1,4 +1,4 @@
-package com.Exceptions;
+package com.exceptions;
 
 
 import java.io.Serializable;
@@ -33,14 +33,8 @@ public class DataExceptions extends  Exception implements Serializable{
     public static final int LOWER_HOUR = 0;
     public static final int UPPER_HOUR = 23;
 
-
-
     public DataExceptions(String message){
         super(message);
     }
-    public DataExceptions(){
-        super();
-    }
-
 
 }

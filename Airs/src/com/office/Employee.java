@@ -54,8 +54,6 @@ public abstract class Employee implements Serializable , Comparator<Pilot>{
         this.passportData = passportData;
     }
 
-
-
     @Override
     public int compare(Pilot obj1, Pilot obj2){
         if (obj1.experience > obj2.experience) return 1;

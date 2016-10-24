@@ -29,10 +29,10 @@ public class Admin implements Serializable {
                                 , Integer.parseInt(in.readLine())));
             }
         } catch (IOException ex) {
-           System.out.println("OUT");
+           System.out.println("Wrong file");
         }
         catch(NumberFormatException ex){
-            // some
+            System.out.println("Wrong data");
         }
     }
 
