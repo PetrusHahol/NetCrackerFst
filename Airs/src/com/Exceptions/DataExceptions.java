@@ -20,6 +20,20 @@ public class DataExceptions extends  Exception implements Serializable{
     public static final int UPPER_LANGUAGE = 25;
     public static final int LOWER_MILEAGE = 1000;
     public static final int UPPER_MILEAGE = 10000000;
+    public static final int LOWER_YEAR = 2016;
+    public static final int UPPER_YEAR = 2020;
+    public static final int LOWER_MONTH = 1;
+    public static final int UPPER_MONTH = 12;
+    public static final int LOWER_DAY = 1;
+    public static final int UPPER_DAY = 30;
+    public static final int LOWER_MINUTE = 0;
+    public static final int UPPER_MINUTE = 59;
+    public static final int LOWER_SECOND = 0;
+    public static final int UPPER_SECOND = 59;
+    public static final int LOWER_HOUR = 0;
+    public static final int UPPER_HOUR = 23;
+
+
 
     public DataExceptions(String message){
         super(message);

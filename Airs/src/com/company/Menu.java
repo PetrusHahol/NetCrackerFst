@@ -6,6 +6,7 @@ import com.Exceptions.DataExceptions;
 import com.administrators.Admin;
 import com.administrators.Dispatcher;
 import com.office.*;
+import org.omg.CORBA.DATA_CONVERSION;
 
 import javax.xml.crypto.Data;
 import java.io.Serializable;
@@ -191,32 +192,26 @@ public  class Menu implements Serializable{
     }
 
     private  int enterYearMenu() {
-        System.out.println("Year(2016-2020)");
-        return Math.max(2016, tryParse(input.nextLine()));
+        return enterCharacters("Year",DataExceptions.LOWER_YEAR, DataExceptions.UPPER_YEAR);
     }
 
     private  int enterMonthMenu() {
-        System.out.println("Month(1-12)");
-        return tryParse(input.nextLine());
+        return enterCharacters("Month", DataExceptions.LOWER_MONTH, DataExceptions.UPPER_MONTH);
     }
 
     private  int enterDayMenu() {
-        System.out.println("Day(1-31(30))");
-        return tryParse(input.nextLine());
+        return enterCharacters("Day", DataExceptions.LOWER_DAY, DataExceptions.UPPER_DAY);
     }
     private  int enterMinuteMenu() {
-        System.out.println("Minute (0-59)");
-        return tryParse(input.nextLine());
+        return enterCharacters("Minute", DataExceptions.LOWER_MINUTE, DataExceptions.UPPER_MINUTE);
     }
 
     private  int enterSecondMenu() {
-        System.out.println("Second(0-59)");
-        return tryParse(input.nextLine());
+        return enterCharacters("Second", DataExceptions.LOWER_SECOND, DataExceptions.UPPER_SECOND);
     }
 
     private  int enterHourMenu() {
-        System.out.println("Hour(0-23)");
-        return tryParse(input.nextLine());
+        return enterCharacters("Hour", DataExceptions.LOWER_HOUR, DataExceptions.UPPER_HOUR);
     }
 
     private  void addNewFlightMenu(){
@@ -227,7 +222,7 @@ public  class Menu implements Serializable{
         String to = input.nextLine();
         System.out.println("date");
 
-        admin.addFlight(from, to,new GregorianCalendar(enterYearMenu(), enterMonthMenu()-1
+        admin.addFlight(from, to, new GregorianCalendar(enterYearMenu(), enterMonthMenu()-1
                         , enterDayMenu(), enterHourMenu(),  enterMinuteMenu(), enterSecondMenu()));
     }
 
