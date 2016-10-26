@@ -48,9 +48,9 @@ public class Navigator<T> extends Employee {
                     return false;
         }
         Navigator temp =  (Navigator) obj;
-        return (temp.name.equals(this.name) ||  temp.age == this.age
-                || temp.height == this.height || temp.experience == this.experience
-                || temp.passportData.equals(this.passportData) || temp.category.equals(this.category));
+        return (temp.name.equals(this.name) &&  temp.age == this.age
+                && temp.height == this.height && temp.experience == this.experience
+                && temp.passportData.equals(this.passportData) && temp.category.equals(this.category));
     }
 
     public T getCategory() {

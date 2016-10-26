@@ -13,7 +13,6 @@ public class Pilot extends Employee {
 
     public Pilot(String name, int age, int height, int experience
             , String passportData, int mileage){
-
         setAge(age);
         setName(name);
         setHeight(height);
@@ -38,7 +37,6 @@ public class Pilot extends Employee {
         final int PRIME = 43;
         int result = 1;
         int MOD = 1000000007;
-
         result += name.hashCode() + passportData.hashCode();
         result += (result * age + PRIME) % MOD;
         result += (result * experience + PRIME) % MOD;
@@ -54,9 +52,9 @@ public class Pilot extends Employee {
         if (getClass() != obj.getClass())
             return false;
         Pilot temp =  (Pilot) obj;
-        return (temp.name.equals(this.name) ||  temp.age == this.age
-                || temp.height == this.height || temp.experience == this.experience
-                || temp.passportData.equals(this.passportData) || temp.mileage == this.mileage);
+        return (temp.name.equals(this.name) &&  temp.age == this.age
+                && temp.height == this.height && temp.experience == this.experience
+                && temp.passportData.equals(this.passportData) && temp.mileage == this.mileage);
     }
 
     public static int getObjectsCounter() {

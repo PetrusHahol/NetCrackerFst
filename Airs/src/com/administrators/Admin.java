@@ -95,15 +95,6 @@ public class Admin implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int result = 0;
-        for (Flight iter: flights) {
-            result += iter.hashCode();
-        }
-        return result;
-    }
-
-    @Override
     public boolean equals(Object obj){
         if (this == obj) return true;
         if (obj == null) return false;
@@ -121,4 +112,8 @@ public class Admin implements Serializable {
     }
 
 
+    @Override
+    public int hashCode() {
+        return flights.hashCode();
+    }
 }

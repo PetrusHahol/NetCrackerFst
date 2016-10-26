@@ -25,13 +25,6 @@ public class Flight implements Serializable , Comparable, Comparator<Flight> {
     }
 
     @Override
-    public int hashCode() {
-
-        int MOD = 1000000007;
-        return (from.hashCode()+to.hashCode()+date.hashCode()) % MOD;
-    }
-
-    @Override
     public boolean equals(Object obj){
 
         if (this == obj) return true;
@@ -81,4 +74,11 @@ public class Flight implements Serializable , Comparable, Comparator<Flight> {
         return obj1.from.compareTo(obj2.from);
     }
 
+    @Override
+    public int hashCode() {
+        int result = from != null ? from.hashCode() : 0;
+        result = 31 * result + (to != null ? to.hashCode() : 0);
+        result = 31 * result + date.hashCode();
+        return result;
+    }
 }

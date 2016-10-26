@@ -44,7 +44,6 @@ public class Radioman extends Employee {
          final int PRIME = 43;
          int result = 1;
          int MOD = 1000000007;
-
          result += name.hashCode() + passportData.hashCode();
          result += (result * age+PRIME) % MOD;
          result += (result * experience + PRIME) % MOD;
@@ -59,9 +58,9 @@ public class Radioman extends Employee {
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
         Radioman temp =  (Radioman) obj;
-        return (temp.name.equals(this.name) ||  temp.age == this.age
-                || temp.height == this.height || temp.experience == this.experience
-                || temp.passportData.equals(this.passportData) || temp.countForeignLanguage == this.countForeignLanguage);
+        return (temp.name.equals(this.name) &&  temp.age == this.age
+                && temp.height == this.height && temp.experience == this.experience
+                && temp.passportData.equals(this.passportData) && temp.countForeignLanguage == this.countForeignLanguage);
     }
 
     public void setCountForeignLanguage(int countForeignLanguage) {

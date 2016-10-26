@@ -39,7 +39,6 @@ public class Stewardess extends Employee {
         final int PRIME = 43;
         int result = 1;
         int MOD = 1000000007;
-
         result += name.hashCode() + passportData.hashCode();
         result += (result * age+PRIME) % MOD;
         result += (result * experience +PRIME) % MOD;
@@ -53,9 +52,9 @@ public class Stewardess extends Employee {
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return true;
         Stewardess temp =  (Stewardess) obj;
-        return (temp.name.equals(this.name) ||  temp.age == this.age
-                || temp.height == this.height || temp.experience == this.experience
-                || temp.passportData.equals(this.passportData) || temp.lengthWaist == this.lengthWaist);
+        return (temp.name.equals(this.name) &&  temp.age == this.age
+                && temp.height == this.height && temp.experience == this.experience
+                && temp.passportData.equals(this.passportData) && temp.lengthWaist == this.lengthWaist);
     }
 
     public int getLengthWaist() {

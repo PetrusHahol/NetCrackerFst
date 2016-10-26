@@ -73,14 +73,6 @@ public class Brigades implements Serializable ,Comparable {
     }
 
     @Override
-    public int hashCode() {
-        int result;
-        result = firstPilot.hashCode() + secondPilot.hashCode() + stewardess.hashCode() + navigator.hashCode()
-                + radioman.hashCode();
-        return result;
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
@@ -88,9 +80,9 @@ public class Brigades implements Serializable ,Comparable {
             return false;
         }
         Brigades temp =  (Brigades) obj;
-        return (temp.firstPilot.equals(this.firstPilot) ||  temp.secondPilot.equals(this.secondPilot)
-                || temp.navigator.equals(this.navigator) || temp.stewardess.equals(this.stewardess)
-                || temp.radioman.equals(this.radioman));
+        return (temp.firstPilot.equals(this.firstPilot) &&  temp.secondPilot.equals(this.secondPilot)
+                && temp.navigator.equals(this.navigator)&& temp.stewardess.equals(this.stewardess)
+                && temp.radioman.equals(this.radioman));
     }
 
     @Override
@@ -105,5 +97,15 @@ public class Brigades implements Serializable ,Comparable {
             return size;
         }
         return 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = firstPilot.hashCode();
+        result = 31 * result + secondPilot.hashCode();
+        result = 31 * result + stewardess.hashCode();
+        result = 31 * result + radioman.hashCode();
+        result = 31 * result + navigator.hashCode();
+        return result;
     }
 }

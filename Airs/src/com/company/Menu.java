@@ -1,12 +1,13 @@
 package com.company;
 
-import com.exceptions.DataExceptions;
-
-
+import com.exceptions.DataException;
+import com.tools.Constants;
 import com.administrators.Admin;
 import com.administrators.Dispatcher;
 import com.office.*;
+import com.sun.org.apache.xerces.internal.impl.dv.DatatypeException;
 
+import javax.xml.crypto.Data;
 import java.io.Serializable;
 import java.util.*;
 
@@ -60,10 +61,10 @@ public  class Menu implements Serializable{
                 try {
                     result = tryParse(input.nextLine());
                     if (result < lowerData || result > upperData)
-                        throw  new DataExceptions("Try again");
-                }catch (DataExceptions ex){
+                        throw  new DataException("Try again");
+                }catch (DataException ex){
                     result = 0;
-                    System.out.println(ex.getMessage());
+                    System.err.println(ex.getMessage());
                 }
             }
         }
@@ -73,24 +74,23 @@ public  class Menu implements Serializable{
     private void charactersMenu(){
         System.out.println("Enter name");
         name = input.nextLine();
-        age = enterCharacters("Age",DataExceptions.LOWER_AGE,DataExceptions.UPPER_AGE);
-        height = enterCharacters("Height",DataExceptions.LOWER_HEIGHT,DataExceptions.UPPER_HEIGHT);
-        experience = enterCharacters("Height",DataExceptions.LOWER_EXPERIENCE,DataExceptions.UPPER_EXPERIENCE);
+        age = enterCharacters("Age", Constants.LOWER_AGE, Constants.UPPER_AGE);
+        height = enterCharacters("Height", Constants.LOWER_HEIGHT, Constants.UPPER_HEIGHT);
+        experience = enterCharacters("Height", Constants.LOWER_EXPERIENCE, Constants.UPPER_EXPERIENCE);
         System.out.println("Enter Passport Data");
         passportData = input.nextLine();
 
     }
 
     private void pilotMenu(){
-
-        int mileage = enterCharacters("Mileage",DataExceptions.LOWER_MILEAGE,DataExceptions.UPPER_MILEAGE);
+        int mileage = enterCharacters("Mileage", com.tools.Constants.LOWER_MILEAGE, Constants.UPPER_MILEAGE);
         dispatcher.addNewPilot(name, age, height, experience, passportData, mileage);
     }
 
     private void radiomenMenu(){
 
-        int countForeignLanguage = enterCharacters("Count Foreign Language",DataExceptions.LOWER_LANGUAGE
-                                                    ,DataExceptions.UPPER_LANGUAGE);
+        int countForeignLanguage = enterCharacters("Count Foreign Language", Constants.LOWER_LANGUAGE
+                                                    , Constants.UPPER_LANGUAGE);
         dispatcher.addNewRadioman(name, age, height, experience
                 , passportData, countForeignLanguage);
     }
@@ -110,7 +110,7 @@ public  class Menu implements Serializable{
 
     private void stewardessMenu(){
 
-        int lengthWaist = enterCharacters("Lenght Waist",DataExceptions.LOWER_LENGTH_WAIST,DataExceptions.UPPER_LENGTH_WAIST);
+        int lengthWaist = enterCharacters("Lenght Waist", Constants.LOWER_LENGTH_WAIST, Constants.UPPER_LENGTH_WAIST);
 
         dispatcher.addNewStewardess(name, age, height, experience, passportData, lengthWaist);
     }
@@ -142,7 +142,7 @@ public  class Menu implements Serializable{
         try {
             if (Pilot.getObjectsCounter() < 2 || Stewardess.getObjectsCounter() == 0
                     || Navigator.getObjectsCounter() == 0 || Radioman.getObjectsCounter() == 0)
-                throw new DataExceptions("Your have to enter 2 pilots and 1 over employee");
+                throw new DataException("Your have to enter 2 pilots and 1 over employee");
 
 
         dispatcher.employeeInfo();
@@ -162,7 +162,7 @@ public  class Menu implements Serializable{
         dispatcher.addBrigade(dispatcher.iterIntoPilot(indexFirstPilot),dispatcher.iterIntoPilot(indexSecondPilot),
                               dispatcher.iterIntoNavigator(indexNavigator) ,dispatcher.iterIntoStewardess(indexStewardess),
                               dispatcher.iterIntoRadioman(indexRadioman), admin.indexIntoFlight(indexFlightObject));
-        } catch (DataExceptions ex){
+        } catch (DataException ex){
             System.out.println(ex.getMessage());
         }
     }
@@ -190,26 +190,26 @@ public  class Menu implements Serializable{
     }
 
     private  int enterYearMenu() {
-        return enterCharacters("Year",DataExceptions.LOWER_YEAR, DataExceptions.UPPER_YEAR);
+        return enterCharacters("Year", Constants.LOWER_YEAR, Constants.UPPER_YEAR);
     }
 
     private  int enterMonthMenu() {
-        return enterCharacters("Month", DataExceptions.LOWER_MONTH, DataExceptions.UPPER_MONTH);
+        return enterCharacters("Month", Constants.LOWER_MONTH, Constants.UPPER_MONTH);
     }
 
     private  int enterDayMenu() {
-        return enterCharacters("Day", DataExceptions.LOWER_DAY, DataExceptions.UPPER_DAY);
+        return enterCharacters("Day", Constants.LOWER_DAY, Constants.UPPER_DAY);
     }
     private  int enterMinuteMenu() {
-        return enterCharacters("Minute", DataExceptions.LOWER_MINUTE, DataExceptions.UPPER_MINUTE);
+        return enterCharacters("Minute", Constants.LOWER_MINUTE, Constants.UPPER_MINUTE);
     }
 
     private  int enterSecondMenu() {
-        return enterCharacters("Second", DataExceptions.LOWER_SECOND, DataExceptions.UPPER_SECOND);
+        return enterCharacters("Second", Constants.LOWER_SECOND, Constants.UPPER_SECOND);
     }
 
     private  int enterHourMenu() {
-        return enterCharacters("Hour", DataExceptions.LOWER_HOUR, DataExceptions.UPPER_HOUR);
+        return enterCharacters("Hour", Constants.LOWER_HOUR, Constants.UPPER_HOUR);
     }
 
     private  void addNewFlightMenu(){

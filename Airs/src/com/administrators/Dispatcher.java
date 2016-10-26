@@ -1,8 +1,7 @@
 package com.administrators;
 
 import com.Interface.DispatcherInterface;
-import com.exceptions.DataExceptions;
-
+import com.exceptions.DataException;
 import com.flights.Flight;
 import com.office.*;
 
@@ -54,6 +53,7 @@ public class Dispatcher<T> implements  Serializable, DispatcherInterface {
 
     }
 
+
     @Override
     public void addNewPilot(String name, int age, int height, int experience
             , String passportData, int mileage){
@@ -98,31 +98,6 @@ public class Dispatcher<T> implements  Serializable, DispatcherInterface {
         }
     }
 
-
-    @Override
-    public int hashCode() {
-        int result = 0;
-        for (Brigades iter:brigade) {
-            result += iter.hashCode();
-        }
-
-        for (Pilot iter:pilots) {
-            result += iter.hashCode();
-        }
-
-        for (Stewardess iter:stewardess) {
-            result += iter.hashCode();
-        }
-
-        for (Navigator<Object> iter:navigators) {
-            result += iter.hashCode();
-        }
-
-        for (Radioman iter: radiomans) {
-            result += iter.hashCode();
-        }
-        return result;
-    }
 
     @Override
     public boolean equals(Object obj){
@@ -182,10 +157,10 @@ public class Dispatcher<T> implements  Serializable, DispatcherInterface {
         try{
             if (firstPilot == null || secondPilot == null || navigator == null
                     || stewardess == null || radiomen == null || flight == null || firstPilot.equals(secondPilot))
-                throw new DataExceptions("Wrong  data");
+                throw new DataException("Wrong  data");
             setBrigade(new Brigades(firstPilot,secondPilot,navigator,stewardess,radiomen), flight);
-        }catch (DataExceptions ex){
-            System.out.println(ex.getMessage());
+        }catch (DataException ex){
+            System.err.println(ex.getMessage());
         }
 
 
@@ -236,4 +211,14 @@ public class Dispatcher<T> implements  Serializable, DispatcherInterface {
     }
 
 
+    @Override
+    public int hashCode() {
+        int result = brigade.hashCode();
+        result = 31 * result + brigadeToFlight.hashCode();
+        result = 31 * result + radiomans.hashCode();
+        result = 31 * result + pilots.hashCode();
+        result = 31 * result + stewardess.hashCode();
+        result = 31 * result + navigators.hashCode();
+        return result;
+    }
 }
