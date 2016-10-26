@@ -66,34 +66,41 @@ public class AdminMenu {
 
 
     public void main() {
-        System.out.println("Enter number:\n1 - Add new flight\n"
-                + "2 - Delete flight\n3 - Info\n4 - Download flights from BD\n"
-                + "5 - Rewrite flights in BD\n6 - Serialization\n -1 - Back");
-        int enterBit = utility.tryParse(input.nextLine());
-        switch (enterBit) {
-            case 1:
-                addNewFlightMenu();
-                break;
-            case 2:
-                System.out.println("DeleteFlight");
-                admin.info();
-                System.out.println("Enter index");
-                int index = utility.tryParse(input.nextLine());
-                admin.deleteFlight(index);
-                break;
-            case 3:
-                admin.info();
-                break;
-            case 4:
-                admin.downloadFlights();
-                break;
-            case 5:
-                admin.saveFlights();
-                break;
-            case 6:
-                admin.serialization();
-                break;
+        boolean flag = true;
+        while (flag) {
+            System.out.println("Enter number:\n1 - Add new flight\n"
+                    + "2 - Delete flight\n3 - Info\n4 - Download flights from BD\n"
+                    + "5 - Rewrite flights in BD\n6 - Serialization\n -1 - Back");
+            int enterBit = utility.tryParse(input.nextLine());
+            switch (enterBit) {
+                case 1:
+                    addNewFlightMenu();
+                    break;
+                case 2:
+                    System.out.println("DeleteFlight");
+                    admin.info();
+                    System.out.println("Enter index");
+                    int index = utility.tryParse(input.nextLine());
+                    admin.deleteFlight(index);
+                    break;
+                case 3:
+                    admin.info();
+                    break;
+                case 4:
+                    admin.downloadFlights();
+                    break;
+                case 5:
+                    admin.saveFlights();
+                    break;
+                case 6:
+                    admin.serialization();
+                    break;
+                case -1:
+                    flag = false;
+                    break;
+            }
         }
     }
+
 
 }

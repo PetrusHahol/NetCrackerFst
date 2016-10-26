@@ -34,24 +34,29 @@ public class DispatcherMenu {
     }
 
     public void main(Admin admin) {
-        System.out.println(" Enter number:\n1 - Add new employee\n2 - Add new brigade\n3 - Info\n4 -"
-                + " Regularize\n-1 - Back");
-        int tmp = utility.tryParse(input.nextLine());
-        switch (tmp) {
-            case 1:
-                newEmployMenu();
-                break;
-            case 2:
-                brigadeMenu.main(admin, dispatcher);
-                break;
-            case 3:
-                dispatcher.employeeInfo();
-                dispatcher.brigadeInfo();
-                break;
-            case 4:
-                dispatcher.regularize();
-                break;
-
+        boolean flag = true;
+        while (flag) {
+            System.out.println(" Enter number:\n1 - Add new employee\n2 - Add new brigade\n3 - Info\n4 -"
+                    + " Regularize\n-1 - Back");
+            int tmp = utility.tryParse(input.nextLine());
+            switch (tmp) {
+                case 1:
+                    newEmployMenu();
+                    break;
+                case 2:
+                    brigadeMenu.main(admin, dispatcher);
+                    break;
+                case 3:
+                    dispatcher.employeeInfo();
+                    dispatcher.brigadeInfo();
+                    break;
+                case 4:
+                    dispatcher.regularize();
+                    break;
+                case -1:
+                    flag = false;
+                    break;
+            }
         }
     }
 
