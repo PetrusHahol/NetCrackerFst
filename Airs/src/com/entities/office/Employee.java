@@ -6,7 +6,7 @@ import java.util.Comparator;
 /**
  * Created by Asus on 16.10.2016.
  */
-public abstract class Employee implements Serializable , Comparator<Pilot>{
+public abstract class Employee implements  Comparator<Pilot>{
 
     protected String name;
     protected int age;

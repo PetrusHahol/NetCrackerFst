@@ -12,15 +12,16 @@ import java.util.*;
 /**
  * Created by Asus on 14.10.2016.
  */
-public class Dispatcher<T> implements  Serializable, DispatcherInterface {
+public class Dispatcher<T> implements   DispatcherInterface {
 
     private  List<Brigades> brigade = new ArrayList<>();
     private  Map<Brigades, Flight> brigadeToFlight = new HashMap<>();
     private  List<Radioman> radiomans = new ArrayList<>();
     private  List<Pilot> pilots = new ArrayList<>();
     private  List<Stewardess> stewardess = new ArrayList<>();
-    private List<Navigator<Object>> navigators = new ArrayList<Navigator<Object>>();
+    private  List<Navigator<Object>> navigators = new ArrayList<Navigator<Object>>();
     private  int objectsCounter;
+    private int pos = 0;
 
     public Dispatcher(){
         objectsCounter++;
@@ -63,7 +64,7 @@ public class Dispatcher<T> implements  Serializable, DispatcherInterface {
 
     public  void employeeInfo(){
 
-        int pos = 1 ;
+        pos = 1 ;
         for (Radioman iter: radiomans){
             System.out.print(pos + " " + iter);
             pos++;
@@ -109,7 +110,7 @@ public class Dispatcher<T> implements  Serializable, DispatcherInterface {
 
 
     public Pilot iterIntoPilot(int index) {
-        int pos = 0;
+        pos = 0;
         for (Pilot iter : pilots) {
             pos++;
             if (pos == index) {
@@ -120,7 +121,7 @@ public class Dispatcher<T> implements  Serializable, DispatcherInterface {
     }
 
     public Navigator<Object> iterIntoNavigator(int index) {
-        int pos = 0;
+        pos = 0;
         for (Navigator<Object> iter : navigators) {
             pos++;
             if (pos == index) {
@@ -131,7 +132,7 @@ public class Dispatcher<T> implements  Serializable, DispatcherInterface {
     }
 
     public Stewardess iterIntoStewardess(int index) {
-        int pos = 0;
+        pos = 0;
         for (Stewardess iter : stewardess) {
             pos++;
             if (pos == index) {
@@ -142,7 +143,7 @@ public class Dispatcher<T> implements  Serializable, DispatcherInterface {
     }
 
     public Radioman iterIntoRadioman(int index) {
-        int pos = 0;
+        pos = 0;
         for (Radioman iter : radiomans) {
             pos++;
             if (pos == index) {
@@ -199,7 +200,7 @@ public class Dispatcher<T> implements  Serializable, DispatcherInterface {
         this.radiomans = radiomen;
     }
 
-    public void setPilots(List<Pilot> pilots) {
+    public  void setPilots(List<Pilot> pilots) {
         this.pilots = pilots;
     }
 

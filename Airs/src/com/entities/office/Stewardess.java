@@ -28,14 +28,7 @@ public class Stewardess extends Employee {
 
     @Override
     public int hashCode() {
-        final int PRIME = 43;
-        int result = 1;
-        int MOD = 1000000007;
-        result += name.hashCode() + passportData.hashCode();
-        result += (result * age+PRIME) % MOD;
-        result += (result * experience +PRIME) % MOD;
-        result += (result * height+PRIME) % MOD;
-        return result;
+        return getLengthWaist();
     }
 
     @Override

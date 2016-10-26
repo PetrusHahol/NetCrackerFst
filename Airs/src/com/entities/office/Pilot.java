@@ -27,18 +27,7 @@ public class Pilot extends Employee {
                 + " - Mileage - " + Integer.toString(mileage) + "\n");
     }
 
-    @Override
-    public int hashCode() {
-        final int PRIME = 43;
-        int result = 1;
-        int MOD = 1000000007;
-        result += name.hashCode() + passportData.hashCode();
-        result += (result * age + PRIME) % MOD;
-        result += (result * experience + PRIME) % MOD;
-        result += (result * height + PRIME) % MOD;
-        result += (result * mileage + PRIME) % MOD;
-        return result;
-    }
+
 
     @Override
     public boolean equals(Object obj){
@@ -64,5 +53,10 @@ public class Pilot extends Employee {
     }
     public static void setObjectsCounter(int objectsCounter) {
         Pilot.objectsCounter = objectsCounter;
+    }
+
+    @Override
+    public int hashCode() {
+        return getMileage();
     }
 }

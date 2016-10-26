@@ -7,7 +7,7 @@ import java.util.GregorianCalendar;
 /**
  * Created by Asus on 13.10.2016.
  */
-public class Flight implements Serializable , Comparable, Comparator<Flight> {
+public class Flight implements  Serializable,Comparable, Comparator<Flight> {
 
     private String from;
     private String to;

@@ -10,7 +10,7 @@ import java.io.Serializable;
 /**
  * Created by Asus on 14.10.2016.
  */
-public class Brigades implements Serializable ,Comparable {
+public class Brigades implements Comparable {
 
     private Pilot firstPilot;
     private Pilot secondPilot;

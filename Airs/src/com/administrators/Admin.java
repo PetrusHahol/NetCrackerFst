@@ -6,7 +6,7 @@ import java.util.*;
 
 import com.entities.flights.Flight;
 
-public class Admin implements Serializable {
+public class Admin  {
 
     private static int objectsCounter;
     private Set<Flight> flights = new TreeSet<>();
@@ -91,6 +91,17 @@ public class Admin implements Serializable {
             pos++;
             System.out.print(pos);
             System.out.print(" "+iter);
+        }
+    }
+
+    public void serialization(){
+        try (FileOutputStream fos = new FileOutputStream("src/com/output/temp.out")){
+            try( ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+                oos.writeObject(flights);
+            }
+        }
+        catch (IOException ex) {
+            System.out.println("Not Serializable ");
         }
     }
 

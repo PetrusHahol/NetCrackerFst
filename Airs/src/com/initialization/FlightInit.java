@@ -1,9 +1,6 @@
 package com.initialization;
 
 import com.administrators.Admin;
-import com.administrators.Dispatcher;
-import com.entities.flights.Flight;
-import com.menu.Menu;
 
 import java.util.GregorianCalendar;
 import java.util.Random;
