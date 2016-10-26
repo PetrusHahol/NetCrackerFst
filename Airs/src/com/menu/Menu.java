@@ -1,13 +1,11 @@
-package com.company;
+package com.menu;
 
 import com.exceptions.DataException;
 import com.tools.Constants;
 import com.administrators.Admin;
 import com.administrators.Dispatcher;
-import com.office.*;
-import com.sun.org.apache.xerces.internal.impl.dv.DatatypeException;
+import com.entities.office.*;
 
-import javax.xml.crypto.Data;
 import java.io.Serializable;
 import java.util.*;
 
@@ -263,7 +261,7 @@ public  class Menu implements Serializable{
         return answer;
     }
 
-     void mainMenu(){
+    public void mainMenu(){
         int tmp = 0;
         while (tmp != -1) {
             System.out.println("Enter number:\n1 "

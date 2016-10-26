@@ -1,4 +1,4 @@
-package com.office;
+package com.entities.office;
 
 /**
  * Created by Asus on 14.10.2016.

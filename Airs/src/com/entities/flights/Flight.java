@@ -1,4 +1,4 @@
-package com.flights;
+package com.entities.flights;
 
 import java.io.Serializable;
 import java.util.Comparator;

@@ -1,4 +1,9 @@
-package com.office;
+package com.entities.teams;
+
+import com.entities.office.Navigator;
+import com.entities.office.Pilot;
+import com.entities.office.Radioman;
+import com.entities.office.Stewardess;
 
 import java.io.Serializable;
 

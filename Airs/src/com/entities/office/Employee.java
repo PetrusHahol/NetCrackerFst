@@ -1,4 +1,4 @@
-package com.office;
+package com.entities.office;
 
 import java.io.Serializable;
 import java.util.Comparator;

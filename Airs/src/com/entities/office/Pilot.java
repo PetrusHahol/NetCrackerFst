@@ -1,31 +1,35 @@
-package com.office;
+package com.entities.office;
 
 /**
  * Created by Asus on 14.10.2016.
  */
-public class Navigator<T> extends Employee {
+public class Pilot extends Employee {
 
-    private T category;
+
+    private int mileage;
+
+
     private static int objectsCounter;
 
-    public Navigator(String name, int age, int height, int experience
-            , String passportData, T category){
+    public Pilot(String name, int age, int height, int experience
+            , String passportData, int mileage){
         setAge(age);
         setName(name);
         setHeight(height);
         setExperience(experience);
         setPassportData(passportData);
-        setCategory(category);
+        setMileage(mileage);
         objectsCounter++;
     }
 
+
     @Override
     public String toString(){
-        return ("NAVIGATOR Name " + name + " - Age - " + Integer.toString(age)
+        return ("PILOT Name " + name + " - Age - " + Integer.toString(age)
                 + " - Height - " + Integer.toString(height)
                 + " - Experience - " + Integer.toString(experience)
                 + " - Passport Data - " + passportData
-                + " - Category - " + category + "\n");
+                + " - Mileage - " + Integer.toString(mileage) + "\n");
     }
 
     @Override
@@ -33,10 +37,11 @@ public class Navigator<T> extends Employee {
         final int PRIME = 43;
         int result = 1;
         int MOD = 1000000007;
-        result += name.hashCode() + passportData.hashCode() + category.hashCode();
+        result += name.hashCode() + passportData.hashCode();
         result += (result * age + PRIME) % MOD;
         result += (result * experience + PRIME) % MOD;
         result += (result * height + PRIME) % MOD;
+        result += (result * mileage + PRIME) % MOD;
         return result;
     }
 
@@ -44,28 +49,25 @@ public class Navigator<T> extends Employee {
     public boolean equals(Object obj){
         if (this == obj) return true;
         if (obj == null) return false;
-        if (getClass() != obj.getClass()) {
-                    return false;
-        }
-        Navigator temp =  (Navigator) obj;
+        if (getClass() != obj.getClass())
+            return false;
+        Pilot temp =  (Pilot) obj;
         return (temp.name.equals(this.name) &&  temp.age == this.age
                 && temp.height == this.height && temp.experience == this.experience
-                && temp.passportData.equals(this.passportData) && temp.category.equals(this.category));
-    }
-
-    public T getCategory() {
-        return category;
-    }
-
-    public void setCategory(T category) {
-        this.category = category;
+                && temp.passportData.equals(this.passportData) && temp.mileage == this.mileage);
     }
 
     public static int getObjectsCounter() {
         return objectsCounter;
     }
+    public int getMileage() {
+        return this.mileage;
+    }
 
+    public void setMileage(int mileage) {
+        this.mileage = mileage;
+    }
     public static void setObjectsCounter(int objectsCounter) {
-        Navigator.objectsCounter = objectsCounter;
+        Pilot.objectsCounter = objectsCounter;
     }
 }

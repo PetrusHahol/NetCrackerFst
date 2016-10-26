@@ -1,4 +1,6 @@
-package com.company;
+package com;
+
+import com.menu.Menu;
 
 import java.io.*;
 import java.util.Scanner;
@@ -13,7 +15,7 @@ public class Main {
             numbDownload = input.nextLine();
             if (numbDownload.equals("1")) {
                 try {
-                    FileOutputStream fos = new FileOutputStream("src/temp.out");
+                    FileOutputStream fos = new FileOutputStream("src/com/output/temp.out");
                     ObjectOutputStream oos = new ObjectOutputStream(fos);
                     Menu run = new Menu();
                     oos.writeObject(run);
@@ -25,11 +27,11 @@ public class Main {
                 }
             } else if (numbDownload.equals("2")) {
                 try {
-                    FileInputStream fis = new FileInputStream("src/temp.out");
+                    FileInputStream fis = new FileInputStream("src/output/temp.out");
                     ObjectInputStream oin = new ObjectInputStream(fis);
                     Menu run = (Menu) oin.readObject();
                     run.mainMenu();
-                    FileOutputStream fos = new FileOutputStream("src/temp.out");
+                    FileOutputStream fos = new FileOutputStream("src/com/output/temp.out");
                     ObjectOutputStream oos = new ObjectOutputStream(fos);
                     oos.writeObject(run);
                     oos.flush();

@@ -1,35 +1,31 @@
-package com.office;
+package com.entities.office;
 
 /**
  * Created by Asus on 14.10.2016.
  */
-public class Pilot extends Employee {
+public class Navigator<T> extends Employee {
 
-
-    private int mileage;
-
-
+    private T category;
     private static int objectsCounter;
 
-    public Pilot(String name, int age, int height, int experience
-            , String passportData, int mileage){
+    public Navigator(String name, int age, int height, int experience
+            , String passportData, T category){
         setAge(age);
         setName(name);
         setHeight(height);
         setExperience(experience);
         setPassportData(passportData);
-        setMileage(mileage);
+        setCategory(category);
         objectsCounter++;
     }
 
-
     @Override
     public String toString(){
-        return ("PILOT Name " + name + " - Age - " + Integer.toString(age)
+        return ("NAVIGATOR Name " + name + " - Age - " + Integer.toString(age)
                 + " - Height - " + Integer.toString(height)
                 + " - Experience - " + Integer.toString(experience)
                 + " - Passport Data - " + passportData
-                + " - Mileage - " + Integer.toString(mileage) + "\n");
+                + " - Category - " + category + "\n");
     }
 
     @Override
@@ -37,11 +33,10 @@ public class Pilot extends Employee {
         final int PRIME = 43;
         int result = 1;
         int MOD = 1000000007;
-        result += name.hashCode() + passportData.hashCode();
+        result += name.hashCode() + passportData.hashCode() + category.hashCode();
         result += (result * age + PRIME) % MOD;
         result += (result * experience + PRIME) % MOD;
         result += (result * height + PRIME) % MOD;
-        result += (result * mileage + PRIME) % MOD;
         return result;
     }
 
@@ -49,25 +44,28 @@ public class Pilot extends Employee {
     public boolean equals(Object obj){
         if (this == obj) return true;
         if (obj == null) return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Pilot temp =  (Pilot) obj;
+        if (getClass() != obj.getClass()) {
+                    return false;
+        }
+        Navigator temp =  (Navigator) obj;
         return (temp.name.equals(this.name) &&  temp.age == this.age
                 && temp.height == this.height && temp.experience == this.experience
-                && temp.passportData.equals(this.passportData) && temp.mileage == this.mileage);
+                && temp.passportData.equals(this.passportData) && temp.category.equals(this.category));
+    }
+
+    public T getCategory() {
+        return category;
+    }
+
+    public void setCategory(T category) {
+        this.category = category;
     }
 
     public static int getObjectsCounter() {
         return objectsCounter;
     }
-    public int getMileage() {
-        return this.mileage;
-    }
 
-    public void setMileage(int mileage) {
-        this.mileage = mileage;
-    }
     public static void setObjectsCounter(int objectsCounter) {
-        Pilot.objectsCounter = objectsCounter;
+        Navigator.objectsCounter = objectsCounter;
     }
 }

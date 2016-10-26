@@ -4,7 +4,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-import com.flights.Flight;
+import com.entities.flights.Flight;
 
 public class Admin implements Serializable {
 
@@ -17,7 +17,7 @@ public class Admin implements Serializable {
     public void downloadFlights(){
         try (BufferedReader in = new BufferedReader(
                 new InputStreamReader(
-                        new FileInputStream("src/com/input.txt"), StandardCharsets.UTF_8))){
+                        new FileInputStream("src/com/output/flights.txt"), StandardCharsets.UTF_8))){
             while (true) {
                 in.readLine();
                 addFlight(in.readLine(),in.readLine()
@@ -32,7 +32,7 @@ public class Admin implements Serializable {
            System.out.println("Wrong file");
         }
         catch(NumberFormatException ex){
-            System.out.println("Wrong data");
+           ///end while (true)
         }
     }
 
@@ -53,7 +53,7 @@ public class Admin implements Serializable {
 
     public void saveFlights() {
         try {
-            File file = new File("src/com/input.txt");
+            File file = new File("src/com/output/flights.txt");
             PrintWriter out = new PrintWriter(file.getAbsoluteFile());
             for (Flight iter : flights) {
                 out.println("-----------");
