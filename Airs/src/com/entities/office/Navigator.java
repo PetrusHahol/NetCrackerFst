@@ -10,11 +10,7 @@ public class Navigator<T> extends Employee {
 
     public Navigator(String name, int age, int height, int experience
             , String passportData, T category){
-        setAge(age);
-        setName(name);
-        setHeight(height);
-        setExperience(experience);
-        setPassportData(passportData);
+        super(name, age, height, experience, passportData);
         setCategory(category);
         objectsCounter++;
     }

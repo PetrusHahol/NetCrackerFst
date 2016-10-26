@@ -13,15 +13,10 @@ public class Pilot extends Employee {
 
     public Pilot(String name, int age, int height, int experience
             , String passportData, int mileage){
-        setAge(age);
-        setName(name);
-        setHeight(height);
-        setExperience(experience);
-        setPassportData(passportData);
+        super(name, age, height, experience, passportData);
         setMileage(mileage);
         objectsCounter++;
     }
-
 
     @Override
     public String toString(){

@@ -9,18 +9,10 @@ public class Radioman extends Employee {
 
     private static int objectsCounter;
 
-    public Radioman(){
-        objectsCounter++;
-    }
-
     public Radioman(String name, int age, int height, int experience
                    , String passportData, int countForeignLanguage){
 
-        setAge(age);
-        setName(name);
-        setHeight(height);
-        setExperience(experience);
-        setPassportData(passportData);
+        super(name, age, height, experience, passportData);
         setCountForeignLanguage(countForeignLanguage);
         objectsCounter++;
     }

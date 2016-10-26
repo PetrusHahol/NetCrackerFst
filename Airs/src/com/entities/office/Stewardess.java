@@ -9,18 +9,10 @@ public class Stewardess extends Employee {
 
     private static int objectsCounter;
 
-    public Stewardess(){
-        objectsCounter++;
-    }
 
     public Stewardess(String name, int age, int height, int experience
             , String passportData, int lengthWaist){
-
-        setAge(age);
-        setName(name);
-        setHeight(height);
-        setExperience(experience);
-        setPassportData(passportData);
+        super(name, age, height, experience, passportData);
         setLengthWaist(lengthWaist);
         objectsCounter++;
     }

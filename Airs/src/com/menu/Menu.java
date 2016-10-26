@@ -27,13 +27,14 @@ public  class Menu implements Serializable{
     transient private int height = 0;
     transient private String name = "";
     transient private Utilities utility = new Utilities();
+
+
+
     public Menu()  {
         admin =  new FlightInit().getAdmin();
         dispatcher = new DispatcherInit().getDispatcher();
         mainMenu();
     }
-
-
 
     private void charactersMenu(){
         System.out.println("Enter name");
@@ -107,8 +108,6 @@ public  class Menu implements Serializable{
             if (Pilot.getObjectsCounter() < 2 || Stewardess.getObjectsCounter() == 0
                     || Navigator.getObjectsCounter() == 0 || Radioman.getObjectsCounter() == 0)
                 throw new DataException("Your have to enter 2 pilots and 1 over employee");
-
-
         dispatcher.employeeInfo();
         System.out.println("Enter numb first pilot");
         int indexFirstPilot = utility.tryParse(input.nextLine());

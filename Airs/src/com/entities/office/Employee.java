@@ -8,11 +8,20 @@ import java.util.Comparator;
  */
 public abstract class Employee implements Serializable , Comparator<Pilot>{
 
-    String name;
-    int age;
-    int height;
-    int experience;
+    protected String name;
+    protected int age;
+    protected int height;
+    protected int experience;
     String passportData;
+
+    public Employee(String name, int age, int height, int experience
+            , String passportData){
+        setName(name);
+        setAge(age);
+        setHeight(height);
+        setExperience(experience);
+        setPassportData(passportData);
+    }
 
     public String getName() {
         return this.name;
