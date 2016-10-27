@@ -51,6 +51,7 @@ public class Admin  {
         }
     }
 
+
     public void saveFlights() {
         File file = new File("src/com/output/flights.txt");
         try(PrintWriter out = new PrintWriter(file.getAbsoluteFile())) {
@@ -72,6 +73,17 @@ public class Admin  {
         }
     }
 
+    /**
+     * Return flight facility on the position that
+     * we passed in this method. If the position does not correspond
+     * to any object, the result is null
+     *
+     * @param  index number of flights that your find in objects
+     * @return the Flight object from index or null if Flight is missing
+     * @see         Integer
+     *
+     *
+     */
     public Flight indexIntoFlight(int index){
         int pos = 0;
         for (Flight iter : flights) {

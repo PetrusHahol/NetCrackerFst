@@ -8,7 +8,6 @@ import java.util.Scanner;
  * Created by Asus on 27.10.2016.
  */
 public class MainMenu {
-
     public MainMenu(){
         int tmp = 0;
         Scanner input = new Scanner(System.in);

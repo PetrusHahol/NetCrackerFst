@@ -35,6 +35,14 @@ public class Flight implements  Serializable,Comparable, Comparator<Flight> {
         return to.equals(temper.to) || from.equals(temper.from) || !date.equals(temper.date);
     }
 
+
+    /**
+     *
+     * @return      the departure of the aircraft flight city
+     * @see         String
+     *
+     **/
+
     public String getFrom() {
         return from;
     }

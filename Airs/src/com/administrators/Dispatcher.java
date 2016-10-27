@@ -30,11 +30,12 @@ public class Dispatcher<T> implements   DispatcherInterface {
         Collections.sort(brigade);
     }
 
-    public void setBrigade(Brigade newBrigade, Flight flightObject)
+    public void setBrigade(Brigade newBrigade, Flight flight)
     {
         brigade.add(newBrigade);
-        brigadeToFlight.put(newBrigade, flightObject);
+        brigadeToFlight.put(newBrigade, flight);
     }
+
 
     @Override
     public  void addNewRadioman(String name, int age, int height, int experience
@@ -152,19 +153,33 @@ public class Dispatcher<T> implements   DispatcherInterface {
         return null;
     }
 
+    /**
+     *This method assigns a flight passed a group of employees consisting
+     *of two pilots and one staff (stewardess, navigator and radio operator)
+     *
+     *In the event that the method will not be transferred to at least one
+     *of the objects to be processed by an exception and the team will not be
+     *created and scheduled for flight
+     *
+     * @param  firstPilot this object - first pilot in your new brigade
+     * @param  secondPilot this object - second pilot in your new brigade
+     * @param  navigator this object - navigator in your new brigade
+     * @param  stewardess this object - stewardess in your new brigade
+     * @param  radiomen this object - radioman in your new brigade
+     * @param  flight this object - brigade is going appointed on this flight
+     *
+     *
+     */
     public  void addBrigade(Pilot firstPilot, Pilot secondPilot, Navigator<Object> navigator
-            , Stewardess stewardess , Radioman radiomen, Flight flight) {
-
+            , Stewardess stewardess , Radioman radiomen,Flight flight) {
         try{
             if (firstPilot == null || secondPilot == null || navigator == null
-                    || stewardess == null || radiomen == null || flight == null || firstPilot.equals(secondPilot))
+                    || stewardess == null || radiomen == null  || flight == null || firstPilot.equals(secondPilot))
                 throw new DataException("Wrong  data");
             setBrigade(new Brigade(firstPilot,secondPilot,navigator,stewardess,radiomen), flight);
         }catch (DataException ex){
             System.err.println(ex.getMessage());
         }
-
-
     }
 
     public Map<Brigade, Flight> getBrigadeToFlight() {

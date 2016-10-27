@@ -2,6 +2,12 @@ package com.menu;
 
 import com.administrators.Admin;
 import com.administrators.Dispatcher;
+import com.entities.flights.Flight;
+import com.entities.office.Navigator;
+import com.entities.office.Pilot;
+import com.entities.office.Radioman;
+import com.entities.office.Stewardess;
+import com.error.DataException;
 import com.loader.DispatcherInit;
 import com.utils.Constants;
 import com.utils.ExecutedUtils;
@@ -15,7 +21,6 @@ public class DispatcherMenu {
     private ExecutedUtils utility = new ExecutedUtils();
     private static Scanner input = new Scanner(System.in);
     private Dispatcher dispatcher = new Dispatcher();
-    private BrigadeMenu brigadeMenu;
     private int age = 0;
     private int experience = 0;
     private String passportData = "";
@@ -24,7 +29,6 @@ public class DispatcherMenu {
 
     public DispatcherMenu()  {
         dispatcher = new DispatcherInit().getDispatcher();
-        brigadeMenu = new BrigadeMenu();
     }
 
     public void main(Admin admin) {
@@ -38,7 +42,7 @@ public class DispatcherMenu {
                     newEmployMenu();
                     break;
                 case 2:
-                    brigadeMenu.main(admin, dispatcher);
+                    addBrigade(admin);
                     break;
                 case 3:
                     dispatcher.employeeInfo();
@@ -119,5 +123,33 @@ public class DispatcherMenu {
         }
     }
 
+
+
+    private void addBrigade(Admin admin) {
+        try {
+            if (Pilot.objectsCounter < 2 || Stewardess.objectsCounter == 0
+                    || Navigator.objectsCounter == 0 || Radioman.objectsCounter == 0)
+                throw new DataException("Your have to enter 2 pilots and 1 over employee");
+            dispatcher.employeeInfo();
+            System.out.println("Enter numb first pilot");
+            int indexFirstPilot = utility.tryParse(input.nextLine());
+            System.out.println("Enter numb second pilot");
+            int indexSecondPilot = utility.tryParse(input.nextLine());
+            System.out.println("Enter numb navigator");
+            int indexNavigator = utility.tryParse(input.nextLine());
+            System.out.println("Enter numb stewardess");
+            int indexStewardess = utility.tryParse(input.nextLine());
+            System.out.println("Enter numb radiomen");
+            int indexRadioman = utility.tryParse(input.nextLine());
+            admin.info();
+            System.out.println("Enter flight index");
+            int indexFlightObject = utility.tryParse(input.nextLine());
+            dispatcher.addBrigade(dispatcher.iterIntoPilot(indexFirstPilot), dispatcher.iterIntoPilot(indexSecondPilot),
+                    dispatcher.iterIntoNavigator(indexNavigator), dispatcher.iterIntoStewardess(indexStewardess),
+                    dispatcher.iterIntoRadioman(indexRadioman) , admin.indexIntoFlight(indexFlightObject));
+        } catch (DataException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
 
 }

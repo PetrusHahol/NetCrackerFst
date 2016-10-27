@@ -1,6 +1,10 @@
-com.Interface
+com
 com.administrators
-com.company
-com.exceptions
-com.flights
-com.office
+com.administrators.extension
+com.entities.flights
+com.entities.office
+com.entities.teams
+com.error
+com.loader
+com.menu
+com.utils
