@@ -5,12 +5,10 @@ import com.entities.office.Pilot;
 import com.entities.office.Radioman;
 import com.entities.office.Stewardess;
 
-import java.io.Serializable;
-
 /**
  * Created by Asus on 14.10.2016.
  */
-public class Brigades implements Comparable {
+public class Brigade implements Comparable {
 
     private Pilot firstPilot;
     private Pilot secondPilot;
@@ -21,7 +19,7 @@ public class Brigades implements Comparable {
 
     private static int objectsCounter;
 
-    public Brigades(Pilot firstPilot, Pilot secondPilot, Navigator navigator, Stewardess stewardess, Radioman radioman ) {
+    public Brigade(Pilot firstPilot, Pilot secondPilot, Navigator navigator, Stewardess stewardess, Radioman radioman ) {
         setFirstPilot(firstPilot);
         setSecondPilot(secondPilot);
         setStewardess(stewardess);
@@ -84,7 +82,7 @@ public class Brigades implements Comparable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        Brigades temp =  (Brigades) obj;
+        Brigade temp =  (Brigade) obj;
         return (temp.firstPilot.equals(this.firstPilot) &&  temp.secondPilot.equals(this.secondPilot)
                 && temp.navigator.equals(this.navigator)&& temp.stewardess.equals(this.stewardess)
                 && temp.radioman.equals(this.radioman));
@@ -92,12 +90,12 @@ public class Brigades implements Comparable {
 
     @Override
     public int compareTo(Object obj) {
-        Brigades obj2 = (Brigades) obj;
+        Brigade obj2 = (Brigade) obj;
         int size = firstPilot.compare(firstPilot, obj2.firstPilot);
         if (size != 0) {
             return size;
         }
-        size = secondPilot.compare(firstPilot, ((Brigades) obj).firstPilot);
+        size = secondPilot.compare(firstPilot, ((Brigade) obj).firstPilot);
         if (size != 0) {
             return size;
         }

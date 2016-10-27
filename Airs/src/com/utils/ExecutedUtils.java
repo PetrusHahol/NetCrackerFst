@@ -1,11 +1,11 @@
-package com.tools;
+package com.utils;
 
 import java.util.Scanner;
 
 /**
  * Created by Asus on 26.10.2016.
  */
-public class Utilities {
+public class ExecutedUtils {
 
 
     public int tryParse(String string){

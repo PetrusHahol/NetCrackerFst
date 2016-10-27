@@ -1,12 +1,11 @@
 package com.administrators;
 
-import com.administrators.Interface.DispatcherInterface;
-import com.entities.teams.Brigades;
-import com.exceptions.DataException;
+import com.administrators.extension.DispatcherInterface;
+import com.entities.teams.Brigade;
+import com.error.DataException;
 import com.entities.flights.Flight;
 import com.entities.office.*;
 
-import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -14,13 +13,13 @@ import java.util.*;
  */
 public class Dispatcher<T> implements   DispatcherInterface {
 
-    private  List<Brigades> brigade = new ArrayList<>();
-    private  Map<Brigades, Flight> brigadeToFlight = new HashMap<>();
+    private  List<Brigade> brigade = new ArrayList<>();
+    private  Map<Brigade, Flight> brigadeToFlight = new HashMap<>();
     private  List<Radioman> radiomans = new ArrayList<>();
     private  List<Pilot> pilots = new ArrayList<>();
     private  List<Stewardess> stewardess = new ArrayList<>();
     private  List<Navigator<Object>> navigators = new ArrayList<Navigator<Object>>();
-    private  int objectsCounter;
+    public static int objectsCounter;
     private int pos = 0;
 
     public Dispatcher(){
@@ -31,7 +30,7 @@ public class Dispatcher<T> implements   DispatcherInterface {
         Collections.sort(brigade);
     }
 
-    public void setBrigade(Brigades newBrigade, Flight flightObject)
+    public void setBrigade(Brigade newBrigade, Flight flightObject)
     {
         brigade.add(newBrigade);
         brigadeToFlight.put(newBrigade, flightObject);
@@ -95,7 +94,7 @@ public class Dispatcher<T> implements   DispatcherInterface {
     }
 
     public void brigadeInfo(){
-        for(Brigades iter: brigade){
+        for(Brigade iter: brigade){
             System.out.print(iter + " " + brigadeToFlight.get(iter));
         }
     }
@@ -160,7 +159,7 @@ public class Dispatcher<T> implements   DispatcherInterface {
             if (firstPilot == null || secondPilot == null || navigator == null
                     || stewardess == null || radiomen == null || flight == null || firstPilot.equals(secondPilot))
                 throw new DataException("Wrong  data");
-            setBrigade(new Brigades(firstPilot,secondPilot,navigator,stewardess,radiomen), flight);
+            setBrigade(new Brigade(firstPilot,secondPilot,navigator,stewardess,radiomen), flight);
         }catch (DataException ex){
             System.err.println(ex.getMessage());
         }
@@ -168,7 +167,7 @@ public class Dispatcher<T> implements   DispatcherInterface {
 
     }
 
-    public Map<Brigades, Flight> getBrigadeToFlight() {
+    public Map<Brigade, Flight> getBrigadeToFlight() {
         return brigadeToFlight;
     }
 
@@ -176,7 +175,7 @@ public class Dispatcher<T> implements   DispatcherInterface {
         return objectsCounter;
     }
 
-    public List<Brigades> getBrigade() {
+    public List<Brigade> getBrigade() {
         return brigade;
     }
 

@@ -6,7 +6,7 @@ package com.entities.office;
 public class Navigator<T> extends Employee {
 
     private T category;
-    private static int objectsCounter;
+    public static int objectsCounter;
 
     public Navigator(String name, int age, int height, int experience
             , String passportData, T category){
@@ -51,11 +51,4 @@ public class Navigator<T> extends Employee {
         this.category = category;
     }
 
-    public static int getObjectsCounter() {
-        return objectsCounter;
-    }
-
-    public static void setObjectsCounter(int objectsCounter) {
-        Navigator.objectsCounter = objectsCounter;
-    }
 }

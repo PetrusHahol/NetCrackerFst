@@ -1,4 +1,4 @@
-package com.tools;
+package com.utils;
 
 /**
  * Created by Asus on 26.10.2016.

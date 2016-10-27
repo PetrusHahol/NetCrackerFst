@@ -1,7 +1,6 @@
 package com.menu;
 
-import com.administrators.Dispatcher;
-import com.tools.Utilities;
+import com.utils.ExecutedUtils;
 
 import java.util.Scanner;
 
@@ -13,7 +12,7 @@ public class MainMenu {
     public MainMenu(){
         int tmp = 0;
         Scanner input = new Scanner(System.in);
-        Utilities utility = new Utilities();
+        ExecutedUtils utility = new ExecutedUtils();
         AdminMenu adminMenu = new AdminMenu();
         DispatcherMenu dispatcherMenu = new DispatcherMenu();
 

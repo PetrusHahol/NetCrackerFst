@@ -7,7 +7,7 @@ public class Stewardess extends Employee {
 
     private int lengthWaist;
 
-    private static int objectsCounter;
+    public static int objectsCounter;
 
 
     public Stewardess(String name, int age, int height, int experience
@@ -50,11 +50,5 @@ public class Stewardess extends Employee {
         this.lengthWaist = lengthWaist;
     }
 
-    public static int getObjectsCounter() {
-        return objectsCounter;
-    }
 
-    public static void setObjectsCounter(int objectsCounter) {
-        Stewardess.objectsCounter = objectsCounter;
-    }
 }

@@ -8,7 +8,7 @@ import com.entities.flights.Flight;
 
 public class Admin  {
 
-    private static int objectsCounter;
+    public static int objectsCounter;
     private Set<Flight> flights = new TreeSet<>();
     public Admin(){
         objectsCounter++;
@@ -52,9 +52,8 @@ public class Admin  {
     }
 
     public void saveFlights() {
-        try {
-            File file = new File("src/com/output/flights.txt");
-            PrintWriter out = new PrintWriter(file.getAbsoluteFile());
+        File file = new File("src/com/output/flights.txt");
+        try(PrintWriter out = new PrintWriter(file.getAbsoluteFile())) {
             for (Flight iter : flights) {
                 out.println("-----------");
                 out.print(iter.getFrom() + "\n" + iter.getTo()
@@ -66,7 +65,6 @@ public class Admin  {
                         + iter.getDate().get(Calendar.SECOND)+"\n");
 
             }
-            out.close();
         } catch (IOException ex) {
             System.out.println("OUT");
         } catch (NumberFormatException ex) {
@@ -114,14 +112,9 @@ public class Admin  {
         return temp.flights.equals(this.flights);
     }
 
-    public static int getObjectsCounter() {
-        return objectsCounter;
-    }
-
     public Set<Flight> getFlights(){
         return flights;
     }
-
 
     @Override
     public int hashCode() {

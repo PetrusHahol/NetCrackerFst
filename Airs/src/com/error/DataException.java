@@ -1,7 +1,5 @@
-package com.exceptions;
+package com.error;
 
-
-import java.io.Serializable;
 
 public class DataException extends  Exception {
 

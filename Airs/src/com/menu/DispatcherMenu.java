@@ -2,15 +2,9 @@ package com.menu;
 
 import com.administrators.Admin;
 import com.administrators.Dispatcher;
-import com.entities.flights.Flight;
-import com.entities.office.Navigator;
-import com.entities.office.Pilot;
-import com.entities.office.Radioman;
-import com.entities.office.Stewardess;
-import com.exceptions.DataException;
-import com.initialization.DispatcherInit;
-import com.tools.Constants;
-import com.tools.Utilities;
+import com.loader.DispatcherInit;
+import com.utils.Constants;
+import com.utils.ExecutedUtils;
 
 import java.util.Scanner;
 
@@ -18,7 +12,7 @@ import java.util.Scanner;
  * Created by Asus on 27.10.2016.
  */
 public class DispatcherMenu {
-    private Utilities utility = new Utilities();
+    private ExecutedUtils utility = new ExecutedUtils();
     private static Scanner input = new Scanner(System.in);
     private Dispatcher dispatcher = new Dispatcher();
     private BrigadeMenu brigadeMenu;

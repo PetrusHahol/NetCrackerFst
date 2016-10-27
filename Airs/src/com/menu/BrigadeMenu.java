@@ -6,8 +6,8 @@ import com.entities.office.Navigator;
 import com.entities.office.Pilot;
 import com.entities.office.Radioman;
 import com.entities.office.Stewardess;
-import com.exceptions.DataException;
-import com.tools.Utilities;
+import com.error.DataException;
+import com.utils.ExecutedUtils;
 
 import java.util.Scanner;
 
@@ -16,13 +16,13 @@ import java.util.Scanner;
  */
 public class BrigadeMenu {
 
-    private Utilities utility = new Utilities();
+    private ExecutedUtils utility = new ExecutedUtils();
     private static Scanner input = new Scanner(System.in);
 
     public void main(Admin admin, Dispatcher<Object> dispatcher) {
         try {
-            if (Pilot.getObjectsCounter() < 2 || Stewardess.getObjectsCounter() == 0
-                    || Navigator.getObjectsCounter() == 0 || Radioman.getObjectsCounter() == 0)
+            if (Pilot.objectsCounter < 2 || Stewardess.objectsCounter == 0
+                    || Navigator.objectsCounter == 0 || Radioman.objectsCounter == 0)
                 throw new DataException("Your have to enter 2 pilots and 1 over employee");
             dispatcher.employeeInfo();
             System.out.println("Enter numb first pilot");

@@ -7,7 +7,7 @@ public class Radioman extends Employee {
 
     private int countForeignLanguage;
 
-    private static int objectsCounter;
+    public static int objectsCounter;
 
     public Radioman(String name, int age, int height, int experience
                    , String passportData, int countForeignLanguage){
@@ -51,11 +51,4 @@ public class Radioman extends Employee {
         this.countForeignLanguage = countForeignLanguage;
     }
 
-    public static int getObjectsCounter() {
-        return objectsCounter;
-    }
-
-    public static void setObjectsCounter(int objectsCounter) {
-        Radioman.objectsCounter = objectsCounter;
-    }
 }

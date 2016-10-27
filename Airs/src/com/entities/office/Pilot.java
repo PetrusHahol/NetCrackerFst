@@ -4,12 +4,8 @@ package com.entities.office;
  * Created by Asus on 14.10.2016.
  */
 public class Pilot extends Employee {
-
-
     private int mileage;
-
-
-    private static int objectsCounter;
+    public static int objectsCounter;
 
     public Pilot(String name, int age, int height, int experience
             , String passportData, int mileage){
@@ -41,18 +37,12 @@ public class Pilot extends Employee {
                 && temp.passportData.equals(this.passportData) && temp.mileage == this.mileage);
     }
 
-    public static int getObjectsCounter() {
-        return objectsCounter;
-    }
     public int getMileage() {
         return this.mileage;
     }
 
     public void setMileage(int mileage) {
         this.mileage = mileage;
-    }
-    public static void setObjectsCounter(int objectsCounter) {
-        Pilot.objectsCounter = objectsCounter;
     }
 
     @Override

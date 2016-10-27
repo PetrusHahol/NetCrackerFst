@@ -1,9 +1,9 @@
 package com.menu;
 
 import com.administrators.Admin;
-import com.initialization.FlightInit;
-import com.tools.Constants;
-import com.tools.Utilities;
+import com.loader.FlightInit;
+import com.utils.Constants;
+import com.utils.ExecutedUtils;
 
 import java.util.GregorianCalendar;
 import java.util.Scanner;
@@ -13,7 +13,7 @@ import java.util.Scanner;
  */
 public class AdminMenu {
     private Admin admin = new Admin();
-    private Utilities utility = new Utilities();
+    private ExecutedUtils utility = new ExecutedUtils();
     private static Scanner input = new Scanner(System.in);
 
     public Admin getAdmin() {
