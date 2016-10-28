@@ -1,6 +1,7 @@
 package com.menu;
 
 import com.administrators.Admin;
+import com.entities.flights.Flight;
 import com.loader.FlightInit;
 import com.utils.Constants;
 import com.utils.ExecutedUtils;
@@ -70,7 +71,7 @@ public class AdminMenu {
         while (flag) {
             System.out.println("Enter number:\n1 - Add new flight\n"
                     + "2 - Delete flight\n3 - Info\n4 - Download flights from BD\n"
-                    + "5 - Rewrite flights in BD\n6 - Serialization\n -1 - Back");
+                    + "5 - Rewrite flights in BD\n6 - Serialization\n7 - Deserialization\n-1 - Back");
             int enterBit = utility.tryParse(input.nextLine());
             switch (enterBit) {
                 case 1:
@@ -78,13 +79,28 @@ public class AdminMenu {
                     break;
                 case 2:
                     System.out.println("DeleteFlight");
-                    admin.info();
-                    System.out.println("Enter index");
-                    int index = utility.tryParse(input.nextLine());
-                    admin.deleteFlight(index);
+                    if (admin.getFlights().size() > 0) {
+                        admin.info();
+                        System.out.println(Flight.objectsCounter);
+                        int index = -1;
+                        while (index == -1) {
+                            System.out.println("Enter index");
+                            index = utility.tryParse(input.nextLine());
+                            if (index < 1 || index > admin.getFlights().size())
+                                index = -1;
+                            if (index == -1) System.err.println("Try again");
+                        }
+                        admin.deleteFlight(index);
+                    }else {
+                        System.err.println("Flights are absent");
+                    }
                     break;
                 case 3:
-                    admin.info();
+                    if (admin.getFlights().size() > 0) {
+                        admin.info();
+                    }else{
+                        System.err.println("Flights are absent");
+                    }
                     break;
                 case 4:
                     admin.downloadFlights();
@@ -93,11 +109,13 @@ public class AdminMenu {
                     admin.saveFlights();
                     break;
                 case 6:
-                    admin.serializationIn();
+                    admin.serialization();
+                    break;
+                case 7:
+                    admin.deserialization();
                     break;
                 case -1:
                     flag = false;
-                    break;
             }
         }
     }

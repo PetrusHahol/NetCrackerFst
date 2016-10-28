@@ -12,11 +12,14 @@ public class Flight implements  Serializable,Comparable, Comparator<Flight> {
     private String from;
     private String to;
     private GregorianCalendar date;
+    public static int objectsCounter = 0;
 
     public Flight(String from, String to, GregorianCalendar date ) {
         this.from = from;
         this.to = to;
-        this.date=date;
+        this.date = date;
+        objectsCounter++;
+
     }
 
     @Override

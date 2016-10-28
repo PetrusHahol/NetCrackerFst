@@ -29,15 +29,16 @@ public class Admin  {
                                 , Integer.parseInt(in.readLine())));
             }
         } catch (IOException ex) {
-           System.out.println("Wrong file");
+           System.err.println("Wrong file");
         }
         catch(NumberFormatException ex){
-           ///end while (true)
+            System.out.println("Download was done!");
         }
     }
 
     public  void addFlight(String from, String to, GregorianCalendar date)  {
             flights.add(new Flight(from, to, date));
+            System.out.println("Add was done!");
     }
 
     public  void deleteFlight(int index) {
@@ -49,6 +50,7 @@ public class Admin  {
                 break;
             }
         }
+        System.out.println("Delete was done!");
     }
 
 
@@ -71,6 +73,9 @@ public class Admin  {
             }
         } catch (IOException ex) {
             System.err.println("Error");
+        }
+        finally {
+            System.out.println("Save was done!");
         }
     }
 
@@ -105,14 +110,36 @@ public class Admin  {
         }
     }
 
-    public void serializationIn(){
+    public void serialization(){
         try (FileOutputStream fos = new FileOutputStream("src/com/output/temp.out")){
             try( ObjectOutputStream oos = new ObjectOutputStream(fos)) {
                 oos.writeObject(flights);
             }
         }
         catch (IOException ex) {
-            System.out.println("Not Serializable ");
+            System.err.println("Not Serializable ");
+        }
+        finally {
+            System.out.println("Serialization was done!");
+        }
+    }
+
+    public void deserialization(){
+        try (FileInputStream fos = new FileInputStream("src/com/output/temp.out")){
+            try( ObjectInputStream oos = new ObjectInputStream(fos)) {
+                try {
+                    Set<Flight> tmp = (TreeSet<Flight>) oos.readObject();
+                    flights.addAll(tmp);
+                } catch (ClassNotFoundException e) {
+                    System.err.println("Inappropriate object");
+                }
+            }
+        }
+        catch (IOException ex) {
+            System.err.println("File is absent or corrupted");
+        }
+        finally {
+            System.out.println("Deserialization was done!");
         }
     }
 
