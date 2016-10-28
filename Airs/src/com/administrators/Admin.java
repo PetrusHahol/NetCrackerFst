@@ -53,23 +53,24 @@ public class Admin  {
 
 
     public void saveFlights() {
-        File file = new File("src/com/output/flights.txt");
-        try(PrintWriter out = new PrintWriter(file.getAbsoluteFile())) {
-            for (Flight iter : flights) {
-                out.println("-----------");
-                out.print(iter.getFrom() + "\n" + iter.getTo()
-                        + "\n" + iter.getDate().get(Calendar.YEAR) + "\n"
-                        + iter.getDate().get(Calendar.MONTH)+"\n"
-                        + iter.getDate().get(Calendar.DAY_OF_MONTH)+"\n"
-                        + iter.getDate().get(Calendar.HOUR_OF_DAY)+"\n"
-                        + iter.getDate().get(Calendar.MINUTE)+"\n"
-                        + iter.getDate().get(Calendar.SECOND)+"\n");
+        try (PrintWriter out = new PrintWriter(new File("src/com/output/flights.txt").getAbsoluteFile())) {
+            try {
+                for (Flight iter : flights) {
+                    out.println("-----------");
+                    out.print(iter.getFrom() + "\n" + iter.getTo()
+                            + "\n" + iter.getDate().get(Calendar.YEAR) + "\n"
+                            + iter.getDate().get(Calendar.MONTH) + "\n"
+                            + iter.getDate().get(Calendar.DAY_OF_MONTH) + "\n"
+                            + iter.getDate().get(Calendar.HOUR_OF_DAY) + "\n"
+                            + iter.getDate().get(Calendar.MINUTE) + "\n"
+                            + iter.getDate().get(Calendar.SECOND) + "\n");
 
+                }
+            } catch (NumberFormatException ex) {
+                System.err.println("Error");
             }
         } catch (IOException ex) {
-            System.out.println("OUT");
-        } catch (NumberFormatException ex) {
-            // log;
+            System.err.println("Error");
         }
     }
 
@@ -80,7 +81,7 @@ public class Admin  {
      *
      * @param  index number of flights that your find in objects
      * @return the Flight object from index or null if Flight is missing
-     * @see         Integer
+     * @see         Flight
      *
      *
      */
@@ -104,7 +105,7 @@ public class Admin  {
         }
     }
 
-    public void serialization(){
+    public void serializationIn(){
         try (FileOutputStream fos = new FileOutputStream("src/com/output/temp.out")){
             try( ObjectOutputStream oos = new ObjectOutputStream(fos)) {
                 oos.writeObject(flights);
@@ -114,6 +115,7 @@ public class Admin  {
             System.out.println("Not Serializable ");
         }
     }
+
 
     @Override
     public boolean equals(Object obj){

@@ -9,7 +9,7 @@ public class ExecutedUtils {
 
 
     public int tryParse(String string){
-        int answer = 0;
+        int answer = -1;
         try {
             answer = Integer.parseInt(string);
         }catch (NumberFormatException e) {
@@ -19,16 +19,16 @@ public class ExecutedUtils {
     }
 
     public int handler(String type, int lowerData, int upperData){
-        int result = 0;
+        int result = -1;
         Scanner input = new Scanner(System.in);
-        while (result == 0) {
+        while (result == -1) {
             System.out.println("Enter  " + type + " " + lowerData + " - " + upperData);
-            result  = 0;
-            while (result == 0){
+            result  = -1;
+            while (result == -1){
                 result = tryParse(input.nextLine());
                 if (result < lowerData || result > upperData) {
                     System.err.println("Try Again");
-                    result = 0;
+                    result = -1;
                 }
             }
         }

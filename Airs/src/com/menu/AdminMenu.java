@@ -93,7 +93,7 @@ public class AdminMenu {
                     admin.saveFlights();
                     break;
                 case 6:
-                    admin.serialization();
+                    admin.serializationIn();
                     break;
                 case -1:
                     flag = false;

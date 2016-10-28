@@ -63,7 +63,7 @@ public class DispatcherMenu {
         name = input.nextLine();
         age = utility.handler("Age", Constants.LOWER_AGE, Constants.UPPER_AGE);
         height = utility.handler("Height", Constants.LOWER_HEIGHT, Constants.UPPER_HEIGHT);
-        experience = utility.handler("Height", Constants.LOWER_EXPERIENCE, Constants.UPPER_EXPERIENCE);
+        experience = utility.handler("Experience", Constants.LOWER_EXPERIENCE, Constants.UPPER_EXPERIENCE);
         System.out.println("Enter Passport Data");
         passportData = input.nextLine();
 

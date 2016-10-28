@@ -5,7 +5,7 @@ package com.utils;
  */
 public class Constants {
     public static final int LOWER_LENGTH_WAIST = 100;
-    public static final int UPPER_LENGTH_WAIST = 100;
+    public static final int UPPER_LENGTH_WAIST = 200;
     public static final int LOWER_AGE = 25;
     public static final int UPPER_AGE = 55;
     public static final int LOWER_EXPERIENCE = 10;
