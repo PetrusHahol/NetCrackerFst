@@ -46,7 +46,7 @@ public class DispatcherMenu {
                     break;
                 case 3:
                     dispatcher.employeeInfo();
-                    dispatcher.brigadeInfo();
+                    dispatcher.brigadeInfo(admin);
                     break;
                 case 4:
                     dispatcher.regularize();
@@ -136,6 +136,9 @@ public class DispatcherMenu {
             if (Pilot.objectsCounter < 2 || Stewardess.objectsCounter == 0
                     || Navigator.objectsCounter == 0 || Radioman.objectsCounter == 0 || admin.getFlights().size() == 0)
                 throw new DataException("Your have to enter 2 pilots and 1 over employee and 1 flight");
+            admin.info();
+            System.out.println("Enter flight index");
+            int indexFlightObject = utility.tryParse(input.nextLine());
             dispatcher.employeeInfo();
             System.out.println("Enter numb first pilot");
             int indexFirstPilot = utility.tryParse(input.nextLine());
@@ -147,9 +150,6 @@ public class DispatcherMenu {
             int indexStewardess = utility.tryParse(input.nextLine());
             System.out.println("Enter numb radiomen");
             int indexRadioman = utility.tryParse(input.nextLine());
-            admin.info();
-            System.out.println("Enter flight index");
-            int indexFlightObject = utility.tryParse(input.nextLine());
             dispatcher.addBrigade(dispatcher.iterIntoPilot(indexFirstPilot), dispatcher.iterIntoPilot(indexSecondPilot),
                     dispatcher.iterIntoNavigator(indexNavigator), dispatcher.iterIntoStewardess(indexStewardess),
                     dispatcher.iterIntoRadioman(indexRadioman) , admin.indexIntoFlight(indexFlightObject));

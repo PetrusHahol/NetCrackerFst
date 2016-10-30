@@ -14,7 +14,7 @@ import java.util.*;
 public class Dispatcher<T> implements   DispatcherInterface {
 
     private  List<Brigade> brigade = new ArrayList<>();
-    private  Map<Brigade, Flight> brigadeToFlight = new HashMap<>();
+    public static Map<Flight, Brigade> brigadeToFlight = new HashMap<>();
     private  List<Radioman> radiomans = new ArrayList<>();
     private  List<Pilot> pilots = new ArrayList<>();
     private  List<Stewardess> stewardess = new ArrayList<>();
@@ -33,7 +33,7 @@ public class Dispatcher<T> implements   DispatcherInterface {
     public void setBrigade(Brigade newBrigade, Flight flight)
     {
         brigade.add(newBrigade);
-        brigadeToFlight.put(newBrigade, flight);
+        brigadeToFlight.put(flight, newBrigade);
     }
 
 
@@ -97,9 +97,13 @@ public class Dispatcher<T> implements   DispatcherInterface {
 
     }
 
-    public void brigadeInfo(){
-        for(Brigade iter: brigade){
-            System.out.print(iter + " " + brigadeToFlight.get(iter));
+    public void brigadeInfo(Admin admin){
+        for(Flight iter: admin.getFlights()){
+            if (brigadeToFlight.get(iter) == null)
+                System.out.println(iter + " Brigade is absent\n");
+            else {
+                System.out.print(iter + " " + brigadeToFlight.get(iter));
+            }
         }
     }
 
@@ -185,9 +189,6 @@ public class Dispatcher<T> implements   DispatcherInterface {
         }
     }
 
-    public Map<Brigade, Flight> getBrigadeToFlight() {
-        return brigadeToFlight;
-    }
 
     public int getObjectsCounter() {
         return objectsCounter;

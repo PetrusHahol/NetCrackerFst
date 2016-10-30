@@ -47,6 +47,7 @@ public class Admin  {
             position++;
             if (position == index) {
                 flights.remove(iter);
+                Dispatcher.brigadeToFlight.put(iter, null);
                 break;
             }
         }
