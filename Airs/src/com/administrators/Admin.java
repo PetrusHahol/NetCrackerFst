@@ -38,7 +38,7 @@ public class Admin  {
 
     public  void addFlight(String from, String to, GregorianCalendar date)  {
             flights.add(new Flight(from, to, date));
-            System.out.println("Add was done!");
+            System.out.println("Add flight was done!");
     }
 
     public  void deleteFlight(int index) {
@@ -50,7 +50,7 @@ public class Admin  {
                 break;
             }
         }
-        System.out.println("Delete was done!");
+        System.out.println("Delete flight was done!");
     }
 
 
@@ -86,7 +86,7 @@ public class Admin  {
      *
      * @param  index number of flights that your find in objects
      * @return the Flight object from index or null if Flight is missing
-     * @see         Flight
+     * @see    Flight
      *
      *
      */

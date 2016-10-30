@@ -22,7 +22,7 @@ public class ExecutedUtils {
         int result = -1;
         Scanner input = new Scanner(System.in);
         while (result == -1) {
-            System.out.println("Enter  " + type + " " + lowerData + " - " + upperData);
+            System.out.println("Enter " + type + " " + lowerData + " - " + upperData);
             result  = -1;
             while (result == -1){
                 result = tryParse(input.nextLine());

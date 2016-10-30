@@ -42,7 +42,7 @@ public class DispatcherMenu {
                     newEmployMenu();
                     break;
                 case 2:
-                    addBrigade(admin);
+                    brigadeMenu(admin);
                     break;
                 case 3:
                     dispatcher.employeeInfo();
@@ -104,9 +104,12 @@ public class DispatcherMenu {
     private void newEmployMenu() {
         System.out.println(" Enter number:\n1 - Add new pilot\n2 - Add new radiomen"
                 + "\n3 - Add new navigator"
-                + "\n4 - Add new stewardess\n-1 - Exit");
-        int tmp = utility.tryParse(input.nextLine());
-        charactersMenu();
+                + "\n4 - Add new stewardess\n-1 - Back");
+        int tmp = 0;
+        while ((tmp < 1 || tmp > 4) && tmp != -1) {
+            tmp = utility.tryParse(input.nextLine());
+        }
+        if (tmp != -1) charactersMenu();
         switch (tmp) {
             case 1:
                 pilotMenu();
@@ -120,16 +123,19 @@ public class DispatcherMenu {
             case 4:
                 stewardessMenu();
                 break;
+            case -1:
+                break;
         }
+
     }
 
 
 
-    private void addBrigade(Admin admin) {
+    private void brigadeMenu(Admin admin) {
         try {
             if (Pilot.objectsCounter < 2 || Stewardess.objectsCounter == 0
-                    || Navigator.objectsCounter == 0 || Radioman.objectsCounter == 0)
-                throw new DataException("Your have to enter 2 pilots and 1 over employee");
+                    || Navigator.objectsCounter == 0 || Radioman.objectsCounter == 0 || admin.getFlights().size() == 0)
+                throw new DataException("Your have to enter 2 pilots and 1 over employee and 1 flight");
             dispatcher.employeeInfo();
             System.out.println("Enter numb first pilot");
             int indexFirstPilot = utility.tryParse(input.nextLine());
@@ -149,6 +155,9 @@ public class DispatcherMenu {
                     dispatcher.iterIntoRadioman(indexRadioman) , admin.indexIntoFlight(indexFlightObject));
         } catch (DataException ex) {
             System.err.println(ex.getMessage());
+        }
+        finally {
+            System.out.println("Brigade was added");
         }
     }
 

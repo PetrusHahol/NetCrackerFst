@@ -45,7 +45,6 @@ public class Flight implements  Serializable,Comparable, Comparator<Flight> {
      * @see         String
      *
      **/
-
     public String getFrom() {
         return from;
     }

@@ -12,7 +12,7 @@ public abstract class Employee implements  Comparator<Pilot>{
     protected int age;
     protected int height;
     protected int experience;
-    String passportData;
+    protected String passportData;
 
     public Employee(String name, int age, int height, int experience
             , String passportData){

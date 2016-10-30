@@ -41,17 +41,20 @@ public class Dispatcher<T> implements   DispatcherInterface {
     public  void addNewRadioman(String name, int age, int height, int experience
             , String passportData, int countForeignLanguage){
         radiomans.add(new Radioman(name, age, height, experience, passportData, countForeignLanguage));
+        System.out.println("Radioman was added");
     }
 
     @Override
     public void addNewStewardess(String name, int age, int height, int experience
             , String passportData, int lengthWaist){
         stewardess.add(new Stewardess(name, age, height, experience, passportData, lengthWaist));
+        System.out.println("Stewardess was added");
     }
 
     @Override
     public void addNewNavigator(String name, int age, int height, int experience, String passportData, Object category) {
-            navigators.add(new Navigator<>(name, age, height, experience, passportData, category));
+        navigators.add(new Navigator<>(name, age, height, experience, passportData, category));
+        System.out.println("Navigator was added");
 
     }
 
@@ -59,6 +62,7 @@ public class Dispatcher<T> implements   DispatcherInterface {
     public void addNewPilot(String name, int age, int height, int experience
             , String passportData, int mileage){
         pilots.add(new Pilot(name, age, height, experience, passportData, mileage));
+        System.out.println("Pilot was added");
     }
 
     public  void employeeInfo(){
