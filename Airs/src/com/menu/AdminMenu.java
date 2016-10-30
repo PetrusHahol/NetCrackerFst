@@ -81,7 +81,6 @@ public class AdminMenu {
                     System.out.println("DeleteFlight");
                     if (admin.getFlights().size() > 0) {
                         admin.info();
-                        System.out.println(Flight.objectsCounter);
                         int index = -1;
                         while (index == -1) {
                             System.out.println("Enter index");
